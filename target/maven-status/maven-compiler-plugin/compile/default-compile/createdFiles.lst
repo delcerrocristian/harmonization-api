@@ -1,0 +1,7 @@
+domain/pdfTrat/PDFTest.class
+api/ArmonizeService.class
+api/ArmonizeConfiguration.class
+domain/asa.class
+api/ArmonizeResource.class
+domain/pdfTrat/ParseText.class
+domain/pdfTrat/ParsePDF.class
