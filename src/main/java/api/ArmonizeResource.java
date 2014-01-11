@@ -2,15 +2,16 @@ package api;
 
 
 import com.google.common.base.Optional;
-import com.yammer.metrics.annotation.Timed;
-import org.apache.pdfbox.io.IOUtils;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.File;
+
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import static utils.UtilsFile.makeDirectory;
+import static utils.UtilsFile.saveFileOnDirectory;
 
 
 @Path("/armonize/api")
@@ -31,12 +32,15 @@ public class ArmonizeResource {
     }
 
     @POST
-    public Response uploadFile(final InputStream stream) throws Exception {
-
-        byte[] data = IOUtils.toByteArray(stream);
-        File temporal = new File("/tmp/tempFile.pdf" );
-        org.apache.commons.io.FileUtils.writeByteArrayToFile(temporal, data);
-
-        return Response.status(200).build();
+    public Response uploadFile(InputStream stream) throws Exception {
+        if(stream!=null){
+            makeDirectory("temp");
+            saveFileOnDirectory(stream, "temp");
+            return Response.status(200).build();
+        }
+        else{
+            return Response.status(400).build();
+        }
     }
+
 }
