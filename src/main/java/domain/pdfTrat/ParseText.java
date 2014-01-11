@@ -212,18 +212,18 @@ public class ParseText {
 
 	}
 		
-	public static void main(String args[]) {
-		ParsePDF pdft = new ParsePDF();
-		pdft.pdftotext("Adjuntos/ISO4.pdf", "Adjuntos/pdfparseado.txt");
-		ParseText t = new ParseText();
-		ArrayList<String> lista = new ArrayList<String>();
-		ArrayList<String> listalimpia = new ArrayList<String>();
-		lista = t.ListLineText("Adjuntos/pdfparseado.txt");
-		listalimpia = t.CleanTextISO(lista);
-		t.WriteListToText(listalimpia, "Adjuntos/pdflimpio.txt");
-		System.out.println("HA FINALIZADO");
-		
-	}
-	
+//	public static void main(String args[]) {
+//		ParsePDF pdft = new ParsePDF();
+//		pdft.pdftotext("Adjuntos/ISO4.pdf", "Adjuntos/pdfparseado.txt");
+//		ParseText t = new ParseText();
+//		ArrayList<String> lista = new ArrayList<String>();
+//		ArrayList<String> listalimpia = new ArrayList<String>();
+//		lista = t.ListLineText("Adjuntos/pdfparseado.txt");
+//		listalimpia = t.CleanTextISO(lista);
+//		t.WriteListToText(listalimpia, "Adjuntos/pdflimpio.txt");
+//		System.out.println("HA FINALIZADO");
+//
+//	}
+//
 
 }

@@ -15,9 +15,11 @@ public class UtilsFile {
         directory.mkdir();
     }
 
-    static public void saveFileOnDirectory(InputStream stream, String pathDirectory) throws Exception{
+    static public File saveFileOnDirectory(InputStream stream, String pathDirectory) throws Exception{
         byte[] data = IOUtils.toByteArray(stream);
         File temporal = new File(pathDirectory+"/tempFile.pdf" );
         org.apache.commons.io.FileUtils.writeByteArrayToFile(temporal, data);
+
+        return temporal;
     }
 }

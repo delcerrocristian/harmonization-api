@@ -10,14 +10,12 @@ public class ParsePDF {
 		
 	}
 
-    final String NAME_TXT_OUTPUT = "tempTxtOutput.txt";
-
-	public void pdfToText (File pdfInput, String directoryOutputPath){
+	public void pdfToText (File pdfInput,String txtOutput, String directoryOutputPath){
 		PDDocument pdDocument;
 		BufferedWriter bufferedWriter;
 		 try {
-                 String outputPath = makeOutputPath(directoryOutputPath);
-		         File output = new File(makeOutputPath(outputPath));
+                 String outputPath =  directoryOutputPath+"/"+txtOutput;
+		         File output = new File(outputPath);
 
 		         pdDocument = PDDocument.load(pdfInput);
 
@@ -33,8 +31,5 @@ public class ParsePDF {
 		 }
 	}
 
-    private String makeOutputPath(String directoryOutputPath){
-        return directoryOutputPath+"/"+NAME_TXT_OUTPUT;
-    }
 }
 	

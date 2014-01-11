@@ -2,11 +2,13 @@ package api;
 
 
 import com.google.common.base.Optional;
+import domain.pdfTrat.ParsePDF;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -20,15 +22,21 @@ import static utils.UtilsFile.saveFileOnDirectory;
 public class ArmonizeResource {
 
     final String TEMPORAL_DIRECTORY = "temp";
+    final String NAME_TXT_OUTPUT = "tempTxtOutput.txt";
+
+    ParsePDF parsePDF;
 	
 	public ArmonizeResource() {
         makeDirectory(TEMPORAL_DIRECTORY);
+        parsePDF = new ParsePDF();
     }
 
     @POST
     public Response uploadFile(InputStream stream) throws Exception {
         if(stream!=null){
-            saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
+            File inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
+            parsePDF.pdfToText(inputFile,NAME_TXT_OUTPUT, TEMPORAL_DIRECTORY);
+
             return Response.ok().build(); //200
         }
         else{
