@@ -18,28 +18,21 @@ import static utils.UtilsFile.saveFileOnDirectory;
 @Produces(MediaType.APPLICATION_JSON)
 
 public class ArmonizeResource {
-    ArrayList<String> msg;
 
+    final String TEMPORAL_DIRECTORY = "temp";
 	
 	public ArmonizeResource() {
-        msg = new ArrayList<String>();
-    }
-	
-	@GET
-    public ArrayList<String> sayHello(@QueryParam("name") Optional<String> name) {
-        msg.add(name.or("anonymous"));
-        return msg;
+        makeDirectory(TEMPORAL_DIRECTORY);
     }
 
     @POST
     public Response uploadFile(InputStream stream) throws Exception {
         if(stream!=null){
-            makeDirectory("temp");
-            saveFileOnDirectory(stream, "temp");
-            return Response.status(200).build();
+            saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
+            return Response.ok().build(); //200
         }
         else{
-            return Response.status(400).build();
+             return Response.status(400).build();
         }
     }
 
