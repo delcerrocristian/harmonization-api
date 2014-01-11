@@ -9,28 +9,32 @@ public class ParsePDF {
 	public ParsePDF(){
 		
 	}
-	
-	public void pdftotext (String pdf, String txt){
-		PDDocument pd;
-		BufferedWriter wr;
+
+    final String NAME_TXT_OUTPUT = "tempTxtOutput.txt";
+
+	public void pdfToText (File pdfInput, String directoryOutputPath){
+		PDDocument pdDocument;
+		BufferedWriter bufferedWriter;
 		 try {
-		         File input = new File(pdf);  // The PDF file from where you would like to extract
-		         File output = new File(txt); // The text file where you are going to store the extracted data
-		         pd = PDDocument.load(input);
-		         System.out.println(pd.getNumberOfPages());
-		         System.out.println(pd.isEncrypted());
-		         pd.save("CopyOfInvoice.pdf"); // Creates a copy called "CopyOfInvoice.pdf"
-		         PDFTextStripper stripper = new PDFTextStripper();
-		         wr = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output)));
-		         stripper.writeText(pd, wr);
-		         if (pd != null) {
-		             pd.close();
-		         }
-		        // I use close() to flush the stream.
-		        wr.close();
+                 String outputPath = makeOutputPath(directoryOutputPath);
+		         File output = new File(makeOutputPath(outputPath));
+
+		         pdDocument = PDDocument.load(pdfInput);
+
+		         PDFTextStripper pdfTextStripper = new PDFTextStripper();
+		         bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output)));
+		         pdfTextStripper.writeText(pdDocument, bufferedWriter);
+
+		         pdDocument.close();
+		         bufferedWriter.close();
+
 		 } catch (Exception e){
 		         e.printStackTrace();
-		 } 
+		 }
 	}
+
+    private String makeOutputPath(String directoryOutputPath){
+        return directoryOutputPath+"/"+NAME_TXT_OUTPUT;
+    }
 }
 	
