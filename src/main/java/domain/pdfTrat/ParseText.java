@@ -10,7 +10,7 @@ public class ParseText {
 	public ParseText(){
 	}
 	
-	public ArrayList<String> ListLineText(String FilePath) {
+	public ArrayList<String> listLineText(String FilePath) {
 		ArrayList<String> Line = new ArrayList<String>();
         try{
             // Abrimos el archivo
@@ -35,7 +35,7 @@ public class ParseText {
     }
 	
 	//Limpia texto que estorba del txt de los est�ndares ISO
-	public ArrayList<String> CleanTextISO(ArrayList<String> sucia){
+	public ArrayList<String> cleanTextISO(ArrayList<String> sucia){
 		
 		
 		/*ArrayList<String> semienblanco = QuitarRenglonesBlancos(sucia);
@@ -46,16 +46,16 @@ public class ParseText {
 		ArrayList<String> limpia = new ArrayList<String>();
 		
 		
-		ArrayList<String> enblanco = QuitarRenglonesBlancos(sucia);
-		enblanco = LimpiarBlancosFin(enblanco);
-		enblanco = LimpiarBlancosIni(enblanco);
-		enblanco = PuntoPorGuion(enblanco);
+		ArrayList<String> enblanco = quitarRenglonesBlancos(sucia);
+		enblanco = limpiarBlancosFin(enblanco);
+		enblanco = limpiarBlancosIni(enblanco);
+		enblanco = puntoPorGuion(enblanco);
 		
-		String reference = SearchReference(enblanco);
+		String reference = searchReference(enblanco);
 		System.out.println("REFERENCIA:"+reference);
 		System.out.println("Aqui si llego");
 		
-		enblanco = EliminarTextoInutil(enblanco);
+		enblanco = eliminarTextoInutil(enblanco);
 		for(int i=0; i<enblanco.size(); i++){
 			System.out.println("Estoy dentro;");
 			if(enblanco.get(i).equals(reference)){
@@ -70,7 +70,7 @@ public class ParseText {
 	}
 	
 	//Metodo que busca el numero de referencia del documento.
-	public String SearchReference(ArrayList<String> lista){
+	public String searchReference(ArrayList<String> lista){
 		String reference="Reference wasn't found";
 		
 		String patron ="^Contents.*";
@@ -87,7 +87,7 @@ public class ParseText {
 		
 	}
 	
-	private ArrayList<String> LimpiarBlancosFin(ArrayList<String> sucia){
+	private ArrayList<String> limpiarBlancosFin(ArrayList<String> sucia){
 		ArrayList<String> limpia = new ArrayList<String>();
 		String cadena ="";
 		for(int i=0; i<sucia.size();i++){
@@ -100,7 +100,7 @@ public class ParseText {
 		return limpia;
 	}
 	
-	private ArrayList<String> LimpiarBlancosIni(ArrayList<String> sucia){
+	private ArrayList<String> limpiarBlancosIni(ArrayList<String> sucia){
 		ArrayList<String> limpia = new ArrayList<String>();
 		String cadena ="";
 		for(int i=0; i<sucia.size();i++){
@@ -113,7 +113,7 @@ public class ParseText {
 		return limpia;
 	}
 	
-	public ArrayList<String> QuitarRenglonesBlancos(ArrayList<String> Lista){
+	public ArrayList<String> quitarRenglonesBlancos(ArrayList<String> Lista){
 		ArrayList<String> Limpia = new ArrayList<String>();
 		
 		String patron = "^ *";
@@ -136,7 +136,7 @@ public class ParseText {
 		
 	}
 	
-	private ArrayList<String> PuntoPorGuion(ArrayList<String> lista){
+	private ArrayList<String> puntoPorGuion(ArrayList<String> lista){
 		String patron = "^([a-zA-Z0-9]|[-]).*";
 		Pattern pat = Pattern.compile(patron);
 	
@@ -157,7 +157,7 @@ public class ParseText {
 		return limpia;
 	}
 	
-	private ArrayList<String> EliminarTextoInutil(ArrayList<String> lista){
+	private ArrayList<String> eliminarTextoInutil(ArrayList<String> lista){
 		ArrayList<String> limpia = new ArrayList<String>();
 		
 		int cont = 0;
@@ -187,7 +187,7 @@ public class ParseText {
 		return limpia;
 	}
 	
-	public void WriteListToText(ArrayList<String> lista, String ruta){
+	public void writeListToText(ArrayList<String> lista, String ruta){
 		File f;
 		f = new File(ruta);
 		

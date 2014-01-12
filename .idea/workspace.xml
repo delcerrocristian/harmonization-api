@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e438a21e-0534-4348-9859-c625afdd2828" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" afterPath="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocument.java" afterPath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocument.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java" afterPath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java" afterPath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -112,7 +109,7 @@
       <file leaf-file-name="ParseText.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.22708039" vertical-offset="469" max-vertical-offset="3480">
+            <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.22772278" vertical-offset="469" max-vertical-offset="3480">
               <folding />
             </state>
           </provider>
@@ -628,7 +625,11 @@
       <created>1389527584412</created>
       <updated>1389527584412</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Method treatmentText done">
+      <created>1389553486326</created>
+      <updated>1389553486326</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -665,6 +666,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970026" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35121602" sideWeight="0.67132115" order="8" side_tool="false" content_ui="tabs" />
@@ -681,7 +683,6 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -707,7 +708,8 @@
     <MESSAGE value="Refactorización de ParsePDF&#10;" />
     <MESSAGE value="Refactorización de ParsePDF y usarlo en en ArmonizeResource, y quitar el main en ParseText&#10;" />
     <MESSAGE value="Create FullProcessDocumente Interface and Implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create FullProcessDocumente Interface and Implementation" />
+    <MESSAGE value="Method treatmentText done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Method treatmentText done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -930,7 +932,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-25.538282" vertical-offset="11007" max-vertical-offset="13290" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-25.538282" vertical-offset="11007" max-vertical-offset="13290">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeService.java">
@@ -994,7 +998,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.22708039" vertical-offset="469" max-vertical-offset="3480">
+        <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.22772278" vertical-offset="469" max-vertical-offset="3480">
           <folding />
         </state>
       </provider>
