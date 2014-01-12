@@ -27,8 +27,7 @@ public class ArmonizeResource {
     ParsePDF parsePDF;
 	
 	public ArmonizeResource() {
-        makeDirectory(TEMPORAL_DIRECTORY);
-        parsePDF = new ParsePDF();
+
     }
 
     @POST

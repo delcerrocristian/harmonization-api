@@ -5,6 +5,5 @@ package domain.pdfTrat;
  */
 public interface FullProcessDocument {
 
-    public void parsePdfToText();
-    public void treatmentText();
+
 }
