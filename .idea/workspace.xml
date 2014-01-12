@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e438a21e-0534-4348-9859-c625afdd2828" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java" afterPath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java" />
+    <list default="true" id="e438a21e-0534-4348-9859-c625afdd2828" name="Default" comment="Change names to camelCase on ParseText&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/domain/templates/plantillaISO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="arm.iws" />
@@ -106,11 +106,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParseText.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ParseText.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.22772278" vertical-offset="469" max-vertical-offset="3480">
+            <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.0" vertical-offset="469" max-vertical-offset="3480">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plantillaISO.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/plantillaISO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="31" selection-start="268" selection-end="268" vertical-scroll-proportion="-0.1970803" vertical-offset="315" max-vertical-offset="8985">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,6 +161,7 @@
         <option value="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocument.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java" />
+        <option value="$PROJECT_DIR$/src/main/java/domain/templates/plantillaISO.java" />
       </list>
     </option>
   </component>
@@ -286,6 +298,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -629,7 +675,11 @@
       <created>1389553486326</created>
       <updated>1389553486326</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Change names to camelCase on ParseText">
+      <created>1389553532981</created>
+      <updated>1389553532981</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -672,7 +722,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35121602" sideWeight="0.67132115" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24892704" sideWeight="0.67132115" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24892704" sideWeight="0.67132115" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32833788" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -709,7 +759,8 @@
     <MESSAGE value="Refactorización de ParsePDF y usarlo en en ArmonizeResource, y quitar el main en ParseText&#10;" />
     <MESSAGE value="Create FullProcessDocumente Interface and Implementation" />
     <MESSAGE value="Method treatmentText done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Method treatmentText done" />
+    <MESSAGE value="Change names to camelCase on ParseText" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change names to camelCase on ParseText" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -998,8 +1049,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.22772278" vertical-offset="469" max-vertical-offset="3480">
+        <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.0" vertical-offset="469" max-vertical-offset="3480">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/plantillaISO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="31" selection-start="268" selection-end="268" vertical-scroll-proportion="-0.1970803" vertical-offset="315" max-vertical-offset="8985">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
