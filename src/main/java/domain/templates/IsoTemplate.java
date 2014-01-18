@@ -4,6 +4,8 @@ package domain.templates;
  * Created by Cristian del Cerro.
  */
 
+import domain.PathFiles;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -12,53 +14,24 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class IsoTemplate {
+import static utils.UtilsFile.makeDirectory;
 
-    char abecedario[] = {'a','b','c','d','e','f','g','h','i','j','k'
-            ,'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+public class IsoTemplate implements PathFiles, IsoTemplateInterface {
+
+
 
     private File f, f2, f3, f4;
     FileWriter w, w2, w3, w4;
     BufferedWriter bw, bw2, bw3, bw4;
     PrintWriter wr, wr2, wr3, wr4;
 
-    public IsoTemplate()throws Exception{
-        //ARCHIVO1
-        f = new File("Adjuntos/Categoria1.txt");
-        w = new FileWriter(f);
-        bw = new BufferedWriter(w);
-        wr = new PrintWriter(bw);
-        wr.write("Categoria1:\n");
-
-        //ARCHIVO2
-        f2 = new File("Adjuntos/categoria4.txt");
-        w2 = new FileWriter(f2);
-        bw2 = new BufferedWriter(w2);
-        wr2 = new PrintWriter(bw2);
-        wr2.write("Categoria4:\n");
-
-        //ARCHIVO3
-        f3 = new File("Adjuntos/categoria5.txt");
-        w3 = new FileWriter(f3);
-        bw3 = new BufferedWriter(w3);
-        wr3 = new PrintWriter(bw3);
-        wr3.write("Categoria5:\n");
-
-        //ARCHIVO4
-        f4 = new File("Adjuntos/categoria7.txt");
-        w4 = new FileWriter(f4);
-        bw4 = new BufferedWriter(w4);
-        wr4 = new PrintWriter(bw4);
-        wr4.write("Categoria7:\n");
+    public IsoTemplate(){
+        makeDirectory(ISO_TEMPORAL_DIRECTORY);
     }
 
-    public void runTemplate(File tempCategoryFile, ArrayList<String> listOfText, int category)throws Exception{
-        switch(category){
-            case 1:
-              //  IsoCategory1.find(tempCategoryFile, listOfText);
-                break;
-
-        }
+    public void runTemplate(ArrayList<String> listOfText)throws Exception{
+                IsoCategory1 isoCategory1 = new IsoCategory1(listOfText);
+                isoCategory1.find();
     }
 
 
@@ -503,7 +476,7 @@ public class IsoTemplate {
 
         for(int i=indice; (i<Lista.size() && i!=-1); i++){
             System.out.println("HOLA CARACIOLA");
-            if(Lista.get(i).charAt(0)== abecedario[contador]){
+            if(Lista.get(i).charAt(0)== alphabet[contador]){
                 System.out.println("PUES RESULTA QUE SI ENTRO AQUI");
                 while(!(patFinal.matcher(Lista.get(i))).matches()){
                     System.out.println("Y AQUI TAMBIEN, YO ESKE ME DESPOLLO");
@@ -543,7 +516,7 @@ public class IsoTemplate {
         Pattern pat = Pattern.compile(patron);
         for(int i=indice; (i<Lista.size() && condicion==false); i++){
             if(pat.matcher(Lista.get(i)).matches()){
-                if(Lista.get(i).charAt(0)== abecedario[abc]){
+                if(Lista.get(i).charAt(0)== alphabet[abc]){
                     exist=i;
                     condicion=true;
                 }

@@ -1,5 +1,7 @@
 package domain.pdfTrat;
 
+import domain.PathFiles;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -7,10 +9,7 @@ import java.util.ArrayList;
  * Created by Cristian del Cerro.
  */
 
-public class FullProcessDocumentImp implements FullProcessDocument {
-
-    final String TEMPORAL_DIRECTORY = "temp";
-    final String NAME_TXT_OUTPUT = "tempTxtOutput.txt";
+public class FullProcessDocumentImp implements PathFiles {
 
     ArrayList<String> textList;
 

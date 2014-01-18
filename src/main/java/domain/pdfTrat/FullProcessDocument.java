@@ -5,5 +5,4 @@ package domain.pdfTrat;
  */
 public interface FullProcessDocument {
 
-
 }
