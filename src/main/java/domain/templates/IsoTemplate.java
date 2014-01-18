@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class plantillaISO {
+public class IsoTemplate {
 
     char abecedario[] = {'a','b','c','d','e','f','g','h','i','j','k'
             ,'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
@@ -22,7 +22,7 @@ public class plantillaISO {
     BufferedWriter bw, bw2, bw3, bw4;
     PrintWriter wr, wr2, wr3, wr4;
 
-    public plantillaISO()throws Exception{
+    public IsoTemplate()throws Exception{
         //ARCHIVO1
         f = new File("Adjuntos/Categoria1.txt");
         w = new FileWriter(f);
@@ -52,14 +52,24 @@ public class plantillaISO {
         wr4.write("Categoria7:\n");
     }
 
-    public void findObjetives(ArrayList<String> Lista)throws Exception{
+    public void runTemplate(File tempCategoryFile, ArrayList<String> listOfText, int category)throws Exception{
+        switch(category){
+            case 1:
+                findCategory1(tempCategoryFile, listOfText);
+                break;
+
+        }
+    }
+
+
+    public void findCategory1(File tempCategoryFile, ArrayList<String> Lista)throws Exception{
 
 
         //Tipo de documento 1
-        String patronShall = ".*shall.*";
-        Pattern patShall = Pattern.compile(patronShall);
-        String patronShallbe = ".*shall be.*";
-        Pattern patShallbe = Pattern.compile(patronShallbe);
+//        String patronShall = ".*shall.*";
+//        Pattern patShall = Pattern.compile(patronShall);
+//        String patronShallbe = ".*shall be.*";
+//        Pattern patShallbe = Pattern.compile(patronShallbe);
         String patronShallin = ".*shall include.*";
         Pattern patShallin = Pattern.compile(patronShallin);
 
@@ -86,8 +96,8 @@ public class plantillaISO {
         for(int i=0; i<Lista.size(); i++){
 
             //DOC 1
-            matShall = patShall.matcher(Lista.get(i));
-            matShallbe = patShallbe.matcher(Lista.get(i));
+            matShall = patternShall().matcher(Lista.get(i));
+            matShallbe = patternShallBe().matcher(Lista.get(i));
             matShallin = patShallin.matcher(Lista.get(i));
 
             //DOC2
@@ -561,6 +571,14 @@ public class plantillaISO {
         return retorno;
     }
 
+    private Pattern patternShall(){
+        return Pattern.compile(".*shall.*");
+    }
+
+    private Pattern patternShallBe(){
+        return Pattern.compile(".*shall be.*");
+    }
+
     //TODO
         /*private int enumeracionNUM (ArrayList<String> Lista, int indice){
                 int contador = 0;
@@ -580,7 +598,7 @@ public class plantillaISO {
 //
 //
 //        try{
-//            plantillaISO p = new plantillaISO();
+//            IsoTemplate p = new IsoTemplate();
 //            p.findObjetives(ListaLimpia);
 //            p.findCatagory4(ListaLimpia);
 //            p.findCatagory5(ListaLimpia);
