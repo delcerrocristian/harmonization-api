@@ -55,7 +55,7 @@ public class IsoTemplate {
     public void runTemplate(File tempCategoryFile, ArrayList<String> listOfText, int category)throws Exception{
         switch(category){
             case 1:
-                findCategory1(tempCategoryFile, listOfText);
+              //  IsoCategory1.find(tempCategoryFile, listOfText);
                 break;
 
         }
@@ -577,6 +577,10 @@ public class IsoTemplate {
 
     private Pattern patternShallBe(){
         return Pattern.compile(".*shall be.*");
+    }
+
+    private Pattern patternShallInclude(){
+        return Pattern.compile(".*shall include.*");
     }
 
     //TODO
