@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e438a21e-0534-4348-9859-c625afdd2828" name="Default" comment="added IsoCategor1&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/domain/templates/IsoSupportFindMethods.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplateInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/domain/PathFiles.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocument.java" afterPath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocument.java" />
+    <list default="true" id="e438a21e-0534-4348-9859-c625afdd2828" name="Default" comment="Muchos cambios en la estructura de clases, interfaces, clases nuevas, etc.&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/utils/UtilsTemplates.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/domain/PathFiles.java" afterPath="$PROJECT_DIR$/src/main/java/utils/PathFiles.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" afterPath="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java" afterPath="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/templates/IsoCategory1.java" afterPath="$PROJECT_DIR$/src/main/java/domain/templates/IsoCategory1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/templates/IsoSupportFindMethods.java" afterPath="$PROJECT_DIR$/src/main/java/domain/templates/IsoSupportFindMethods.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplate.java" afterPath="$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplateInterface.java" afterPath="$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplateInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/UtilsFile.java" afterPath="$PROJECT_DIR$/src/main/java/utils/UtilsFile.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="arm.iws" />
@@ -85,7 +87,7 @@
       <file leaf-file-name="FullProcessDocumentImp.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="56" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+            <state line="15" column="0" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
               <folding />
             </state>
           </provider>
@@ -100,10 +102,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PathFiles.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/domain/PathFiles.java">
+      <file leaf-file-name="ArmonizeResource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="11" selection-start="253" selection-end="267" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+            <state line="38" column="13" selection-start="918" selection-end="918" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="780">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PathFiles.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/PathFiles.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="17" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
               <folding />
             </state>
           </provider>
@@ -112,39 +125,19 @@
       <file leaf-file-name="IsoTemplateInterface.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplateInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="21" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParseText.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3480">
+            <state line="8" column="39" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IsoTemplate.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="533" column="4" selection-start="19079" selection-end="19358" vertical-scroll-proportion="0.0" vertical-offset="7658" max-vertical-offset="8910">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IsoSupportFindMethods.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="IsoSupportFindMethods.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoSupportFindMethods.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.26277372" vertical-offset="0" max-vertical-offset="685">
-              <folding />
+            <state line="60" column="36" selection-start="1712" selection-end="1712" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="1365">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -152,7 +145,16 @@
       <file leaf-file-name="UtilsFile.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/UtilsFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="23" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+            <state line="24" column="0" selection-start="628" selection-end="628" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UtilsTemplates.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/UtilsTemplates.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="1" selection-start="246" selection-end="246" vertical-scroll-proportion="0.19650654" vertical-offset="0" max-vertical-offset="687">
               <folding />
             </state>
           </provider>
@@ -161,7 +163,7 @@
       <file leaf-file-name="IsoCategory1.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoCategory1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="24" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+            <state line="67" column="84" selection-start="2213" selection-end="2213" vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="2745">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -197,23 +199,25 @@
         <option value="$PROJECT_DIR$/src/main/java/domain/asa.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Utils/UtilsFile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/UtilsFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParsePDF.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/templates/plantillaISO.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/templates/tempCategoryFiles.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/templates/TempCategoryFiles.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/templates/IsoInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocument.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/PathFiles.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/templates/constantTemplates.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/templates/IsoCategory1.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplateInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/UtilsTemplates.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/UtilsFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/templates/IsoSupportFindMethods.java" />
+        <option value="$PROJECT_DIR$/src/main/java/domain/PathFiles.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/PathFiles.java" />
+        <option value="$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/domain/templates/IsoCategory1.java" />
+        <option value="$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" />
       </list>
     </option>
   </component>
@@ -286,7 +290,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -328,32 +332,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="arm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="arm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -459,7 +437,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -486,6 +464,9 @@
     <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="api" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/domain/pdfTrat" />
       <recent name="$PROJECT_DIR$/src/main/java/domain" />
@@ -518,6 +499,26 @@
       <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -540,32 +541,25 @@
       </MavenSettings>
       <method />
     </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -594,19 +588,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -769,7 +750,11 @@
       <created>1390074268622</created>
       <updated>1390074268622</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Muchos cambios en la estructura de clases, interfaces, clases nuevas, etc.">
+      <created>1390077516286</created>
+      <updated>1390077516286</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -806,7 +791,6 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32561308" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32833788" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970026" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35121602" sideWeight="0.67132115" order="9" side_tool="false" content_ui="tabs" />
@@ -823,6 +807,7 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32880434" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -852,7 +837,8 @@
     <MESSAGE value="Change names to camelCase on ParseText" />
     <MESSAGE value="Added plantillaIso&#10;" />
     <MESSAGE value="added IsoCategor1" />
-    <option name="LAST_COMMIT_MESSAGE" value="added IsoCategor1" />
+    <MESSAGE value="Muchos cambios en la estructura de clases, interfaces, clases nuevas, etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="Muchos cambios en la estructura de clases, interfaces, clases nuevas, etc." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -862,20 +848,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="225">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3525">
@@ -902,7 +874,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="39" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="645">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -957,7 +931,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="0" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="795">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -993,7 +969,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="8" selection-start="864" selection-end="882" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="585">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,7 +990,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="5" selection-start="898" selection-end="898" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="585">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1104,9 +1084,57 @@
         <state line="26" column="19" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
+        <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.0" vertical-offset="469" max-vertical-offset="3480">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplateInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="39" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/PathFiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="45" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="5010">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoSupportFindMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="36" selection-start="1712" selection-end="1712" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="1365">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoCategory1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="84" selection-start="2213" selection-end="2213" vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="2745">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
           <folding />
         </state>
       </provider>
@@ -1120,69 +1148,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/UtilsFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="23" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/ParseText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="59" selection-start="1536" selection-end="1536" vertical-scroll-proportion="0.0" vertical-offset="469" max-vertical-offset="3480">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/PathFiles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="11" selection-start="253" selection-end="267" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+        <state line="24" column="0" selection-start="628" selection-end="628" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/pdfTrat/FullProcessDocumentImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="56" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+        <state line="15" column="0" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplateInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="21" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+        <state line="38" column="13" selection-start="918" selection-end="918" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="780">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoCategory1.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/UtilsTemplates.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="24" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="533" column="4" selection-start="19079" selection-end="19358" vertical-scroll-proportion="0.0" vertical-offset="7658" max-vertical-offset="8910">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/templates/IsoSupportFindMethods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.26277372" vertical-offset="0" max-vertical-offset="685">
+        <state line="9" column="1" selection-start="246" selection-end="246" vertical-scroll-proportion="0.19650654" vertical-offset="0" max-vertical-offset="687">
           <folding />
         </state>
       </provider>

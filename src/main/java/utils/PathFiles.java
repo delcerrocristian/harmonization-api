@@ -1,4 +1,4 @@
-package domain;
+package utils;
 
 /**
  * Created by Cristian del Cerro.

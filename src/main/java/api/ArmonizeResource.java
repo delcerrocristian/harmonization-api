@@ -1,8 +1,9 @@
 package api;
 
 
-import com.google.common.base.Optional;
+import domain.pdfTrat.FullProcessDocumentImp;
 import domain.pdfTrat.ParsePDF;
+import utils.PathFiles;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -10,22 +11,17 @@ import javax.ws.rs.core.Response;
 
 import java.io.File;
 import java.io.InputStream;
-import java.util.ArrayList;
 
-import static utils.UtilsFile.makeDirectory;
 import static utils.UtilsFile.saveFileOnDirectory;
 
 
 @Path("/armonize/api")
 @Produces(MediaType.APPLICATION_JSON)
 
-public class ArmonizeResource {
+public class ArmonizeResource implements PathFiles {
 
-    final String TEMPORAL_DIRECTORY = "temp";
-    final String NAME_TXT_OUTPUT = "tempTxtOutput.txt";
+    FullProcessDocumentImp fullProcessDocumentImp;
 
-    ParsePDF parsePDF;
-	
 	public ArmonizeResource() {
 
     }
@@ -34,7 +30,9 @@ public class ArmonizeResource {
     public Response uploadFile(InputStream stream) throws Exception {
         if(stream!=null){
             File inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
-            parsePDF.pdfToText(inputFile,NAME_TXT_OUTPUT, TEMPORAL_DIRECTORY);
+
+            FullProcessDocumentImp fullProcessDocumentImp = new FullProcessDocumentImp();
+            fullProcessDocumentImp.start(inputFile);
 
             return Response.ok().build(); //200
         }
