@@ -1,8 +1,7 @@
 package api;
 
 
-import domain.pdfTrat.FullProcessDocumentImp;
-import domain.pdfTrat.ParsePDF;
+import pdfTrat.FullProcessDocumentImp;
 import utils.PathFiles;
 
 import javax.ws.rs.*;
@@ -20,7 +19,6 @@ import static utils.UtilsFile.saveFileOnDirectory;
 
 public class ArmonizeResource implements PathFiles {
 
-    FullProcessDocumentImp fullProcessDocumentImp;
 
 	public ArmonizeResource() {
 

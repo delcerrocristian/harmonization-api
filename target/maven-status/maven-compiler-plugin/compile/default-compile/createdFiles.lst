@@ -1,7 +1,6 @@
-domain/pdfTrat/PDFTest.class
+utils/PathFiles.class
 api/ArmonizeService.class
 api/ArmonizeConfiguration.class
-domain/asa.class
+utils/UtilsFile.class
+utils/UtilsTemplates.class
 api/ArmonizeResource.class
-domain/pdfTrat/ParseText.class
-domain/pdfTrat/ParsePDF.class
