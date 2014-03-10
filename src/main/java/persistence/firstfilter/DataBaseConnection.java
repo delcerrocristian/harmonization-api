@@ -1,4 +1,6 @@
-package persistence;
+package persistence.firstfilter;
+
+import persistence.firstfilter.Broker;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

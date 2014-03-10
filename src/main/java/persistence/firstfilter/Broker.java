@@ -1,4 +1,4 @@
-package persistence;
+package persistence.firstfilter;
 
 /**
  * Created by Cristian del Cerro.
