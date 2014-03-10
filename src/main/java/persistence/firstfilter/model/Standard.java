@@ -8,6 +8,11 @@ public class Standard {
     private int id;
     private String name;
 
+    public Standard(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -23,4 +28,5 @@ public class Standard {
     public void setName(String name) {
         this.name = name;
     }
+
 }
