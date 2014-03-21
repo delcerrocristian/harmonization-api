@@ -7,7 +7,6 @@ package persistence.firstfilter;
 import java.sql.*;
 import java.util.Hashtable;
 import java.util.Vector;
-
 public class Broker {
     protected static Broker instance=null;
     protected Vector<DataBaseConnection> freeConnections;
@@ -21,6 +20,7 @@ public class Broker {
             e.printStackTrace();
             System.exit(-1);
         }
+
         this.freeConnections = new Vector<DataBaseConnection>();
         this.busyConnections = new Hashtable<Integer, DataBaseConnection>();
         for (int i=0; i<CONNECTIONS; i++) {

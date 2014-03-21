@@ -7,10 +7,10 @@ public class MainSentence {
 
     private int id;
     private String content;
-    private char category;
+    private String category;
     private int standard;
 
-    public MainSentence(int id, String content, char category, int standard) {
+    public MainSentence(int id, String content, String category, int standard) {
         this.id = id;
         this.content = content;
         this.category = category;
@@ -33,11 +33,11 @@ public class MainSentence {
         this.content = content;
     }
 
-    public char getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(char category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
