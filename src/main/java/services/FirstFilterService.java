@@ -1,5 +1,6 @@
 package services;
 
+import persistence.firstfilter.model.EnumSentence;
 import persistence.firstfilter.model.MainSentence;
 import persistence.firstfilter.model.Standard;
 
@@ -26,4 +27,10 @@ public interface FirstFilterService {
     void deleteMainSentence (int id) throws SQLException;
 
     ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException;
+
+    EnumSentence readEnumSentence (int id) throws SQLException;
+
+    void deleteEnumSentence (int id) throws SQLException;
+
+    ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id) throws SQLException;
 }

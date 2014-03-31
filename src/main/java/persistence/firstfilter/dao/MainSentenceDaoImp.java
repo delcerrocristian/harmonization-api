@@ -24,7 +24,7 @@ public class MainSentenceDaoImp implements MainSentenceDao {
                     ("insert into main_sentence (content, category, standard) VALUES (?,?,?)");
             preparedStatement.setString(1, mainSentence.getContent());
             preparedStatement.setString(2,mainSentence.getCategory());
-            preparedStatement.setInt(3, mainSentence.getId());
+            preparedStatement.setInt(3, mainSentence.getStandard());
 
             preparedStatement.executeUpdate();
 
@@ -95,7 +95,7 @@ public class MainSentenceDaoImp implements MainSentenceDao {
         DataBaseConnection dataBaseConnection = null;
         PreparedStatement preparedStatement;
         MainSentence mainSentenceFromDB;
-        ArrayList<MainSentence> allMainSentencesById = new ArrayList<>();
+        ArrayList<MainSentence> allMainSentencesByStandard = new ArrayList<>();
         try {
             dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
@@ -112,7 +112,7 @@ public class MainSentenceDaoImp implements MainSentenceDao {
                 mainSentenceFromDB.setContent(resultSet.getString("content"));
                 mainSentenceFromDB.setCategory(resultSet.getString("category"));
                 mainSentenceFromDB.setStandard(resultSet.getInt("standard"));
-                allMainSentencesById.add(mainSentenceFromDB);
+                allMainSentencesByStandard.add(mainSentenceFromDB);
             }
 
         } catch (SQLException e) {
@@ -120,6 +120,6 @@ public class MainSentenceDaoImp implements MainSentenceDao {
         }finally{
             dataBaseConnection.close();
         }
-        return allMainSentencesById;
+        return allMainSentencesByStandard;
     }
 }

@@ -4,6 +4,7 @@ package api;
 import pdfTrat.FullProcessDocumentImp;
 import persistence.firstfilter.dao.StandardDao;
 import persistence.firstfilter.dao.StandardDaoImp;
+import persistence.firstfilter.model.EnumSentence;
 import persistence.firstfilter.model.MainSentence;
 import persistence.firstfilter.model.Standard;
 import services.FirstFilterService;
@@ -93,5 +94,14 @@ public class ArmonizeResource implements PathFiles {
         ArrayList<MainSentence> allMainSentencesByStandard = firstFilterService.readAllMainSentencesByStandard(id);
 
         return Response.ok(allMainSentencesByStandard).build();
+    }
+
+    @Path("/standard/main/enum/all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllEnumSentenceByMainSentence(@QueryParam("id") int id) throws SQLException {
+        ArrayList<EnumSentence> allEnumSentenceByMainSentence = firstFilterService.readAllEnumSentencesByMainSentence(id);
+
+        return Response.ok(allEnumSentenceByMainSentence).build();
     }
 }

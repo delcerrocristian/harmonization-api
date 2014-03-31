@@ -10,6 +10,10 @@ public class EnumSentence {
     private String content;
     private int mainSentence;
 
+    public EnumSentence() {
+
+    }
+
     public EnumSentence(int id, int position, String content, int mainSentence) {
         this.id = id;
         this.position = position;

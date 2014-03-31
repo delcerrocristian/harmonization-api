@@ -3,6 +3,7 @@ package services;
 import persistence.firstfilter.dao.EnumSentenceDao;
 import persistence.firstfilter.dao.MainSentenceDao;
 import persistence.firstfilter.dao.StandardDao;
+import persistence.firstfilter.model.EnumSentence;
 import persistence.firstfilter.model.MainSentence;
 import persistence.firstfilter.model.Standard;
 
@@ -62,6 +63,21 @@ public class FirstFilterServiceImp implements FirstFilterService{
     @Override
     public ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException {
         return mainSentenceDao.readAllByStandard(id);
+    }
+
+    @Override
+    public EnumSentence readEnumSentence (int id) throws SQLException {
+        return enumSentenceDao.read(id);
+    }
+
+    @Override
+    public void deleteEnumSentence (int id) throws SQLException {
+        enumSentenceDao.delete(id);
+    }
+
+    @Override
+    public ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id) throws SQLException {
+        return enumSentenceDao.readAllByMainSentence(id);
     }
 
 }
