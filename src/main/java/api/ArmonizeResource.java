@@ -4,6 +4,7 @@ package api;
 import pdfTrat.FullProcessDocumentImp;
 import persistence.firstfilter.dao.StandardDao;
 import persistence.firstfilter.dao.StandardDaoImp;
+import persistence.firstfilter.model.MainSentence;
 import persistence.firstfilter.model.Standard;
 import services.FirstFilterService;
 import utils.PathFiles;
@@ -28,7 +29,7 @@ public class ArmonizeResource implements PathFiles {
     private FirstFilterService firstFilterService;
 
     public ArmonizeResource(FirstFilterService firstFilterService) {
-       this.firstFilterService = firstFilterService;
+        this.firstFilterService = firstFilterService;
     }
 
     @Produces(MediaType.APPLICATION_JSON)
@@ -85,4 +86,12 @@ public class ArmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
+    @Path("/standard/main/all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllMainSentenceByStandard(@QueryParam("id") int id) throws SQLException {
+        ArrayList<MainSentence> allMainSentencesByStandard = firstFilterService.readAllMainSentencesByStandard(id);
+
+        return Response.ok(allMainSentencesByStandard).build();
+    }
 }

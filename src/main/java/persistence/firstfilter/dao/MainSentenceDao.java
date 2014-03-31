@@ -12,11 +12,11 @@ public interface MainSentenceDao {
 
     void create(MainSentence mainSentence) throws SQLException;
 
-    MainSentence read(int id);
+    MainSentence read(int id) throws SQLException;
 
     void update(MainSentence mainSentence);
 
-    void delete(int id);
+    void delete(int id) throws SQLException;
 
-    ArrayList<MainSentence> readAllByStandard(int id);
+    ArrayList<MainSentence> readAllByStandard(int id) throws SQLException;
 }

@@ -20,4 +20,10 @@ public interface FirstFilterService {
     ArrayList<Standard> readAllStandards() throws SQLException;
 
     void addMainSentence (MainSentence mainSentence) throws SQLException;
+
+    MainSentence readMainSentence (int id) throws SQLException;
+
+    void deleteMainSentence (int id) throws SQLException;
+
+    ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException;
 }

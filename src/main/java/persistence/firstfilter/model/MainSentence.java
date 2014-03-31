@@ -10,6 +10,10 @@ public class MainSentence {
     private String category;
     private int standard;
 
+    public MainSentence() {
+
+    }
+
     public MainSentence(int id, String content, String category, int standard) {
         this.id = id;
         this.content = content;

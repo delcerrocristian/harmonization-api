@@ -49,4 +49,19 @@ public class FirstFilterServiceImp implements FirstFilterService{
         mainSentenceDao.create(mainSentence);
     }
 
+    @Override
+    public MainSentence readMainSentence (int id) throws SQLException {
+        return mainSentenceDao.read(id);
+    }
+
+    @Override
+    public void deleteMainSentence (int id) throws SQLException {
+        mainSentenceDao.delete(id);
+    }
+
+    @Override
+    public ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException {
+        return mainSentenceDao.readAllByStandard(id);
+    }
+
 }

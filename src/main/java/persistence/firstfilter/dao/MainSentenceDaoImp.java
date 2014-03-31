@@ -6,6 +6,7 @@ import persistence.firstfilter.NotFreeConnectionsException;
 import persistence.firstfilter.model.MainSentence;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -36,8 +37,33 @@ public class MainSentenceDaoImp implements MainSentenceDao {
     }
 
     @Override
-    public MainSentence read(int id) {
-        return null;
+    public MainSentence read(int id) throws SQLException {
+        DataBaseConnection dataBaseConnection = null;
+        PreparedStatement preparedStatement;
+        MainSentence mainSentenceFromDB = null;
+        try {
+            dataBaseConnection = Broker.get().getDataBase();
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("select * from main_sentence where id=?");
+            preparedStatement.setInt(1,id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                resultSet.next();
+                mainSentenceFromDB = new MainSentence();
+                mainSentenceFromDB.setId(resultSet.getInt("id"));
+                mainSentenceFromDB.setContent(resultSet.getString("content"));
+                mainSentenceFromDB.setCategory(resultSet.getString("category"));
+                mainSentenceFromDB.setStandard(resultSet.getInt("standard"));
+            }
+
+        } catch (SQLException e) {
+        } catch (NotFreeConnectionsException e) {
+        }finally{
+            dataBaseConnection.close();
+        }
+        return mainSentenceFromDB;
     }
 
     @Override
@@ -46,12 +72,54 @@ public class MainSentenceDaoImp implements MainSentenceDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws SQLException {
+        DataBaseConnection dataBaseConnection = null;
+        PreparedStatement preparedStatement;
+        try {
+            dataBaseConnection = Broker.get().getDataBase();
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("delete from main_sentence where id=?");
+            preparedStatement.setInt(1,id);
 
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+        } catch (NotFreeConnectionsException e) {
+        }finally{
+            dataBaseConnection.close();
+        }
     }
 
     @Override
-    public ArrayList<MainSentence> readAllByStandard(int id) {
-        return null;
+    public ArrayList<MainSentence> readAllByStandard(int id) throws SQLException {
+        DataBaseConnection dataBaseConnection = null;
+        PreparedStatement preparedStatement;
+        MainSentence mainSentenceFromDB;
+        ArrayList<MainSentence> allMainSentencesById = new ArrayList<>();
+        try {
+            dataBaseConnection = Broker.get().getDataBase();
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("select * from main_sentence where standard=?");
+            preparedStatement.setInt(1,id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet != null){
+                resultSet.next();
+
+                mainSentenceFromDB = new MainSentence();
+                mainSentenceFromDB.setId(resultSet.getInt("id"));
+                mainSentenceFromDB.setContent(resultSet.getString("content"));
+                mainSentenceFromDB.setCategory(resultSet.getString("category"));
+                mainSentenceFromDB.setStandard(resultSet.getInt("standard"));
+                allMainSentencesById.add(mainSentenceFromDB);
+            }
+
+        } catch (SQLException e) {
+        } catch (NotFreeConnectionsException e) {
+        }finally{
+            dataBaseConnection.close();
+        }
+        return allMainSentencesById;
     }
 }
