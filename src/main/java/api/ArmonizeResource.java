@@ -55,6 +55,7 @@ public class ArmonizeResource implements PathFiles {
         StandardDao standardDao = new StandardDaoImp();
         standardDao.create(standard);
 
+
         return Response.status(Response.Status.CREATED).build();
     }
 

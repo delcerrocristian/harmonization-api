@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public interface EnumSentenceDao {
 
-    void create(EnumSentence enumSentence) throws SQLException;
+    int create(EnumSentence enumSentence) throws SQLException;
 
     EnumSentence read(int i) throws SQLException;
 

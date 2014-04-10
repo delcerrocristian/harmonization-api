@@ -16,18 +16,25 @@ import java.util.ArrayList;
  */
 public class EnumSentenceDaoImp implements EnumSentenceDao {
     @Override
-    public void create(EnumSentence enumSentence) throws SQLException {
+    public int create(EnumSentence enumSentence) throws SQLException {
         DataBaseConnection dataBaseConnection = null;
         PreparedStatement preparedStatement;
+        int id=-1;//If finally return -1 means something bad happened
         try {
             dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("insert into enum_sentence (position, content, main_sentence) VALUES (?,?,?)");
+                    ("insert into enum_sentence (position, content, main_sentence) VALUES (?,?,?)",
+                            PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, enumSentence.getPosition());
             preparedStatement.setString(2,enumSentence.getContent());
             preparedStatement.setInt(3, enumSentence.getMainSentence());
 
             preparedStatement.executeUpdate();
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if( resultSet.next() ) {
+                id = resultSet.getInt(1);
+            }
 
         } catch (SQLException e) {
         } catch (NotFreeConnectionsException e) {
@@ -35,6 +42,8 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
         finally{
             dataBaseConnection.close();
         }
+
+        return id;
     }
 
     @Override

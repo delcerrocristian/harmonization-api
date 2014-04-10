@@ -39,4 +39,8 @@ public class DataBaseConnection {
     public PreparedStatement preparedStatement(String sql) throws SQLException {
         return this.dataBase.prepareStatement(sql);
     }
+
+    public PreparedStatement preparedStatement(String sql, int option) throws SQLException{
+        return this.dataBase.prepareStatement(sql,option);
+    }
 }

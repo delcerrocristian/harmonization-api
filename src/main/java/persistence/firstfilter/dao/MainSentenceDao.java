@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public interface MainSentenceDao {
 
-    void create(MainSentence mainSentence) throws SQLException;
+    int create(MainSentence mainSentence) throws SQLException;
 
     MainSentence read(int id) throws SQLException;
 

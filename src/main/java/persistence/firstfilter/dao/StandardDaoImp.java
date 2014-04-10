@@ -8,6 +8,7 @@ import persistence.firstfilter.model.Standard;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -16,16 +17,22 @@ import java.util.ArrayList;
 public class StandardDaoImp implements StandardDao {
 
     @Override
-    public void create(Standard standard) throws SQLException {
+    public int create(Standard standard) throws SQLException {
         DataBaseConnection dataBaseConnection = null;
         PreparedStatement preparedStatement;
+        int id= -1; //If finally return -1 means something bad happened
         try {
             dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("insert into standard (name) VALUES (?)");
+                    ("insert into standard (name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, standard.getName());
 
             preparedStatement.executeUpdate();
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if( resultSet.next() ) {
+                id = resultSet.getInt(1);
+            }
 
         } catch (SQLException e) {
         } catch (NotFreeConnectionsException e) {
@@ -33,7 +40,7 @@ public class StandardDaoImp implements StandardDao {
         finally{
             dataBaseConnection.close();
         }
-
+        return id;
     }
 
     @Override

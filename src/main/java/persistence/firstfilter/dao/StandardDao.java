@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public interface StandardDao {
 
-    void create(Standard standard) throws SQLException;
+    int create(Standard standard) throws SQLException;
 
     Standard read(int id) throws SQLException;
 

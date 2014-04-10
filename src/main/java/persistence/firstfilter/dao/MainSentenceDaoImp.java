@@ -15,18 +15,25 @@ import java.util.ArrayList;
  */
 public class MainSentenceDaoImp implements MainSentenceDao {
     @Override
-    public void create(MainSentence mainSentence) throws SQLException {
+    public int create(MainSentence mainSentence) throws SQLException {
         DataBaseConnection dataBaseConnection = null;
         PreparedStatement preparedStatement;
+        int id=-1;//If finally return -1 means something bad happened
         try {
             dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("insert into main_sentence (content, category, standard) VALUES (?,?,?)");
+                    ("insert into main_sentence (content, category, standard) VALUES (?,?,?)",
+                            PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, mainSentence.getContent());
             preparedStatement.setString(2,mainSentence.getCategory());
             preparedStatement.setInt(3, mainSentence.getStandard());
 
             preparedStatement.executeUpdate();
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if( resultSet.next() ) {
+                id = resultSet.getInt(1);
+            }
 
         } catch (SQLException e) {
         } catch (NotFreeConnectionsException e) {
@@ -34,6 +41,8 @@ public class MainSentenceDaoImp implements MainSentenceDao {
         finally{
             dataBaseConnection.close();
         }
+
+        return id;
     }
 
     @Override
