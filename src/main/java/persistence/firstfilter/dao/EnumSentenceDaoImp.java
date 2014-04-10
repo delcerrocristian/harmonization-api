@@ -42,7 +42,6 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
         finally{
             dataBaseConnection.close();
         }
-
         return id;
     }
 

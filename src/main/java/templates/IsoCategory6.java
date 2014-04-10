@@ -1,5 +1,6 @@
 package templates;
 
+import services.FirstFilterService;
 import utils.PathFiles;
 
 import java.io.*;
@@ -22,7 +23,7 @@ public class IsoCategory6 implements PathFiles {
 
     IsoSupportFindMethods isoSupportFindMethods;
 
-    IsoCategory6(ArrayList<String> list)throws IOException {
+    IsoCategory6(ArrayList<String> list,  FirstFilterService firstFilterService)throws IOException {
         this.list = list;
 
         fileCategory6 = new File(ISO_CATEGORY_6);
