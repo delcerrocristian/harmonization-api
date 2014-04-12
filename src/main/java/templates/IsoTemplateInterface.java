@@ -7,5 +7,5 @@ import java.util.ArrayList;
  */
 public interface IsoTemplateInterface {
 
-    void runTemplate(ArrayList<String> listOfText)throws Exception;
+    void runTemplate(ArrayList<String> listOfText, int idStandard)throws Exception;
 }

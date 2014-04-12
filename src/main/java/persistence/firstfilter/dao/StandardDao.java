@@ -12,6 +12,8 @@ public interface StandardDao {
 
     int create(Standard standard) throws SQLException;
 
+    int create(String name) throws SQLException;
+
     Standard read(int id) throws SQLException;
 
     void update(Standard standard) throws SQLException;

@@ -15,6 +15,8 @@ import static templates.FindMethod.patternTwoFinalDot;
 public class IsoCategory6 implements PathFiles {
 
     ArrayList<String> list;
+    int idStandard;
+    FirstFilterService firstFilterService;
 
     File fileCategory6;
     FileWriter fileWriter;
@@ -23,8 +25,10 @@ public class IsoCategory6 implements PathFiles {
 
     IsoSupportFindMethods isoSupportFindMethods;
 
-    IsoCategory6(ArrayList<String> list,  FirstFilterService firstFilterService)throws IOException {
+    IsoCategory6(ArrayList<String> list, int idStandard,  FirstFilterService firstFilterService)throws IOException {
         this.list = list;
+        this.idStandard = idStandard;
+        this.firstFilterService = firstFilterService;
 
         fileCategory6 = new File(ISO_CATEGORY_6);
         fileWriter = new FileWriter(fileCategory6);

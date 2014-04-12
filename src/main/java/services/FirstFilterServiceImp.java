@@ -26,8 +26,13 @@ public class FirstFilterServiceImp implements FirstFilterService{
     }
 
     @Override
-    public void createStandard (Standard standard) throws SQLException {
-        standardDao.create(standard);
+    public int createStandard (Standard standard) throws SQLException {
+        return standardDao.create(standard);
+    }
+
+    @Override
+    public int createStandard (String nameStandard) throws SQLException {
+        return standardDao.create(nameStandard);
     }
 
     @Override
@@ -46,8 +51,8 @@ public class FirstFilterServiceImp implements FirstFilterService{
     }
 
     @Override
-    public void addMainSentence (MainSentence mainSentence) throws SQLException {
-        mainSentenceDao.create(mainSentence);
+    public int addMainSentence (MainSentence mainSentence) throws SQLException {
+        return mainSentenceDao.create(mainSentence);
     }
 
     @Override
@@ -63,6 +68,10 @@ public class FirstFilterServiceImp implements FirstFilterService{
     @Override
     public ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException {
         return mainSentenceDao.readAllByStandard(id);
+    }
+
+    public int addEnumSentence(EnumSentence enumSentence) throws SQLException{
+        return enumSentenceDao.create(enumSentence);
     }
 
     @Override

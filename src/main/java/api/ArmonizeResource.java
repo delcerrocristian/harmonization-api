@@ -35,12 +35,14 @@ public class ArmonizeResource implements PathFiles {
 
     @Produces(MediaType.APPLICATION_JSON)
     @POST
-    public Response uploadFile(InputStream stream) throws Exception {
+    public Response uploadFile(InputStream stream, @QueryParam("name") String name) throws Exception {
         if (stream != null) {
             File inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
 
+            int idStandard = firstFilterService.createStandard(name);
+
             FullProcessDocumentImp fullProcessDocumentImp = new FullProcessDocumentImp();
-            fullProcessDocumentImp.start(inputFile);
+            fullProcessDocumentImp.start(inputFile, idStandard);
 
             return Response.ok().build(); //200
         } else {

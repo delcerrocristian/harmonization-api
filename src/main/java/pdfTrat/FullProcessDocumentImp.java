@@ -18,14 +18,14 @@ public class FullProcessDocumentImp implements PathFiles {
 
     }
 
-    public void start(File inputFile)throws Exception{
+    public void start(File inputFile, int idStandard)throws Exception{
         ParsePDF parsePDF = new ParsePDF();
         parsePDF.pdfToText(inputFile, NAME_TXT_OUTPUT, TEMPORAL_DIRECTORY);
 
         textList = treatmentText();
 
         IsoTemplate isoTemplate = new IsoTemplate();
-        isoTemplate.runTemplate(treatmentText());
+        isoTemplate.runTemplate(treatmentText(), idStandard);
     }
 
     private ArrayList<String> treatmentText(){

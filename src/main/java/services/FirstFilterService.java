@@ -12,7 +12,9 @@ import java.util.ArrayList;
  */
 public interface FirstFilterService {
 
-    void createStandard (Standard standard) throws SQLException;
+    int createStandard (Standard standard) throws SQLException;
+
+    int createStandard (String nameStandard) throws SQLException;
 
     Standard readStandard(int id) throws SQLException;
 
@@ -20,13 +22,15 @@ public interface FirstFilterService {
 
     ArrayList<Standard> readAllStandards() throws SQLException;
 
-    void addMainSentence (MainSentence mainSentence) throws SQLException;
+    int addMainSentence (MainSentence mainSentence) throws SQLException;
 
     MainSentence readMainSentence (int id) throws SQLException;
 
     void deleteMainSentence (int id) throws SQLException;
 
     ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException;
+
+    int addEnumSentence(EnumSentence enumSentence) throws SQLException;
 
     EnumSentence readEnumSentence (int id) throws SQLException;
 

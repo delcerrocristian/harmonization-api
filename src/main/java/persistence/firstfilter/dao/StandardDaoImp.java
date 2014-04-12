@@ -44,6 +44,33 @@ public class StandardDaoImp implements StandardDao {
     }
 
     @Override
+    public int create(String name) throws SQLException {
+        DataBaseConnection dataBaseConnection = null;
+        PreparedStatement preparedStatement;
+        int id= -1; //If finally return -1 means something bad happened
+        try {
+            dataBaseConnection = Broker.get().getDataBase();
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("insert into standard (name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, name);
+
+            preparedStatement.executeUpdate();
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if( resultSet.next() ) {
+                id = resultSet.getInt(1);
+            }
+
+        } catch (SQLException e) {
+        } catch (NotFreeConnectionsException e) {
+        }
+        finally{
+            dataBaseConnection.close();
+        }
+        return id;
+    }
+
+    @Override
     public Standard read(int id) throws SQLException {
         DataBaseConnection dataBaseConnection = null;
         PreparedStatement preparedStatement;
