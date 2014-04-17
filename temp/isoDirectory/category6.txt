@@ -4,25 +4,25 @@ b) evaluating the need for action to prevent occurrence of nonconformities;
 c) determining and implementing preventive action needed;
 d) recording results of action taken (see 4.3.3); and
 e) reviewing of preventive action taken.
-Control An information security policy document shall be approved by management, and published and communicated to all employees and relevant external parties.
+An information security policy document shall be approved by management, and published and communicated to all employees and relevant external parties.
 Security perimeters (barriers such as walls, card controlled entry gates or manned reception desks) shall be used to protect areas that contain information and information processing facilities.
-Control Secure areas shall be protected by appropriate entry controls to ensure that only authorized personnel are allowed access.
-Control Security shall be applied to off-site equipment taking into account the different risks of working outside the organizations premises.
-Control All items of equipment containing storage media shall be checked to ensure that any sensitive data and licensed software has been removed or securely overwritten prior to disposal.
-Control Duties and areas of responsibility shall be segregated to reduce opportunities for unauthorized or unintentional modification or misuse of the organizations assets.
-Control Development, test and operational facilities shall be separated to reduce the risks of unauthorised access or changes to the operational system.
-Control Information involved in on-line transactions shall be protected to prevent incomplete transmission, mis-routing, unauthorized message alteration, unauthorized disclosure, unauthorized message duplication or replay.
+Secure areas shall be protected by appropriate entry controls to ensure that only authorized personnel are allowed access.
+Security shall be applied to off-site equipment taking into account the different risks of working outside the organizations premises.
+All items of equipment containing storage media shall be checked to ensure that any sensitive data and licensed software has been removed or securely overwritten prior to disposal.
+Duties and areas of responsibility shall be segregated to reduce opportunities for unauthorized or unintentional modification or misuse of the organizations assets.
+Development, test and operational facilities shall be separated to reduce the risks of unauthorised access or changes to the operational system.
+Information involved in on-line transactions shall be protected to prevent incomplete transmission, mis-routing, unauthorized message alteration, unauthorized disclosure, unauthorized message duplication or replay.
 The integrity of information being made available on a publicly available system shall be protected to prevent unauthorized modification.
-Control Users shall be required to follow good security practices in the selection and use of passwords.
-Control Appropriate authentication methods shall be used to control access by remote users.
-Control Access to operating systems shall be controlled by a secure log-on procedure.
+Users shall be required to follow good security practices in the selection and use of passwords.
+Appropriate authentication methods shall be used to control access by remote users.
+Access to operating systems shall be controlled by a secure log-on procedure.
 All users shall have a unique identifier (user ID) for their personal use only, and a suitable authentication technique shall be chosen to substantiate the claimed identity of a user.
-Control Restrictions on connection times shall be used to provide additional security for high-risk applications.
+Restrictions on connection times shall be used to provide additional security for high-risk applications.
 A formal policy shall be in place, and appropriate security measures shall be adopted to protect against the risks of using mobile computing and communication facilities.
-Control Data input to applications shall be validated to ensure that this data is correct and appropriate.
-Control Data output from an application shall be validated to ensure that the processing of stored information is correct and appropriate to the circumstances.
-Control The implementation of changes shall be controlled by the use of formal change control procedures.
+Data input to applications shall be validated to ensure that this data is correct and appropriate.
+Data output from an application shall be validated to ensure that the processing of stored information is correct and appropriate to the circumstances.
+The implementation of changes shall be controlled by the use of formal change control procedures.
 All employees, contractors and third party users of information systems and services shall be required to note and report any observed or suspected security weaknesses in systems or services.
-Control Management responsibilities and procedures shall be established to ensure a quick, effective, and orderly response to information security incidents.
-Control Appropriate procedures shall be implemented to ensure compliance with legislative, regulatory, and contractual requirements on the use of material in respect of which there may be intellectual property rights and on the use of proprietary software products.
-Control Access to information systems audit tools shall be protected to prevent any possible misuse or compromise.
+Management responsibilities and procedures shall be established to ensure a quick, effective, and orderly response to information security incidents.
+Appropriate procedures shall be implemented to ensure compliance with legislative, regulatory, and contractual requirements on the use of material in respect of which there may be intellectual property rights and on the use of proprietary software products.
+Access to information systems audit tools shall be protected to prevent any possible misuse or compromise.

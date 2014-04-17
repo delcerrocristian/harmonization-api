@@ -43,7 +43,7 @@ public class IsoCategory4 implements PathFiles {
     void find()throws Exception{
 
 
-        int countFulSentence = 0;
+        int countFulSentence;
 
         for(int i=0; i<list.size(); i++){
 
@@ -55,7 +55,7 @@ public class IsoCategory4 implements PathFiles {
                 * para coger la frase entera.
                         */
 
-                countFulSentence = 1;
+                countFulSentence = 0;
                 while(!patternMayusIni().matcher(list.get(i-countFulSentence)).matches()
                         && !patternNumericIni().matcher(list.get(i-countFulSentence)).matches() ){
                     countFulSentence++;
@@ -98,7 +98,7 @@ public class IsoCategory4 implements PathFiles {
 
 
             else if(existShouldBe(currentSentence)){
-                countFulSentence = 1;
+                countFulSentence = 0;
                 while(!patternMayusIni().matcher(list.get(i-countFulSentence)).matches()
                         && !patternNumericIni().matcher(list.get(i-countFulSentence)).matches() ){
                     countFulSentence++;

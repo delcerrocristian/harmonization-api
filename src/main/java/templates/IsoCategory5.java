@@ -39,7 +39,7 @@ public class IsoCategory5 implements PathFiles {
 
     void find() throws Exception{
 
-        int countFullSentence = 0;
+        int countFullSentence;
 
         for(int i=0; i<list.size(); i++){
 
@@ -51,7 +51,7 @@ public class IsoCategory5 implements PathFiles {
                  para coger la frase entera.
                         */
 
-                        countFullSentence  = 1;
+                 countFullSentence  = 0;
                 while(!patternMayusIni().matcher(list.get(i - countFullSentence )).matches()
                         && !patternNumericIni().matcher(list.get(i-countFullSentence)).matches()){
                     countFullSentence++;
@@ -95,7 +95,7 @@ public class IsoCategory5 implements PathFiles {
             */
 
             else if(existShouldInclude(currentSentence)){
-                countFullSentence = 1;
+                countFullSentence = 0;
                 while(!patternMayusIni().matcher(list.get(i - countFullSentence)).matches()
                         && !patternNumericIni().matcher(list.get(i-countFullSentence)).matches()){
                     countFullSentence++;

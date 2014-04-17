@@ -1,5 +1,5 @@
-4.3.1 General Documentation shall include records of management decisions, ensure that actions are traceable to management decisions and policies, and the recorded results are reproducible.
-It is important to be able to demonstrate the relationship from the selected controls back to the results of the risk assessment and risk treatment process, and subsequently back to the ISMS policy and objectives. The ISMS documentation shall include:
+Documentation shall include records of management decisions, ensure that actions are traceable to management decisions and policies, and the recorded results are reproducible.
+The ISMS documentation shall include:
 a) documented statements of the ISMS policy (see 4.2.1b)) and objectives;
 b) the scope of the ISMS (see 4.2.1a));
 c) procedures and controls in support of the ISMS;
@@ -20,7 +20,7 @@ f) results from effectiveness measurements;
 g) follow-up actions from previous management reviews;
 h) any changes that could affect the ISMS; and
 i) recommendations for improvement.
-7.3 Review output The output from the management review shall include any decisions and actions related to the following.
+The output from the management review shall include any decisions and actions related to the following.
 a) Improvement of the effectiveness of the ISMS.
 b) Update of the risk assessment and risk treatment plan.
 c) Modification of procedures and controls that effect information security, as necessary, to respond to internal or external events that may impact on the ISMS, including changes to:
