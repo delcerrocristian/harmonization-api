@@ -11,7 +11,7 @@ import static templates.FindMethod.*;
 /**
  * Created by Cristian del Cerro.
  */
-public class IsoCategory5 implements PathFiles {
+/*public class IsoCategory5 implements PathFiles {
 
     ArrayList<String> list;
     int idStandard;
@@ -51,7 +51,7 @@ public class IsoCategory5 implements PathFiles {
                  para coger la frase entera.
                         */
 
-                 countFullSentence  = 0;
+/*                 countFullSentence  = 0;
                 while(!patternMayusIni().matcher(list.get(i - countFullSentence )).matches()
                         && !patternNumericIni().matcher(list.get(i-countFullSentence)).matches()){
                     countFullSentence++;
@@ -71,7 +71,7 @@ public class IsoCategory5 implements PathFiles {
                 * de estos simbolos, pero en ese caso a continuación siempre hay una
                 * enumeración.
                         */
-                while(!patternFinalDot().matcher(list.get(i)).matches()
+/*                while(!patternFinalDot().matcher(list.get(i)).matches()
                         && !patternTwoFinalDot().matcher(list.get(i)).matches()
                         && !isoSupportFindMethods.existEnumeration(list.get(i+1))){
                     try{
@@ -94,7 +94,7 @@ public class IsoCategory5 implements PathFiles {
             * Lo mismo que lo anterior pero con should en vez de shall
             */
 
-            else if(existShouldInclude(currentSentence)){
+ /*           else if(existShouldInclude(currentSentence)){
                 countFullSentence = 0;
                 while(!patternMayusIni().matcher(list.get(i - countFullSentence)).matches()
                         && !patternNumericIni().matcher(list.get(i-countFullSentence)).matches()){
@@ -139,4 +139,4 @@ public class IsoCategory5 implements PathFiles {
     }
 
 
-}
+} */

@@ -14,8 +14,7 @@ public class MainSentence {
 
     }
 
-    public MainSentence(int id, String content, String category, int standard) {
-        this.id = id;
+    public MainSentence(String content, String category, int standard) {
         this.content = content;
         this.category = category;
         this.standard = standard;

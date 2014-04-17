@@ -14,8 +14,7 @@ public class EnumSentence {
 
     }
 
-    public EnumSentence(int id, int position, String content, int mainSentence) {
-        this.id = id;
+    public EnumSentence(int position, String content, int mainSentence) {
         this.position = position;
         this.content = content;
         this.mainSentence = mainSentence;

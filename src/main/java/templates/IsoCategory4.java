@@ -14,9 +14,9 @@ import static templates.FindMethod.*;
 /**
  * Created by Cristian del Cerro.
  */
-public class IsoCategory4 implements PathFiles {
+/*public class IsoCategory4 implements PathFiles {}*/
 
-    ArrayList<String> list;
+  /*  ArrayList<String> list;
     int idStandard;
     FirstFilterService firstFilterService;
 
@@ -40,7 +40,7 @@ public class IsoCategory4 implements PathFiles {
         isoSupportFindMethods = new IsoSupportFindMethods();
     }
 
-    void find()throws Exception{
+/*    void find()throws Exception{
 
 
         int countFulSentence;
@@ -55,7 +55,7 @@ public class IsoCategory4 implements PathFiles {
                 * para coger la frase entera.
                         */
 
-                countFulSentence = 0;
+/*                countFulSentence = 0;
                 while(!patternMayusIni().matcher(list.get(i-countFulSentence)).matches()
                         && !patternNumericIni().matcher(list.get(i-countFulSentence)).matches() ){
                     countFulSentence++;
@@ -75,7 +75,7 @@ public class IsoCategory4 implements PathFiles {
                  de estos simbolos, pero en ese caso a continuación siempre hay una
                  enumeración.*/
 
-                while(!patternFinalDot().matcher(list.get(i)).matches()
+/*                while(!patternFinalDot().matcher(list.get(i)).matches()
                         && !patternTwoFinalDot().matcher(list.get(i)).matches()
                         && !isoSupportFindMethods.existEnumeration(list.get(i+1))){
                     try{
@@ -138,4 +138,4 @@ public class IsoCategory4 implements PathFiles {
         fileWriter.close();
     }
 
-}
+} */

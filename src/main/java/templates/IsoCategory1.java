@@ -1,5 +1,6 @@
 package templates;
 
+import persistence.firstfilter.model.MainSentence;
 import services.FirstFilterService;
 import utils.PathFiles;
 import utils.UtilsFile;
@@ -43,6 +44,7 @@ public class IsoCategory1 implements PathFiles {
      void find()throws Exception{
 
          int countFullSentence;
+         String contentCurrentMain;
 
          for(int i=0; i<list.size(); i++){
 
@@ -58,6 +60,7 @@ public class IsoCategory1 implements PathFiles {
                                  */
 
                  countFullSentence = 0;
+                 contentCurrentMain = "";
                  while(!patternMayusIni().matcher(list.get(i-countFullSentence)).matches()
                          && !patternNumericIni().matcher(list.get(i-countFullSentence)).matches() ){
                      countFullSentence++;
@@ -65,7 +68,7 @@ public class IsoCategory1 implements PathFiles {
                  }
                  for(int j=countFullSentence; j>0; j--){
                      try{
-                         printWriter.append(list.get(i - j) + " ");
+                         contentCurrentMain = contentCurrentMain + list.get(i - j) + " ";
                      }
                      catch(Exception e){
                          e.printStackTrace();
@@ -82,7 +85,7 @@ public class IsoCategory1 implements PathFiles {
                          && !patternTwoFinalDot().matcher(list.get(i)).matches()
                          && !isoSupportFindMethods.existEnumeration(list.get(i + 1))){
                      try{
-                         printWriter.append(list.get(i) + " ");
+                         contentCurrentMain = contentCurrentMain + list.get(i) + " ";
                          i++;
                      }
                      catch(Exception e){
@@ -90,9 +93,11 @@ public class IsoCategory1 implements PathFiles {
                      }
 
                  }
-                 printWriter.append(list.get(i) + "\n");
+                 contentCurrentMain = contentCurrentMain + list.get(i);
+                 MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "A", idStandard);
+                 int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
                  if(isoSupportFindMethods.existEnumeration(list.get(i + 1))){
-                     i= isoSupportFindMethods.enumerationABC(list, i + 1, printWriter);
+                     i= isoSupportFindMethods.enumerationABC(list, i + 1, firstFilterService, idCurrentMainSentence);
                  }
              }
 
@@ -104,13 +109,14 @@ public class IsoCategory1 implements PathFiles {
                      && !existShouldBe(currentSentence)
                      && !existShouldInclude(currentSentence)){
                  countFullSentence = 0;
+                 contentCurrentMain = "";
                  while(!patternMayusIni().matcher(list.get(i-countFullSentence)).matches()
                          && !patternNumericIni().matcher(list.get(i-countFullSentence)).matches() ){
                      countFullSentence++;
                  }
                  for(int j=countFullSentence; j>0; j--){
                      try{
-                         printWriter.append(list.get(i - j) + " ");
+                         contentCurrentMain = contentCurrentMain + list.get(i - j) + " ";
                      }
                      catch(Exception e){
                          e.printStackTrace();
@@ -120,7 +126,7 @@ public class IsoCategory1 implements PathFiles {
                          && !patternTwoFinalDot().matcher(list.get(i)).matches()
                          && !isoSupportFindMethods.existEnumeration(list.get(i + 1))){
                      try{
-                         printWriter.append(list.get(i)+" ");
+                         contentCurrentMain = contentCurrentMain + list.get(i) + " ";
                          i++;
                      }
                      catch(Exception e){
@@ -128,9 +134,11 @@ public class IsoCategory1 implements PathFiles {
                      }
 
                  }
-                 printWriter.append(list.get(i) + "\n");
+                 contentCurrentMain = contentCurrentMain + list.get(i);
+                 MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "A", idStandard);
+                 int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
                  if(isoSupportFindMethods.existEnumeration(list.get(i + 1))){
-                     i= isoSupportFindMethods.enumerationABC(list, i + 1, printWriter);
+                     i= isoSupportFindMethods.enumerationABC(list, i + 1, firstFilterService, idCurrentMainSentence);
                  }
              }
          }

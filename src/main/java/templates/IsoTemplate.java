@@ -24,7 +24,7 @@ public class IsoTemplate implements PathFiles, IsoTemplateInterface {
         IsoCategory1 isoCategory1 = new IsoCategory1(listOfText, idStandard, configFirstFilter.getFirstFilterService());
         isoCategory1.find();
 
-        IsoCategory4 isoCategory4 = new IsoCategory4(listOfText,  idStandard, configFirstFilter.getFirstFilterService());
+    /*    IsoCategory4 isoCategory4 = new IsoCategory4(listOfText,  idStandard, configFirstFilter.getFirstFilterService());
         isoCategory4.find();
 
         IsoCategory5 isoCategory5 = new IsoCategory5(listOfText,  idStandard, configFirstFilter.getFirstFilterService());
@@ -34,7 +34,7 @@ public class IsoTemplate implements PathFiles, IsoTemplateInterface {
         isoCategory6.find();
 
         IsoCategory7 isoCategory7 = new IsoCategory7(listOfText,  idStandard, configFirstFilter.getFirstFilterService());
-        isoCategory7.find();
+        isoCategory7.find();*/
 
     }
 
