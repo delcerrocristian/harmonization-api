@@ -1,8 +1,6 @@
 package persistence.firstfilter.dao;
 
-import persistence.firstfilter.Broker;
 import persistence.firstfilter.DataBaseConnection;
-import persistence.firstfilter.NotFreeConnectionsException;
 import persistence.firstfilter.model.MainSentence;
 
 import java.sql.PreparedStatement;
@@ -16,11 +14,10 @@ import java.util.ArrayList;
 public class MainSentenceDaoImp implements MainSentenceDao {
     @Override
     public int create(MainSentence mainSentence) throws SQLException {
-        DataBaseConnection dataBaseConnection = null;
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         int id=-1;//If finally return -1 means something bad happened
         try {
-            dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
                     ("insert into main_sentence (content, category, standard) VALUES (?,?,?)",
                             PreparedStatement.RETURN_GENERATED_KEYS);
@@ -36,7 +33,7 @@ public class MainSentenceDaoImp implements MainSentenceDao {
             }
 
         } catch (SQLException e) {
-        } catch (NotFreeConnectionsException e) {
+
         }
         finally{
             dataBaseConnection.close();
@@ -47,11 +44,10 @@ public class MainSentenceDaoImp implements MainSentenceDao {
 
     @Override
     public MainSentence read(int id) throws SQLException {
-        DataBaseConnection dataBaseConnection = null;
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         MainSentence mainSentenceFromDB = null;
         try {
-            dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
                     ("select * from main_sentence where id=?");
             preparedStatement.setInt(1,id);
@@ -68,7 +64,6 @@ public class MainSentenceDaoImp implements MainSentenceDao {
             }
 
         } catch (SQLException e) {
-        } catch (NotFreeConnectionsException e) {
         }finally{
             dataBaseConnection.close();
         }
@@ -82,10 +77,9 @@ public class MainSentenceDaoImp implements MainSentenceDao {
 
     @Override
     public void delete(int id) throws SQLException {
-        DataBaseConnection dataBaseConnection = null;
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         try {
-            dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
                     ("delete from main_sentence where id=?");
             preparedStatement.setInt(1,id);
@@ -93,7 +87,6 @@ public class MainSentenceDaoImp implements MainSentenceDao {
             preparedStatement.execute();
 
         } catch (SQLException e) {
-        } catch (NotFreeConnectionsException e) {
         }finally{
             dataBaseConnection.close();
         }
@@ -101,12 +94,11 @@ public class MainSentenceDaoImp implements MainSentenceDao {
 
     @Override
     public ArrayList<MainSentence> readAllByStandard(int id) throws SQLException {
-        DataBaseConnection dataBaseConnection = null;
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         MainSentence mainSentenceFromDB;
         ArrayList<MainSentence> allMainSentencesByStandard = new ArrayList<>();
         try {
-            dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
                     ("select * from main_sentence where standard=?");
             preparedStatement.setInt(1,id);
@@ -125,7 +117,6 @@ public class MainSentenceDaoImp implements MainSentenceDao {
             }
 
         } catch (SQLException e) {
-        } catch (NotFreeConnectionsException e) {
         }finally{
             dataBaseConnection.close();
         }

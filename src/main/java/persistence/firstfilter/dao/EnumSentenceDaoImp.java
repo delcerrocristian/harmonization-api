@@ -1,10 +1,7 @@
 package persistence.firstfilter.dao;
 
-import persistence.firstfilter.Broker;
 import persistence.firstfilter.DataBaseConnection;
-import persistence.firstfilter.NotFreeConnectionsException;
 import persistence.firstfilter.model.EnumSentence;
-import persistence.firstfilter.model.MainSentence;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,11 +14,10 @@ import java.util.ArrayList;
 public class EnumSentenceDaoImp implements EnumSentenceDao {
     @Override
     public int create(EnumSentence enumSentence) throws SQLException {
-        DataBaseConnection dataBaseConnection = null;
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         int id=-1;//If finally return -1 means something bad happened
         try {
-            dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
                     ("insert into enum_sentence (position, content, main_sentence) VALUES (?,?,?)",
                             PreparedStatement.RETURN_GENERATED_KEYS);
@@ -37,21 +33,21 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
             }
 
         } catch (SQLException e) {
-        } catch (NotFreeConnectionsException e) {
+
         }
         finally{
             dataBaseConnection.close();
         }
+
         return id;
     }
 
     @Override
     public EnumSentence read(int id) throws SQLException {
-        DataBaseConnection dataBaseConnection = null;
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         EnumSentence enumSentenceFromDB = null;
         try {
-            dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
                     ("select * from enum_sentence where id=?");
             preparedStatement.setInt(1,id);
@@ -67,7 +63,6 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
             }
 
         } catch (SQLException e) {
-        } catch (NotFreeConnectionsException e) {
         }finally{
             dataBaseConnection.close();
         }
@@ -81,10 +76,9 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
 
     @Override
     public void delete(int id) throws SQLException {
-        DataBaseConnection dataBaseConnection = null;
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         try {
-            dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
                     ("delete from enum_sentence where id=?");
             preparedStatement.setInt(1,id);
@@ -92,7 +86,6 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
             preparedStatement.execute();
 
         } catch (SQLException e) {
-        } catch (NotFreeConnectionsException e) {
         }finally{
             dataBaseConnection.close();
         }
@@ -100,12 +93,11 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
 
     @Override
     public ArrayList<EnumSentence> readAllByMainSentence(int id) throws SQLException {
-        DataBaseConnection dataBaseConnection = null;
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         EnumSentence enumSentenceFromDB;
         ArrayList<EnumSentence> allEnumSentencesByMainSentence = new ArrayList<>();
         try {
-            dataBaseConnection = Broker.get().getDataBase();
             preparedStatement = dataBaseConnection.preparedStatement
                     ("select * from enum_sentence where main_sentence=?");
             preparedStatement.setInt(1,id);
@@ -123,7 +115,6 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
             }
 
         } catch (SQLException e) {
-        } catch (NotFreeConnectionsException e) {
         }finally{
             dataBaseConnection.close();
         }

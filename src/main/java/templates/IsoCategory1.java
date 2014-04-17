@@ -21,10 +21,6 @@ public class IsoCategory1 implements PathFiles {
     int idStandard;
     FirstFilterService firstFilterService;
 
-    File fileCategory1;
-    FileWriter fileWriter;
-    BufferedWriter bufferedWriter;
-    PrintWriter printWriter;
 
     IsoSupportFindMethods isoSupportFindMethods;
 
@@ -32,11 +28,6 @@ public class IsoCategory1 implements PathFiles {
         this.list = list;
         this.idStandard = idStandard;
         this.firstFilterService = firstFilterService;
-
-        fileCategory1 = new File(ISO_CATEGORY_1);
-        fileWriter = new FileWriter(fileCategory1);
-        bufferedWriter = new BufferedWriter(fileWriter);
-        printWriter = new PrintWriter(bufferedWriter);
 
         isoSupportFindMethods = new IsoSupportFindMethods();
     }
@@ -142,12 +133,6 @@ public class IsoCategory1 implements PathFiles {
                  }
              }
          }
-         closeAll();
     }
 
-    private void closeAll()throws IOException{
-        printWriter.close();
-        bufferedWriter.close();
-        fileWriter.close();
-    }
 }

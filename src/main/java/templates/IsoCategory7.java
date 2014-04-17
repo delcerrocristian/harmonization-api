@@ -1,5 +1,6 @@
 package templates;
 
+import persistence.firstfilter.model.MainSentence;
 import services.FirstFilterService;
 import utils.PathFiles;
 
@@ -11,36 +12,24 @@ import static templates.FindMethod.*;
 /**
  * Created by Cristian del Cerro.
  */
-/* public class IsoCategory7 implements PathFiles {
+ public class IsoCategory7 implements PathFiles {
 
     ArrayList<String> list;
     int idStandard;
     FirstFilterService firstFilterService;
-
-    File fileCategory7;
-    FileWriter fileWriter;
-    BufferedWriter bufferedWriter;
-    PrintWriter printWriter;
-
     IsoSupportFindMethods isoSupportFindMethods;
 
     IsoCategory7(ArrayList<String> list, int idStandard,  FirstFilterService firstFilterService)throws IOException {
         this.list = list;
         this.idStandard = idStandard;
         this.firstFilterService = firstFilterService;
-
-        fileCategory7 = new File(ISO_CATEGORY_7);
-        fileWriter = new FileWriter(fileCategory7);
-        bufferedWriter = new BufferedWriter(fileWriter);
-        printWriter = new PrintWriter(bufferedWriter);
-
         isoSupportFindMethods = new IsoSupportFindMethods();
     }
 
     public void find() throws Exception{
 
         int countFullSentence;
-
+        String contentCurrentMain;
         for(int i=0; i<list.size(); i++){
 
             String currentSentence = list.get(i);
@@ -51,7 +40,8 @@ import static templates.FindMethod.*;
                 * para coger la frase entera.
                         */
 
- /*                       countFullSentence = 0;
+                countFullSentence = 0;
+                contentCurrentMain = "";
                 while(!patternMayusIni().matcher(list.get(i-countFullSentence)).matches()
                         && !patternNumericIni().matcher(list.get(i-countFullSentence)).matches()){
                     countFullSentence++;
@@ -59,7 +49,7 @@ import static templates.FindMethod.*;
                 for(int j=countFullSentence; j>0; j--){
 
                     try{
-                        printWriter.append(list.get(i-j)+" ");
+                        contentCurrentMain = contentCurrentMain + list.get(i - j) + " ";
                     }
                     catch(Exception e){
                         e.printStackTrace();
@@ -72,11 +62,11 @@ import static templates.FindMethod.*;
                 * de estos simbolos, pero en ese caso a continuación siempre hay una
                 * enumeración.
                         */
-/*                while(!patternFinalDot().matcher(list.get(i)).matches()
+                while(!patternFinalDot().matcher(list.get(i)).matches()
                         && !patternTwoFinalDot().matcher(list.get(i)).matches()
                         && !isoSupportFindMethods.existEnumeration(list.get(i+1))){
                     try{
-                        printWriter.append(list.get(i)+" ");
+                        contentCurrentMain = contentCurrentMain + list.get(i) + " ";
                         i++;
                     }
                     catch(Exception e){
@@ -84,19 +74,14 @@ import static templates.FindMethod.*;
                     }
 
                 }
-                printWriter.append(list.get(i)+"\n");
+                contentCurrentMain = contentCurrentMain + list.get(i);
+                MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "G", idStandard);
+                int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
                 if(isoSupportFindMethods.existEnumeration(list.get(i+1))){
-                    i= isoSupportFindMethods.enumerationABC(list, i+1, printWriter);
+                    i= isoSupportFindMethods.enumerationABC(list, i+1, firstFilterService, idCurrentMainSentence);
                 }
             }
         }
-        closeAll();
     }
 
-    private void closeAll()throws IOException{
-        printWriter.close();
-        bufferedWriter.close();
-        fileWriter.close();
-    }
-
-} */
+}
