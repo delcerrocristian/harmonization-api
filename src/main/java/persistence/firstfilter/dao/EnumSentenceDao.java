@@ -10,13 +10,13 @@ import java.util.ArrayList;
  */
 public interface EnumSentenceDao {
 
-    int create(EnumSentence enumSentence) throws SQLException;
+    int create(EnumSentence enumSentence, boolean processing) throws SQLException;
 
-    EnumSentence read(int i) throws SQLException;
+    EnumSentence read(int i, boolean processing) throws SQLException;
 
-    void update (EnumSentence enumSentence);
+    void update (EnumSentence enumSentence, boolean processing);
 
-    void delete (int id) throws SQLException;
+    void delete (int id, boolean processing) throws SQLException;
 
-    ArrayList<EnumSentence> readAllByMainSentence(int id) throws SQLException;
+    ArrayList<EnumSentence> readAllByMainSentence(int id, boolean processing) throws SQLException;
 }

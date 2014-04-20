@@ -76,7 +76,7 @@ import static templates.FindMethod.*;
                 }
                 contentCurrentMain = contentCurrentMain + list.get(i);
                 MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "G", idStandard);
-                int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
+                int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence, false);
                 if(isoSupportFindMethods.existEnumeration(list.get(i+1))){
                     i= isoSupportFindMethods.enumerationABC(list, i+1, firstFilterService, idCurrentMainSentence);
                 }

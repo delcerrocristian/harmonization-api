@@ -10,13 +10,13 @@ import java.util.ArrayList;
  */
 public interface MainSentenceDao {
 
-    int create(MainSentence mainSentence) throws SQLException;
+    int create(MainSentence mainSentence, boolean processing) throws SQLException;
 
-    MainSentence read(int id) throws SQLException;
+    MainSentence read(int id, boolean processing) throws SQLException;
 
-    void update(MainSentence mainSentence);
+    void update(MainSentence mainSentence, boolean processing);
 
-    void delete(int id) throws SQLException;
+    void delete(int id, boolean processing) throws SQLException;
 
-    ArrayList<MainSentence> readAllByStandard(int id) throws SQLException;
+    ArrayList<MainSentence> readAllByStandard(int id, boolean processing) throws SQLException;
 }
