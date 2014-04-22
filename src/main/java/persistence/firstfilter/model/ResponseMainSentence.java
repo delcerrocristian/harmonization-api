@@ -4,7 +4,7 @@ import java.util.AbstractList;
 import java.util.ArrayList;
 
 /**
- * Created by spukyn on 20/04/14.
+ * Created by Cristian del Cerro on 20/04/14.
  */
 public class ResponseMainSentence {
 

@@ -24,8 +24,12 @@ public class ArmonizeConfiguration extends Configuration{
         return new EnumSentenceDaoImp();
     }
 
+    public MethodToDataBase getMethodToDataBase() {
+        return new MethodToDataBaseImp();
+    }
+
     public FirstFilterService getFirstFilterService() {
-        return new FirstFilterServiceImp(getStandardDao(), getMainSentenceDao(), getEnumSentenceDao());
+        return new FirstFilterServiceImp(getStandardDao(), getMainSentenceDao(), getEnumSentenceDao(), getMethodToDataBase());
     }
 
 }

@@ -37,4 +37,6 @@ public interface FirstFilterService {
     void deleteEnumSentence (int id, boolean processing) throws SQLException;
 
     ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id, boolean processing) throws SQLException;
+
+    void insertProcessingMainSentence(int id) throws SQLException;
 }

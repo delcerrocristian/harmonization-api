@@ -128,14 +128,23 @@ public class ArmonizeResource implements PathFiles {
         return Response.ok(responseMainSentenceArrayList).build();
     }
 
-    @Path("/standard/main/process")
+    @Path("/standard/main/process/{id}")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response setProcessing(@PathParam("id") int id, @QueryParam("category") String category) throws SQLException{
+        firstFilterService.insertProcessingMainSentence(id);
+        return Response.status(201).build();
+    }
+
+
+   /* @Path("/standard/main/process")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response setProcessingMain(MainSentence mainSentence) throws SQLException {
         int idMain = firstFilterService.addMainSentence(mainSentence, true);
 
         return Response.status(201).entity(idMain).build();
-    }
+    }*/
 
     @Path("standard/main/enum/process")
     @POST
@@ -145,4 +154,5 @@ public class ArmonizeResource implements PathFiles {
 
         return Response.status(201).entity(idEnum).build();
     }
+
 }

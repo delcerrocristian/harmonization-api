@@ -2,6 +2,7 @@ package services;
 
 import persistence.firstfilter.dao.EnumSentenceDao;
 import persistence.firstfilter.dao.MainSentenceDao;
+import persistence.firstfilter.dao.MethodToDataBase;
 import persistence.firstfilter.dao.StandardDao;
 import persistence.firstfilter.model.EnumSentence;
 import persistence.firstfilter.model.MainSentence;
@@ -18,11 +19,14 @@ public class FirstFilterServiceImp implements FirstFilterService{
     StandardDao standardDao;
     MainSentenceDao mainSentenceDao;
     EnumSentenceDao enumSentenceDao;
+    MethodToDataBase methodToDataBase;
 
-    public FirstFilterServiceImp(StandardDao standardDao, MainSentenceDao mainSentenceDao, EnumSentenceDao enumSentenceDao) {
+    public FirstFilterServiceImp(StandardDao standardDao, MainSentenceDao mainSentenceDao, EnumSentenceDao enumSentenceDao,
+                                 MethodToDataBase methodToDataBase) {
         this.standardDao = standardDao;
         this.mainSentenceDao = mainSentenceDao;
         this.enumSentenceDao = enumSentenceDao;
+        this.methodToDataBase = methodToDataBase;
     }
 
     @Override
@@ -88,6 +92,11 @@ public class FirstFilterServiceImp implements FirstFilterService{
     @Override
     public ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id, boolean processing) throws SQLException {
         return enumSentenceDao.readAllByMainSentence(id, processing);
+    }
+
+    @Override
+    public void insertProcessingMainSentence(int id) throws SQLException {
+        methodToDataBase.insertProcessingMainSentence(id);
     }
 
 }
