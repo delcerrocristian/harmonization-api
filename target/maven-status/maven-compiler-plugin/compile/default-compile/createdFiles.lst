@@ -1,6 +1,6 @@
 utils/PathFiles.class
-api/ArmonizeService.class
 api/ArmonizeConfiguration.class
-utils/UtilsFile.class
+api/ArmonizeService.class
 utils/UtilsTemplates.class
+utils/UtilsFile.class
 api/ArmonizeResource.class

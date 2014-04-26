@@ -1,0 +1,47 @@
+drop table enum_sentence;
+drop table main_sentence;
+drop table processing_enum_sentence;
+drop table processing_main_sentence;
+drop table standard;
+
+create table standard
+(id integer NOT NULL AUTO_INCREMENT,
+name varchar(50),
+PRIMARY KEY(id));
+
+Create Table main_sentence
+(id integer NOT NULL AUTO_INCREMENT,
+content varchar(5000),
+category varchar(1),
+standard integer,
+PRIMARY KEY(id),
+FOREIGN KEY(standard) REFERENCES standard(id) ON DELETE CASCADE);
+
+create table enum_sentence
+(id integer NOT NULL AUTO_INCREMENT,
+position integer,
+content varchar(5000),
+main_sentence integer,
+PRIMARY KEY(id),
+FOREIGN KEY(main_sentence) REFERENCES main_sentence(id) ON DELETE CASCADE);
+
+CREATE TABLE `processing_main_sentence` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(5000) DEFAULT NULL,
+  `category` varchar(1) DEFAULT NULL,
+  `standard` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`standard`) REFERENCES `standard` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1;
+
+CREATE TABLE `processing_enum_sentence` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `position` int(11) DEFAULT NULL,
+  `content` varchar(5000) DEFAULT NULL,
+  `main_sentence` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`main_sentence`) REFERENCES `processing_main_sentence` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1;
+
+
+
