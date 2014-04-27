@@ -3,22 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e438a21e-0534-4348-9859-c625afdd2828" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" afterPath="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/DataBaseConnection.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/DataBaseConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/EnumSentenceDao.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/EnumSentenceDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/EnumSentenceDaoImp.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/EnumSentenceDaoImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/FirstFilterService.java" afterPath="$PROJECT_DIR$/src/main/java/services/FirstFilterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/FirstFilterServiceImp.java" afterPath="$PROJECT_DIR$/src/main/java/services/FirstFilterServiceImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/templates/IsoCategory1.java" afterPath="$PROJECT_DIR$/src/main/java/templates/IsoCategory1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/templates/IsoCategory4.java" afterPath="$PROJECT_DIR$/src/main/java/templates/IsoCategory4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/templates/IsoCategory5.java" afterPath="$PROJECT_DIR$/src/main/java/templates/IsoCategory5.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/templates/IsoCategory6.java" afterPath="$PROJECT_DIR$/src/main/java/templates/IsoCategory6.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/templates/IsoCategory7.java" afterPath="$PROJECT_DIR$/src/main/java/templates/IsoCategory7.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/model/MainSentence.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/model/MainSentence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MainSentenceDao.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MainSentenceDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MainSentenceDaoImp.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MainSentenceDaoImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MethodToDataBase.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MethodToDataBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MethodToDataBaseImp.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MethodToDataBaseImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="arm.iws" />
@@ -89,6 +73,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="ArmonizeResource.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.6303318" vertical-offset="0" max-vertical-offset="1815">
+              <caret line="96" column="113" selection-start-line="96" selection-start-column="113" selection-end-line="96" selection-end-column="113" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="FirstFilterServiceImp.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/services/FirstFilterServiceImp.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -100,16 +94,6 @@
                 <element signature="e#2395#2396#0" expanded="true" />
                 <element signature="e#2454#2455#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IsoCategory1.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/templates/IsoCategory1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1591" max-vertical-offset="2010">
-              <caret line="129" column="99" selection-start-line="129" selection-start-column="99" selection-end-line="129" selection-end-column="99" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -134,10 +118,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MethodToDataBaseImp.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MethodToDataBaseImp.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MethodToDataBaseImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6180556" vertical-offset="123" max-vertical-offset="555">
+            <state vertical-scroll-proportion="0.0" vertical-offset="123" max-vertical-offset="555">
               <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
               <folding />
             </state>
@@ -253,7 +237,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/pdfTrat/FullProcessDocumentImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/ArmonizeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/firstfilter/DataBaseConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MainSentenceDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/firstfilter/model/MainSentence.java" />
@@ -269,6 +252,7 @@
         <option value="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MainSentenceDaoImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MethodToDataBaseImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MethodToDataBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java" />
       </list>
     </option>
   </component>
@@ -929,7 +913,11 @@
       <created>1398020186964</created>
       <updated>1398020186964</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Refactor del modelo de base de datos para adaptarlo a la version 3.0">
+      <created>1398625454498</created>
+      <updated>1398625454498</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -961,12 +949,13 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32833788" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3147139" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30874318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4125683" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329235" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14275466" sideWeight="0.67132115" order="8" side_tool="true" content_ui="tabs" />
@@ -982,7 +971,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1031,7 +1019,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Post realizado2&#10;" />
     <MESSAGE value="Refactorizacion de ArmonizeResource" />
     <MESSAGE value="Refactorización de ParsePDF&#10;" />
     <MESSAGE value="Refactorización de ParsePDF y usarlo en en ArmonizeResource, y quitar el main en ParseText&#10;" />
@@ -1056,7 +1043,8 @@
     <MESSAGE value="Todas las categorias funcionando, cambios en la base de datos, eliminado brooker, mejor estrategia de acceso a BBDD." />
     <MESSAGE value="Refactor de todos los DAO para adaptarse a las processing Tables de bbdd. Añadido endpoint de ResponseMainSentence para dar una respuesta unificada al cliente." />
     <MESSAGE value="Codigo listo para cerrar versión 2.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Codigo listo para cerrar versión 2.0" />
+    <MESSAGE value="Refactor del modelo de base de datos para adaptarlo a la version 3.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor del modelo de base de datos para adaptarlo a la version 3.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1324,14 +1312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1331" max-vertical-offset="2070">
-          <caret line="133" column="27" selection-start-line="133" selection-start-column="27" selection-end-line="133" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/persistence/firstfilter/DataBaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
@@ -1454,8 +1434,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/MethodToDataBaseImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6180556" vertical-offset="123" max-vertical-offset="555">
+        <state vertical-scroll-proportion="0.0" vertical-offset="123" max-vertical-offset="555">
           <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/ArmonizeResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.6303318" vertical-offset="0" max-vertical-offset="1815">
+          <caret line="96" column="113" selection-start-line="96" selection-start-column="113" selection-end-line="96" selection-end-column="113" />
           <folding />
         </state>
       </provider>

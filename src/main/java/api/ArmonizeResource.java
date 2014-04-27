@@ -94,7 +94,7 @@ public class ArmonizeResource implements PathFiles {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllMainSentenceByStandard(@QueryParam("id") int id) throws SQLException {
-        ArrayList<MainSentence> allMainSentencesByStandard = firstFilterService.readAllMainSentencesByStandard(id, false);
+        ArrayList<MainSentence> allMainSentencesByStandard = firstFilterService.readAllMainSentencesByStandard(id);
 
         return Response.ok(allMainSentencesByStandard).build();
     }
@@ -103,7 +103,7 @@ public class ArmonizeResource implements PathFiles {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllEnumSentenceByMainSentence(@QueryParam("id") int id) throws SQLException {
-        ArrayList<EnumSentence> allEnumSentenceByMainSentence = firstFilterService.readAllEnumSentencesByMainSentence(id, false);
+        ArrayList<EnumSentence> allEnumSentenceByMainSentence = firstFilterService.readAllEnumSentencesByMainSentence(id);
 
         return Response.ok(allEnumSentenceByMainSentence).build();
     }
@@ -114,34 +114,17 @@ public class ArmonizeResource implements PathFiles {
     public Response getResponse(@QueryParam("id") int id) throws SQLException {
         ArrayList<ResponseMainSentence> responseMainSentenceArrayList = new ArrayList<ResponseMainSentence>();
 
-        ArrayList<MainSentence> allMainSentenceByMainSentence = firstFilterService.readAllMainSentencesByStandard(id,false);
+        ArrayList<MainSentence> allMainSentenceByMainSentence = firstFilterService.readAllMainSentencesByStandard(id);
 
         for(MainSentence mainSentence: allMainSentenceByMainSentence){
             ResponseMainSentence responseMainSentence = new ResponseMainSentence(mainSentence);
-            ArrayList<EnumSentence> allEnumSentenceByMainSentence = firstFilterService.readAllEnumSentencesByMainSentence(mainSentence.getId(), false);
+            ArrayList<EnumSentence> allEnumSentenceByMainSentence = firstFilterService.readAllEnumSentencesByMainSentence(mainSentence.getId());
 
             responseMainSentence.setEnumSentences(allEnumSentenceByMainSentence);
             responseMainSentenceArrayList.add(responseMainSentence);
         }
 
         return Response.ok(responseMainSentenceArrayList).build();
-    }
-
-    @Path("/standard/main/process/{id}")
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response setProcessing(@PathParam("id") int id, @QueryParam("category") String category) throws SQLException{
-        firstFilterService.insertProcessingMainSentence(id);
-        return Response.status(201).build();
-    }
-
-    @Path("standard/main/enum/process")
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response setProcessingEnum(EnumSentence enumSentence) throws SQLException {
-        int idEnum = firstFilterService.addEnumSentence(enumSentence, true);
-
-        return Response.status(201).entity(idEnum).build();
     }
 
     private boolean correctTypeProcess(String typeProcess) {
