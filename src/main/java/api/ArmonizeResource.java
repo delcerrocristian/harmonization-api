@@ -36,19 +36,18 @@ public class ArmonizeResource implements PathFiles {
 
     @Produces(MediaType.APPLICATION_JSON)
     @POST
-    public Response uploadFile(InputStream stream, @QueryParam("name") String name) throws Exception {
-        if (stream != null && name != null) {
-            File inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
-
-            int idStandard = firstFilterService.createStandard(name);
-
-            FullProcessDocumentImp fullProcessDocumentImp = new FullProcessDocumentImp();
-            fullProcessDocumentImp.start(inputFile, idStandard);
-
-            return Response.ok(idStandard).build(); //200
-        } else {
+    public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("process") String typeProcess) throws Exception {
+        if (stream == null || name == null || !correctTypeProcess(typeProcess)) {
             return Response.status(400).build();
         }
+
+        File inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
+        int idStandard = firstFilterService.createStandard(name);
+
+        FullProcessDocumentImp fullProcessDocumentImp = new FullProcessDocumentImp();
+        fullProcessDocumentImp.start(inputFile, idStandard);
+
+        return Response.ok(idStandard).build(); //200
     }
 
     @Path("/standard")
@@ -136,16 +135,6 @@ public class ArmonizeResource implements PathFiles {
         return Response.status(201).build();
     }
 
-
-   /* @Path("/standard/main/process")
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response setProcessingMain(MainSentence mainSentence) throws SQLException {
-        int idMain = firstFilterService.addMainSentence(mainSentence, true);
-
-        return Response.status(201).entity(idMain).build();
-    }*/
-
     @Path("standard/main/enum/process")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -153,6 +142,13 @@ public class ArmonizeResource implements PathFiles {
         int idEnum = firstFilterService.addEnumSentence(enumSentence, true);
 
         return Response.status(201).entity(idEnum).build();
+    }
+
+    private boolean correctTypeProcess(String typeProcess) {
+        if(typeProcess.equals("assisted") || typeProcess.equals("mixed") || typeProcess.equals("unassisted")) {
+            return true;
+        }
+        return false;
     }
 
 }

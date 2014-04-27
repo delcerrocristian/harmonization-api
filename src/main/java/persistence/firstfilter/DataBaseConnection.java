@@ -14,7 +14,7 @@ public class DataBaseConnection {
     public DataBaseConnection() throws SQLException {
 
         String url = "jdbc:mysql://localhost/";
-        String dataBaseName = "FirstFilter2.0";
+        String dataBaseName = "FirstFilter3.0";
         String userName = "root";
         String password = "root";
 

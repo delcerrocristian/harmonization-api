@@ -22,21 +22,19 @@ public interface FirstFilterService {
 
     ArrayList<Standard> readAllStandards() throws SQLException;
 
-    int addMainSentence (MainSentence mainSentence, boolean procesing) throws SQLException;
+    int addMainSentence (MainSentence mainSentence) throws SQLException;
 
-    MainSentence readMainSentence (int id, boolean processing) throws SQLException;
+    MainSentence readMainSentence (int id) throws SQLException;
 
-    void deleteMainSentence (int id, boolean processing) throws SQLException;
+    void deleteMainSentence (int id) throws SQLException;
 
-    ArrayList<MainSentence> readAllMainSentencesByStandard(int id, boolean processing) throws SQLException;
+    ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException;
 
-    int addEnumSentence(EnumSentence enumSentence, boolean processing) throws SQLException;
+    int addEnumSentence(EnumSentence enumSentence) throws SQLException;
 
-    EnumSentence readEnumSentence (int id, boolean processing) throws SQLException;
+    EnumSentence readEnumSentence (int id) throws SQLException;
 
-    void deleteEnumSentence (int id, boolean processing) throws SQLException;
+    void deleteEnumSentence (int id) throws SQLException;
 
-    ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id, boolean processing) throws SQLException;
-
-    void insertProcessingMainSentence(int id) throws SQLException;
+    ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id) throws SQLException;
 }

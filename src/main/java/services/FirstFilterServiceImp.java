@@ -55,48 +55,44 @@ public class FirstFilterServiceImp implements FirstFilterService{
     }
 
     @Override
-    public int addMainSentence (MainSentence mainSentence, boolean processing) throws SQLException {
-        return mainSentenceDao.create(mainSentence, processing);
+    public int addMainSentence (MainSentence mainSentence) throws SQLException {
+        return mainSentenceDao.create(mainSentence);
     }
 
     @Override
-    public MainSentence readMainSentence (int id, boolean processing) throws SQLException {
-        return mainSentenceDao.read(id, processing);
+    public MainSentence readMainSentence (int id) throws SQLException {
+        return mainSentenceDao.read(id);
     }
 
     @Override
-    public void deleteMainSentence (int id, boolean processing) throws SQLException {
-        mainSentenceDao.delete(id, processing);
+    public void deleteMainSentence (int id) throws SQLException {
+        mainSentenceDao.delete(id);
     }
 
     @Override
-    public ArrayList<MainSentence> readAllMainSentencesByStandard(int id, boolean processing) throws SQLException {
-        return mainSentenceDao.readAllByStandard(id, processing);
+    public ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException {
+        return mainSentenceDao.readAllByStandard(id);
     }
 
     @Override
-    public int addEnumSentence(EnumSentence enumSentence, boolean processing) throws SQLException{
-        return enumSentenceDao.create(enumSentence, processing);
+    public int addEnumSentence(EnumSentence enumSentence) throws SQLException{
+        return enumSentenceDao.create(enumSentence);
     }
 
     @Override
-    public EnumSentence readEnumSentence (int id, boolean processing) throws SQLException {
-        return enumSentenceDao.read(id, processing);
+    public EnumSentence readEnumSentence (int id) throws SQLException {
+        return enumSentenceDao.read(id);
     }
 
     @Override
-    public void deleteEnumSentence (int id, boolean processing) throws SQLException {
-        enumSentenceDao.delete(id, processing);
+    public void deleteEnumSentence (int id) throws SQLException {
+        enumSentenceDao.delete(id);
     }
 
     @Override
-    public ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id, boolean processing) throws SQLException {
-        return enumSentenceDao.readAllByMainSentence(id, processing);
+    public ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id) throws SQLException {
+        return enumSentenceDao.readAllByMainSentence(id);
     }
 
-    @Override
-    public void insertProcessingMainSentence(int id) throws SQLException {
-        methodToDataBase.insertProcessingMainSentence(id);
-    }
 
 }

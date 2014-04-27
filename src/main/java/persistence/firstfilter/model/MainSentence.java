@@ -8,7 +8,9 @@ public class MainSentence {
     private int id;
     private String content;
     private String category;
-    private int standard;
+    private Integer standard;
+    private Integer reliability;
+    private Integer isProcessed;
 
     public MainSentence() {
 
@@ -44,11 +46,27 @@ public class MainSentence {
         this.category = category;
     }
 
-    public int getStandard() {
+    public Integer getStandard() {
         return standard;
     }
 
     public void setStandard(int standard) {
         this.standard = standard;
+    }
+
+    public Integer getReliability() {
+        return reliability;
+    }
+
+    public void setReliability(int reliability) {
+        this.reliability = reliability;
+    }
+
+    public Integer getIsProcessed() {
+        return isProcessed;
+    }
+
+    public void setIsProcessed(int isProcessed) {
+        this.isProcessed = isProcessed;
     }
 }

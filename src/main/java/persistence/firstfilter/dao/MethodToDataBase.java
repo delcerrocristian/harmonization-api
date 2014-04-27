@@ -7,5 +7,5 @@ import java.sql.SQLException;
  */
 public interface MethodToDataBase {
 
-    public void insertProcessingMainSentence(int id) throws SQLException;
+    void allMainSentenceAsProcessed(int standard) throws SQLException;
 }

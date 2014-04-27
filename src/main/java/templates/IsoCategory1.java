@@ -86,7 +86,7 @@ public class IsoCategory1 implements PathFiles {
                  }
                  contentCurrentMain = contentCurrentMain + list.get(i);
                  MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "A", idStandard);
-                 int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence, false);
+                 int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
                  if(isoSupportFindMethods.existEnumeration(list.get(i + 1))){
                      i= isoSupportFindMethods.enumerationABC(list, i + 1, firstFilterService, idCurrentMainSentence);
                  }
@@ -127,7 +127,7 @@ public class IsoCategory1 implements PathFiles {
                  }
                  contentCurrentMain = contentCurrentMain + list.get(i);
                  MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "A", idStandard);
-                 int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence, false);
+                 int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
                  if(isoSupportFindMethods.existEnumeration(list.get(i + 1))){
                      i= isoSupportFindMethods.enumerationABC(list, i + 1, firstFilterService, idCurrentMainSentence);
                  }

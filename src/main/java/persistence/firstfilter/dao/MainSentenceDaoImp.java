@@ -13,18 +13,15 @@ import java.util.ArrayList;
  */
 public class MainSentenceDaoImp implements MainSentenceDao {
     @Override
-    public int create(MainSentence mainSentence, boolean processing) throws SQLException {
-        String nameTable = "main_sentence";
-        if(processing){
-            nameTable = "processing_main_sentence";
-        }
+    public int create(MainSentence mainSentence) throws SQLException {
+
 
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         int id=-1;//If finally return -1 means something bad happened
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("insert into "+nameTable+" (content, category, standard) VALUES (?,?,?)",
+                    ("insert into main_sentence (content, category, standard) VALUES (?,?,?)",
                             PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, mainSentence.getContent());
             preparedStatement.setString(2,mainSentence.getCategory());
@@ -48,18 +45,15 @@ public class MainSentenceDaoImp implements MainSentenceDao {
     }
 
     @Override
-    public MainSentence read(int id, boolean processing) throws SQLException {
-        String nameTable = "main_sentence";
-        if(processing){
-            nameTable = "processing_main_sentence";
-        }
+    public MainSentence read(int id) throws SQLException {
+
 
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         MainSentence mainSentenceFromDB = null;
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("select * from "+nameTable+" where id=?");
+                    ("select * from main_sentence where id=?");
             preparedStatement.setInt(1,id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -81,22 +75,34 @@ public class MainSentenceDaoImp implements MainSentenceDao {
     }
 
     @Override
-    public void update(MainSentence mainSentence, boolean processing) {
+    public void update(MainSentence mainSentence) throws SQLException{
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    (buildSqlUpdateStatement(mainSentence));
 
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+        }
+        finally{
+            dataBaseConnection.close();
+        }
     }
 
+
+
     @Override
-    public void delete(int id, boolean processing) throws SQLException {
-        String nameTable = "main_sentence";
-        if(processing){
-            nameTable = "processing_main_sentence";
-        }
+    public void delete(int id) throws SQLException {
 
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("delete from "+nameTable+" where id=?");
+                    ("delete from main_sentence where id=?");
             preparedStatement.setInt(1,id);
 
             preparedStatement.execute();
@@ -108,11 +114,7 @@ public class MainSentenceDaoImp implements MainSentenceDao {
     }
 
     @Override
-    public ArrayList<MainSentence> readAllByStandard(int id, boolean processing) throws SQLException {
-        String nameTable = "main_sentence";
-        if(processing){
-            nameTable = "processing_main_sentence";
-        }
+    public ArrayList<MainSentence> readAllByStandard(int id) throws SQLException {
 
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
@@ -120,7 +122,7 @@ public class MainSentenceDaoImp implements MainSentenceDao {
         ArrayList<MainSentence> allMainSentencesByStandard = new ArrayList<>();
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("select * from "+nameTable+" where standard=?");
+                    ("select * from main_sentence where standard=?");
             preparedStatement.setInt(1,id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -141,5 +143,43 @@ public class MainSentenceDaoImp implements MainSentenceDao {
             dataBaseConnection.close();
         }
         return allMainSentencesByStandard;
+    }
+
+    private String buildSqlUpdateStatement(MainSentence mainSentence) {
+        boolean anyFieldUpdate = false;
+        String statement = "update main_sentence set ";
+        if(mainSentence.getContent() != null){
+            statement += "content="+mainSentence.getContent();
+            anyFieldUpdate = true;
+        }
+        if (mainSentence.getCategory() != null) {
+            if(anyFieldUpdate){
+                statement += ",";
+            }
+            statement += "category="+mainSentence.getCategory();
+            anyFieldUpdate = true;
+        }
+        if(mainSentence.getReliability() != null) {
+            if(anyFieldUpdate){
+                statement += ",";
+            }
+            statement += "reliability="+mainSentence.getReliability();
+            anyFieldUpdate = true;
+        }
+
+        if(mainSentence.getStandard() != null) {
+            if(anyFieldUpdate){
+                statement += ",";
+            }
+            statement += "standard="+mainSentence.getStandard();
+            anyFieldUpdate = true;
+        }
+        if(anyFieldUpdate) {
+            statement += ",";
+        }
+        statement += "is_processed=1";
+        statement +=" where id="+mainSentence.getId();
+        return statement;
+
     }
 }

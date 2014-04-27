@@ -14,18 +14,13 @@ import java.util.ArrayList;
 public class EnumSentenceDaoImp implements EnumSentenceDao {
 
     @Override
-    public int create(EnumSentence enumSentence, boolean processing) throws SQLException {
-        String nameTable = "enum_sentence";
-        if(processing){
-            nameTable = "processing_enum_sentence";
-        }
-
+    public int create(EnumSentence enumSentence) throws SQLException {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         int id=-1;//If finally return -1 means something bad happened
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("insert into "+nameTable+" (position, content, main_sentence) VALUES (?,?,?)",
+                    ("insert into enum_sentence (position, content, main_sentence) VALUES (?,?,?)",
                             PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, enumSentence.getPosition());
             preparedStatement.setString(2,enumSentence.getContent());
@@ -49,18 +44,13 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
     }
 
     @Override
-    public EnumSentence read(int id, boolean processing) throws SQLException {
-        String nameTable = "enum_sentence";
-        if(processing){
-            nameTable = "processing_enum_sentence";
-        }
-
+    public EnumSentence read(int id) throws SQLException {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         EnumSentence enumSentenceFromDB = null;
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("select * from "+nameTable+" where id=?");
+                    ("select * from enum_sentence where id=?");
             preparedStatement.setInt(1,id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -81,22 +71,17 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
     }
 
     @Override
-    public void update(EnumSentence enumSentence, boolean processing) {
+    public void update(EnumSentence enumSentence) {
 
     }
 
     @Override
-    public void delete(int id, boolean processing) throws SQLException {
-        String nameTable = "enum_sentence";
-        if(processing){
-            nameTable = "processing_enum_sentence";
-        }
-
+    public void delete(int id) throws SQLException {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("delete from "+nameTable+" where id=?");
+                    ("delete from enum_sentence where id=?");
             preparedStatement.setInt(1,id);
 
             preparedStatement.execute();
@@ -108,19 +93,14 @@ public class EnumSentenceDaoImp implements EnumSentenceDao {
     }
 
     @Override
-    public ArrayList<EnumSentence> readAllByMainSentence(int id, boolean processing) throws SQLException {
-        String nameTable = "enum_sentence";
-        if(processing){
-            nameTable = "processing_enum_sentence";
-        }
-
+    public ArrayList<EnumSentence> readAllByMainSentence(int id) throws SQLException {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         EnumSentence enumSentenceFromDB;
         ArrayList<EnumSentence> allEnumSentencesByMainSentence = new ArrayList<>();
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("select * from "+nameTable+" where main_sentence=?");
+                    ("select * from enum_sentence where main_sentence=?");
             preparedStatement.setInt(1,id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
