@@ -12,6 +12,8 @@ public class ResponseMainSentence {
     private String content;
     private String category;
     private int standard;
+    private int reliability;
+    private int is_processed;
     ArrayList<EnumSentence> enumSentences;
 
     public ResponseMainSentence(MainSentence mainSentence){
@@ -19,6 +21,8 @@ public class ResponseMainSentence {
         this.content = mainSentence.getContent();
         this.category = mainSentence.getCategory();
         this.standard = mainSentence.getStandard();
+        this.reliability = mainSentence.getReliability();
+        this.is_processed = mainSentence.getIsProcessed();
     }
 
     public int getId() {
@@ -59,6 +63,22 @@ public class ResponseMainSentence {
 
     public void setEnumSentences(ArrayList<EnumSentence> enumSentences) {
         this.enumSentences = enumSentences;
+    }
+
+    public int getReliability() {
+        return reliability;
+    }
+
+    public void setReliability(int reliability) {
+        this.reliability = reliability;
+    }
+
+    public int getIs_processed() {
+        return is_processed;
+    }
+
+    public void setIs_processed(int is_processed) {
+        this.is_processed = is_processed;
     }
 
     public void addMainSentenceFields(MainSentence mainSentence){

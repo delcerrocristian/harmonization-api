@@ -136,6 +136,8 @@ public class MainSentenceDaoImp implements MainSentenceDao {
                 mainSentenceFromDB.setContent(resultSet.getString("content"));
                 mainSentenceFromDB.setCategory(resultSet.getString("category"));
                 mainSentenceFromDB.setStandard(resultSet.getInt("standard"));
+                mainSentenceFromDB.setReliability(resultSet.getInt("reliability"));
+                mainSentenceFromDB.setIsProcessed(resultSet.getInt("is_processed"));
                 allMainSentencesByStandard.add(mainSentenceFromDB);
             }
 
