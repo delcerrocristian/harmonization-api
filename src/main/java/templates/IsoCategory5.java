@@ -7,6 +7,7 @@ import utils.PathFiles;
 import java.io.*;
 import java.util.ArrayList;
 
+import static templates.Algorithm.estimateReliability;
 import static templates.FindMethod.*;
 
 /**
@@ -76,6 +77,7 @@ public class IsoCategory5 implements PathFiles {
                 }
                 contentCurrentMain = contentCurrentMain + list.get(i);
                 MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "E", idStandard);
+                currentMainSentence = estimateReliability(currentMainSentence);
                 int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
                 if(isoSupportFindMethods.existEnumeration(list.get(i+1))){
                     i= isoSupportFindMethods.enumerationABC(list, i+1, firstFilterService, idCurrentMainSentence);
@@ -116,6 +118,7 @@ public class IsoCategory5 implements PathFiles {
                 }
                 contentCurrentMain = contentCurrentMain + list.get(i);
                 MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "E", idStandard);
+                currentMainSentence = estimateReliability(currentMainSentence);
                 int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
                 if(isoSupportFindMethods.existEnumeration(list.get(i+1))){
                     i= isoSupportFindMethods.enumerationABC(list, i+1, firstFilterService, idCurrentMainSentence);

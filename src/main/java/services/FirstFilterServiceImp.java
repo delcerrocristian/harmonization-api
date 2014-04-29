@@ -94,5 +94,10 @@ public class FirstFilterServiceImp implements FirstFilterService{
         return enumSentenceDao.readAllByMainSentence(id);
     }
 
+    @Override
+    public void allMainSentenceAsProcessed(int standard) throws SQLException {
+        methodToDataBase.allMainSentenceAsProcessed(standard);
+    }
+
 
 }

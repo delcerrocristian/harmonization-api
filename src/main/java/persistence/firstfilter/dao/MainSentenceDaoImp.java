@@ -21,11 +21,12 @@ public class MainSentenceDaoImp implements MainSentenceDao {
         int id=-1;//If finally return -1 means something bad happened
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("insert into main_sentence (content, category, standard) VALUES (?,?,?)",
+                    ("insert into main_sentence (content, category, standard, reliability) VALUES (?,?,?,?)",
                             PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, mainSentence.getContent());
             preparedStatement.setString(2,mainSentence.getCategory());
             preparedStatement.setInt(3, mainSentence.getStandard());
+            preparedStatement.setInt(4, mainSentence.getReliability());
 
             preparedStatement.executeUpdate();
 

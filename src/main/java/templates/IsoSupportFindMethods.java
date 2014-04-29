@@ -70,7 +70,7 @@ public class IsoSupportFindMethods{
                 try{
                     currentEnumSentence = currentEnumSentence + list.get(i);
                     EnumSentence enumCurrentSentence = new EnumSentence(count + 1, currentEnumSentence, idMain);
-                    firstFilterService.addEnumSentence(enumCurrentSentence, false);
+                    firstFilterService.addEnumSentence(enumCurrentSentence);
                 }
                 catch(Exception e){
                     e.printStackTrace();

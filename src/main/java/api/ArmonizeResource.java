@@ -46,6 +46,9 @@ public class ArmonizeResource implements PathFiles {
 
         FullProcessDocumentImp fullProcessDocumentImp = new FullProcessDocumentImp();
         fullProcessDocumentImp.start(inputFile, idStandard);
+        if(typeProcess.equals("unassisted")){
+            firstFilterService.allMainSentenceAsProcessed(idStandard);
+        }
 
         return Response.ok(idStandard).build(); //200
     }
@@ -128,8 +131,10 @@ public class ArmonizeResource implements PathFiles {
     }
 
     private boolean correctTypeProcess(String typeProcess) {
-        if(typeProcess.equals("assisted") || typeProcess.equals("mixed") || typeProcess.equals("unassisted")) {
-            return true;
+        if(typeProcess != null) {
+            if (typeProcess.equals("assisted") || typeProcess.equals("mixed") || typeProcess.equals("unassisted")) {
+                return true;
+            }
         }
         return false;
     }
