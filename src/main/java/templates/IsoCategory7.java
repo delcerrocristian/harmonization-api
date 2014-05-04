@@ -1,6 +1,5 @@
 package templates;
 
-import persistence.firstfilter.model.MainSentence;
 import services.FirstFilterService;
 import utils.PathFiles;
 

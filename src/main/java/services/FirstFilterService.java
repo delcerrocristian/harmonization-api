@@ -1,7 +1,5 @@
 package services;
 
-import persistence.firstfilter.model.EnumSentence;
-import persistence.firstfilter.model.MainSentence;
 import persistence.firstfilter.model.Standard;
 
 import java.sql.SQLException;

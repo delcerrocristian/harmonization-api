@@ -1,11 +1,7 @@
 package services;
 
-import persistence.firstfilter.dao.EnumSentenceDao;
-import persistence.firstfilter.dao.MainSentenceDao;
 import persistence.firstfilter.dao.MethodToDataBase;
 import persistence.firstfilter.dao.StandardDao;
-import persistence.firstfilter.model.EnumSentence;
-import persistence.firstfilter.model.MainSentence;
 import persistence.firstfilter.model.Standard;
 
 import java.sql.SQLException;

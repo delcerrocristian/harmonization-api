@@ -1,7 +1,5 @@
 package templates;
 
-import persistence.firstfilter.model.MainSentence;
-
 import java.util.Random;
 
 /**

@@ -4,9 +4,6 @@ package api;
 import pdfTrat.FullProcessDocumentImp;
 import persistence.firstfilter.dao.StandardDao;
 import persistence.firstfilter.dao.StandardDaoImp;
-import persistence.firstfilter.model.EnumSentence;
-import persistence.firstfilter.model.MainSentence;
-import persistence.firstfilter.model.ResponseMainSentence;
 import persistence.firstfilter.model.Standard;
 import services.FirstFilterService;
 import utils.PathFiles;
@@ -17,7 +14,6 @@ import javax.ws.rs.core.Response;
 
 import java.io.File;
 import java.io.InputStream;
-import java.security.PublicKey;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

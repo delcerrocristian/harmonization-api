@@ -1,14 +1,10 @@
 package templates;
 
-import persistence.firstfilter.model.MainSentence;
 import services.FirstFilterService;
 import utils.PathFiles;
-import utils.UtilsFile;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static templates.Algorithm.estimateReliability;
 import static templates.FindMethod.*;

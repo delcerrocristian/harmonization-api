@@ -1,10 +1,8 @@
 package templates;
 
-import persistence.firstfilter.model.EnumSentence;
 import services.FirstFilterService;
 import utils.UtilsTemplates;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
