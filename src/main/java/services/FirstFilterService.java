@@ -1,6 +1,7 @@
 package services;
 
-import persistence.firstfilter.model.Standard;
+import persistence.firstfilter.model.*;
+import persistence.firstfilter.model.Process;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,31 +11,41 @@ import java.util.ArrayList;
  */
 public interface FirstFilterService {
 
-    int createStandard (Standard standard) throws SQLException;
+    int createStandard (Standard standard);
 
-    int createStandard (String nameStandard) throws SQLException;
+    int createStandard (String nameStandard);
 
-    Standard readStandard(int id) throws SQLException;
+    Standard readStandard(int id);
 
-    void deleteStandard(int id) throws SQLException;
+    void deleteStandard(int id);
 
-    ArrayList<Standard> readAllStandards() throws SQLException;
+    ArrayList<Standard> readAllStandards();
 
-    int addMainSentence (MainSentence mainSentence) throws SQLException;
+    int addProcess (Process process);
 
-    MainSentence readMainSentence (int id) throws SQLException;
+    Process readProcess (int id);
 
-    void deleteMainSentence (int id) throws SQLException;
+    void deleteProcess (int id);
 
-    ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException;
+    ArrayList<Process> readAllProcessByStandard(int id);
 
-    int addEnumSentence(EnumSentence enumSentence) throws SQLException;
+    int addActivity(Activity activity);
 
-    EnumSentence readEnumSentence (int id) throws SQLException;
+    Activity readActivity (int id);
 
-    void deleteEnumSentence (int id) throws SQLException;
+    void deleteActivity (int id);
 
-    ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id) throws SQLException;
+    ArrayList<Activity> readAllActivityByProcess(int id);
 
-    void allMainSentenceAsProcessed(int standard) throws SQLException;
+    int addTask(Task task);
+
+    void updateTask (Task task);
+
+    Task readTask (int id);
+
+    void deleteTask (int id);
+
+    ArrayList<Task> readAllTaskByProcess(int id);
+
+    ArrayList<Task> readAllTaskByActivity(int id);
 }

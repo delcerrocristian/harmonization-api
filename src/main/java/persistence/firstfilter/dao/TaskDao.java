@@ -17,6 +17,8 @@ public interface TaskDao {
 
     void delete(int id);
 
-    ArrayList<Task> readAll();
+    ArrayList<Task> readAllByProcess(int id);
+
+    ArrayList<Task> readAllByActivity(int id);
 
 }

@@ -20,9 +20,10 @@ public class TaskDaoImp implements TaskDao {
 
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("insert into task (content, activity) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+                    ("insert into task (content, process, activity) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, task.getContent());
-            preparedStatement.setInt(2, task.getActivity());
+            preparedStatement.setInt(2, task.getProcess());
+            preparedStatement.setInt(3, task.getActivity());
 
             preparedStatement.executeUpdate();
 
@@ -57,6 +58,7 @@ public class TaskDaoImp implements TaskDao {
                 taskFromDB = new Task();
                 taskFromDB.setId(resultSet.getInt("id"));
                 taskFromDB.setContent(resultSet.getString("content"));
+                taskFromDB.setProcess(resultSet.getInt("process"));
                 taskFromDB.setActivity(resultSet.getInt("activity"));
                 taskFromDB.setIsProcessed(resultSet.getInt("is_processed"));
             }
@@ -108,14 +110,14 @@ public class TaskDaoImp implements TaskDao {
     }
 
     @Override
-    public ArrayList<Task> readAll() {
+    public ArrayList<Task> readAllByProcess(int id) {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         Task taskFromDB;
         ArrayList<Task> allTasks = new ArrayList<>();
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("select * from task");
+                    ("select * from task where process="+id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -123,7 +125,37 @@ public class TaskDaoImp implements TaskDao {
                 resultSet.next();
 
                 taskFromDB = new Task(resultSet.getInt("id"), resultSet.getString("content"),
-                        resultSet.getInt("activity"), resultSet.getInt("is_processed"));
+                        resultSet.getInt("process"), resultSet.getInt("activity"),
+                        resultSet.getInt("is_processed"));
+                allTasks.add(taskFromDB);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select all tasks");
+        }finally{
+            dataBaseConnection.close();
+        }
+        return allTasks;
+    }
+
+    @Override
+    public ArrayList<Task> readAllByActivity(int id) {
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        PreparedStatement preparedStatement;
+        Task taskFromDB;
+        ArrayList<Task> allTasks = new ArrayList<>();
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("select * from task where activity="+id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet != null){
+                resultSet.next();
+
+                taskFromDB = new Task(resultSet.getInt("id"), resultSet.getString("content"),
+                        resultSet.getInt("process"), resultSet.getInt("activity"),
+                        resultSet.getInt("is_processed"));
                 allTasks.add(taskFromDB);
             }
 
@@ -147,6 +179,13 @@ public class TaskDaoImp implements TaskDao {
                 statement += ",";
             }
             statement += "activity="+task.getActivity();
+            anyFieldUpdate = true;
+        }
+        if (task.getProcess() != null) {
+            if(anyFieldUpdate){
+                statement += ",";
+            }
+            statement += "process="+task.getProcess();
             anyFieldUpdate = true;
         }
         if(anyFieldUpdate) {

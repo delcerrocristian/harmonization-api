@@ -7,6 +7,7 @@ public class Task {
 
     private int id;
     private String content;
+    private Integer process;
     private Integer activity;
     private Integer isProcessed;
 
@@ -14,9 +15,10 @@ public class Task {
 
     }
 
-    public Task (int id, String content, Integer activity, Integer isProcessed) {
+    public Task (int id, String content, Integer process, Integer activity, Integer isProcessed) {
         this.id = id;
         this.content = content;
+        this.process = process;
         this.activity = activity;
         this.isProcessed = isProcessed;
     }
@@ -35,6 +37,14 @@ public class Task {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Integer getProcess() {
+        return process;
+    }
+
+    public void setProcess(Integer process) {
+        this.process = process;
     }
 
     public Integer getActivity() {

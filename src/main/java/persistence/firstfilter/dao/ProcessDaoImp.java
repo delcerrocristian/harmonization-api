@@ -96,14 +96,14 @@ public class ProcessDaoImp implements ProcessDao {
     }
 
     @Override
-    public ArrayList<Process> readAll() {
+    public ArrayList<Process> readAllByStandard(int id) {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         Process processFromDB;
         ArrayList<Process> allProcess = new ArrayList<>();
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("select * from process");
+                    ("select * from process where standard="+id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

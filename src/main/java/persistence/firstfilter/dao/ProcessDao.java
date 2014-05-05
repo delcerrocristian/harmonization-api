@@ -18,5 +18,5 @@ public interface ProcessDao {
 
     void delete(int id);
 
-    ArrayList<Process> readAll();
+    ArrayList<Process> readAllByStandard(int id);
 }

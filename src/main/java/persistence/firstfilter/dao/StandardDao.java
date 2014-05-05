@@ -10,15 +10,15 @@ import java.util.ArrayList;
  */
 public interface StandardDao {
 
-    int create(Standard standard) throws SQLException;
+    int create(Standard standard) ;
 
-    int create(String name) throws SQLException;
+    int create(String name) ;
 
-    Standard read(int id) throws SQLException;
+    Standard read(int id);
 
-    void update(Standard standard) throws SQLException;
+    void update(Standard standard);
 
-    void delete(int id) throws SQLException;
+    void delete(int id);
 
-    ArrayList<Standard> readAll() throws SQLException;
+    ArrayList<Standard> readAll();
 }

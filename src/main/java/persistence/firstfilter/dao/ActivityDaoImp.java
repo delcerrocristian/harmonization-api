@@ -95,14 +95,14 @@ public class ActivityDaoImp implements ActivityDao{
     }
 
     @Override
-    public ArrayList<Activity> readAll() {
+    public ArrayList<Activity> readAllByProcess(int id) {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         Activity activityFromDB;
         ArrayList<Activity> allActivities = new ArrayList<>();
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("select * from activity");
+                    ("select * from activity where process="+id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

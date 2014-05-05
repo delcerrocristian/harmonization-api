@@ -1,8 +1,8 @@
 package services;
 
-import persistence.firstfilter.dao.MethodToDataBase;
-import persistence.firstfilter.dao.StandardDao;
-import persistence.firstfilter.model.Standard;
+import persistence.firstfilter.dao.*;
+import persistence.firstfilter.model.*;
+import persistence.firstfilter.model.Process;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,87 +13,111 @@ import java.util.ArrayList;
 public class FirstFilterServiceImp implements FirstFilterService{
 
     StandardDao standardDao;
-    MainSentenceDao mainSentenceDao;
-    EnumSentenceDao enumSentenceDao;
-    MethodToDataBase methodToDataBase;
+    ProcessDao processDao;
+    ActivityDao activityDao;
+    TaskDao taskDao;
 
-    public FirstFilterServiceImp(StandardDao standardDao, MainSentenceDao mainSentenceDao, EnumSentenceDao enumSentenceDao,
-                                 MethodToDataBase methodToDataBase) {
+    public FirstFilterServiceImp(StandardDao standardDao, ProcessDao processDao, ActivityDao activityDao,
+                                 TaskDao taskDao) {
         this.standardDao = standardDao;
-        this.mainSentenceDao = mainSentenceDao;
-        this.enumSentenceDao = enumSentenceDao;
-        this.methodToDataBase = methodToDataBase;
+        this.processDao = processDao;
+        this.activityDao = activityDao;
+        this.taskDao = taskDao;
     }
 
     @Override
-    public int createStandard (Standard standard) throws SQLException {
+    public int createStandard (Standard standard) {
         return standardDao.create(standard);
     }
 
     @Override
-    public int createStandard (String nameStandard) throws SQLException {
+    public int createStandard (String nameStandard) {
         return standardDao.create(nameStandard);
     }
 
     @Override
-    public Standard readStandard(int id) throws SQLException {
+    public Standard readStandard(int id) {
         return standardDao.read(id);
     }
 
     @Override
-    public void deleteStandard(int id) throws SQLException {
+    public void deleteStandard(int id) {
         standardDao.delete(id);
     }
 
     @Override
-    public ArrayList<Standard> readAllStandards() throws SQLException {
+    public ArrayList<Standard> readAllStandards() {
         return  standardDao.readAll();
     }
 
     @Override
-    public int addMainSentence (MainSentence mainSentence) throws SQLException {
-        return mainSentenceDao.create(mainSentence);
+    public int addProcess (Process process) {
+        return processDao.create(process);
     }
 
     @Override
-    public MainSentence readMainSentence (int id) throws SQLException {
-        return mainSentenceDao.read(id);
+    public Process readProcess (int id) {
+        return processDao.read(id);
     }
 
     @Override
-    public void deleteMainSentence (int id) throws SQLException {
-        mainSentenceDao.delete(id);
+    public void deleteProcess (int id) {
+        processDao.delete(id);
     }
 
     @Override
-    public ArrayList<MainSentence> readAllMainSentencesByStandard(int id) throws SQLException {
-        return mainSentenceDao.readAllByStandard(id);
+    public ArrayList<Process> readAllProcessByStandard(int id) {
+        return processDao.readAllByStandard(id);
     }
 
     @Override
-    public int addEnumSentence(EnumSentence enumSentence) throws SQLException{
-        return enumSentenceDao.create(enumSentence);
+    public int addActivity(Activity activity) {
+        return activityDao.create(activity);
     }
 
     @Override
-    public EnumSentence readEnumSentence (int id) throws SQLException {
-        return enumSentenceDao.read(id);
+    public Activity readActivity (int id) {
+        return activityDao.read(id);
     }
 
     @Override
-    public void deleteEnumSentence (int id) throws SQLException {
-        enumSentenceDao.delete(id);
+    public void deleteActivity (int id) {
+        activityDao.delete(id);
     }
 
     @Override
-    public ArrayList<EnumSentence> readAllEnumSentencesByMainSentence (int id) throws SQLException {
-        return enumSentenceDao.readAllByMainSentence(id);
+    public ArrayList<Activity> readAllActivityByProcess(int id) {
+        return activityDao.readAllByProcess(id);
     }
 
     @Override
-    public void allMainSentenceAsProcessed(int standard) throws SQLException {
-        methodToDataBase.allMainSentenceAsProcessed(standard);
+    public int addTask(Task task) {
+        return taskDao.create(task);
     }
 
+    @Override
+    public void updateTask (Task task) {
+        taskDao.update(task);
+    }
+
+    @Override
+    public Task readTask (int id) {
+        return taskDao.read(id);
+    }
+
+    @Override
+    public void deleteTask (int id) {
+        taskDao.delete(id);
+    }
+
+    @Override
+    public ArrayList<Task> readAllTaskByProcess(int id) {
+        return taskDao.readAllByProcess(id);
+    }
+
+    @Override
+    public ArrayList<Task> readAllTaskByActivity(int id) {
+        return taskDao.readAllByActivity(id);
+    }
 
 }

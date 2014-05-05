@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class StandardDaoImp implements StandardDao {
 
     @Override
-    public int create(Standard standard) throws SQLException {
+    public int create(Standard standard) {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         int id= -1; //If finally return -1 means something bad happened
@@ -31,7 +31,7 @@ public class StandardDaoImp implements StandardDao {
             }
 
         } catch (SQLException e) {
-
+            System.out.println("SQLException happened creating standard");
         }
         finally{
             dataBaseConnection.close();
@@ -40,7 +40,7 @@ public class StandardDaoImp implements StandardDao {
     }
 
     @Override
-    public int create(String name) throws SQLException {
+    public int create(String name) {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         int id= -1; //If finally return -1 means something bad happened
@@ -57,6 +57,7 @@ public class StandardDaoImp implements StandardDao {
                 id = resultSet.getInt(1);
             }
         } catch (SQLException e) {
+            System.out.println("SQLException happened creating standard");
         }
         finally{
             dataBaseConnection.close();
@@ -65,7 +66,7 @@ public class StandardDaoImp implements StandardDao {
     }
 
     @Override
-    public Standard read(int id) throws SQLException {
+    public Standard read(int id) {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         Standard standardFromDB = null;
@@ -84,6 +85,7 @@ public class StandardDaoImp implements StandardDao {
             }
 
         } catch (SQLException e) {
+            System.out.println("SQLException happened reading standard");
         }finally{
             dataBaseConnection.close();
         }
@@ -91,11 +93,11 @@ public class StandardDaoImp implements StandardDao {
     }
 
     @Override
-    public void update(Standard standard) throws SQLException {
+    public void update(Standard standard)  {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public void delete(int id) {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         try {
@@ -106,13 +108,14 @@ public class StandardDaoImp implements StandardDao {
             preparedStatement.execute();
 
         } catch (SQLException e) {
+            System.out.println("SQLException happened deleting standard");
         }finally{
             dataBaseConnection.close();
         }
     }
 
     @Override
-    public ArrayList<Standard> readAll() throws SQLException {
+    public ArrayList<Standard> readAll() {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         Standard standardFromDB;
@@ -131,6 +134,7 @@ public class StandardDaoImp implements StandardDao {
             }
 
         } catch (SQLException e) {
+            System.out.println("SQLException happened reading all standard");
         }finally{
             dataBaseConnection.close();
         }

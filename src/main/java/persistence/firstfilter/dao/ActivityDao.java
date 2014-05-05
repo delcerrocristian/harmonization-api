@@ -18,5 +18,5 @@ public interface ActivityDao {
 
     void delete(int id);
 
-    ArrayList<Activity> readAll();
+    ArrayList<Activity> readAllByProcess(int id);
 }
