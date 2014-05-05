@@ -2,19 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e438a21e-0534-4348-9859-c625afdd2828" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/templates/AlgorithmByDefault.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/ActivityDao.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/ActivityDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/ActivityDaoImp.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/ActivityDaoImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/templates/FindMethod.java" afterPath="$PROJECT_DIR$/src/main/java/templates/FindMethod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/FirstFilterService.java" afterPath="$PROJECT_DIR$/src/main/java/services/FirstFilterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/FirstFilterServiceImp.java" afterPath="$PROJECT_DIR$/src/main/java/services/FirstFilterServiceImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/ProcessDao.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/ProcessDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/ProcessDaoImp.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/ProcessDaoImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/StandardDao.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/StandardDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/StandardDaoImp.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/StandardDaoImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/model/Task.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/model/Task.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/TaskDao.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/TaskDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/TaskDaoImp.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/firstfilter/dao/TaskDaoImp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="arm.iws" />
@@ -1006,7 +993,11 @@
       <created>1399205271002</created>
       <updated>1399205271002</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Refactor del service.">
+      <created>1399326052881</created>
+      <updated>1399326052881</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1043,6 +1034,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32697546" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329235" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20314735" sideWeight="0.67132115" order="8" side_tool="true" content_ui="tabs" />
@@ -1059,7 +1051,6 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30737704" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1108,7 +1099,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Method treatmentText done" />
     <MESSAGE value="Change names to camelCase on ParseText" />
     <MESSAGE value="Added plantillaIso&#10;" />
     <MESSAGE value="added IsoCategor1" />
@@ -1133,7 +1123,8 @@
     <MESSAGE value="Ya se calcula el reliability de forma random, el formato que se devuelve es correcto." />
     <MESSAGE value="Corregido bug, ahora si se devuelve bien la respuesta de main sentence" />
     <MESSAGE value="Refactorizada toda la DB y adaptada al nuevo modelo de Base de Datos." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactorizada toda la DB y adaptada al nuevo modelo de Base de Datos." />
+    <MESSAGE value="Refactor del service." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor del service." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
