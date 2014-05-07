@@ -71,6 +71,11 @@ public class FirstFilterServiceImp implements FirstFilterService{
     }
 
     @Override
+    public int readIdProcessByNameAndStandard(String name, int idStandard) {
+        return processDao.readByNameAndStandard(name, idStandard);
+    }
+
+    @Override
     public int addActivity(Activity activity) {
         return activityDao.create(activity);
     }
@@ -88,6 +93,11 @@ public class FirstFilterServiceImp implements FirstFilterService{
     @Override
     public ArrayList<Activity> readAllActivityByProcess(int id) {
         return activityDao.readAllByProcess(id);
+    }
+
+    @Override
+    public int readIdActivityByName(String name) {
+        return activityDao.readByName(name);
     }
 
     @Override

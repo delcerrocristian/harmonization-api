@@ -9,6 +9,10 @@ import java.util.regex.Pattern;
 public class FindMethod {
 
 
+    public static String buildPattern(String pattern) {
+        return ".*"+pattern+".*";
+    }
+
     public static boolean existShall(String sentence){
         return Pattern.compile(".*shall.*").matcher(sentence).matches();
     }
@@ -28,7 +32,7 @@ public class FindMethod {
     public static boolean existShouldBe(String sentence){
         return Pattern.compile(".*should be.*").matcher(sentence).matches();
     }
-    @juan_rosell_ Pues no se si es bueno o malo que haya tantos partidos distintos de este tipo... espero que bueno.
+
     public static boolean existShouldInclude(String sentence){
         return Pattern.compile(".*should include.*").matcher(sentence).matches();
     }
@@ -42,7 +46,6 @@ public class FindMethod {
     }
 
     public static boolean findSentenceByPattern(String pattern, String sentence) {
-        pattern = ".*"+pattern+".*";
         return Pattern.compile(pattern).matcher(sentence).matches();
     }
 

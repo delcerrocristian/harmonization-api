@@ -29,6 +29,8 @@ public interface FirstFilterService {
 
     ArrayList<Process> readAllProcessByStandard(int id);
 
+    int readIdProcessByNameAndStandard(String name, int idStandard);
+
     int addActivity(Activity activity);
 
     Activity readActivity (int id);
@@ -36,6 +38,8 @@ public interface FirstFilterService {
     void deleteActivity (int id);
 
     ArrayList<Activity> readAllActivityByProcess(int id);
+
+    int readIdActivityByName(String name);
 
     int addTask(Task task);
 

@@ -46,38 +46,45 @@ public class IsoSupportFindMethods{
         return line;
     }
 
-    public int enumerationABC(ArrayList<String> list, int index, FirstFilterService firstFilterService, int idMain)throws Exception{
+    public String catEnumerationABC(ArrayList<String> list, int index, String sentence){
         int count = 0;
 
         String stringFinalPattern = ".*(and|[;]|[.]|[:])$";
         Pattern finalPattern = Pattern.compile(stringFinalPattern);
-        String currentEnumSentence;
+        String currentSentence;
 
         for(int i=index; (i<list.size() && i!=-1); i++){
-            currentEnumSentence="";
+            currentSentence="";
             if(list.get(i).charAt(0)== UtilsTemplates.alphabet[count]){
                 while(!(finalPattern.matcher(list.get(i))).matches()){
-                    try{
-                        currentEnumSentence = currentEnumSentence + list.get(i) + " ";
-                    }
-                    catch(Exception e){
-                        e.printStackTrace();
-                    }
+                    currentSentence = currentSentence + list.get(i) + " ";
                     i++;
                 }
-                try{
-                    currentEnumSentence = currentEnumSentence + list.get(i);
-                    EnumSentence enumCurrentSentence = new EnumSentence(count + 1, currentEnumSentence, idMain);
-                    firstFilterService.addEnumSentence(enumCurrentSentence);
-                }
-                catch(Exception e){
-                    e.printStackTrace();
-                }
+                currentSentence = currentSentence + list.get(i);
+                sentence = "\n"+currentSentence;
+                count++;
+                i=existAnotherEnumeration(list, i+1, count) -1;
+            }
+        }
+        return sentence;
 
+    }
+
+    public int indexEnumerationABC(ArrayList<String> list, int index){
+        int count = 0;
+
+        String stringFinalPattern = ".*(and|[;]|[.]|[:])$";
+        Pattern finalPattern = Pattern.compile(stringFinalPattern);
+        for(int i=index; (i<list.size() && i!=-1); i++){
+            if(list.get(i).charAt(0)== UtilsTemplates.alphabet[count]){
+                while(!(finalPattern.matcher(list.get(i))).matches()){
+                    i++;
+                }
                 count++;
                 i=existAnotherEnumeration(list, i+1, count) -1;
             }
         }
         return (index + count);
+
     }
 }

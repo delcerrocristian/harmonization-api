@@ -14,6 +14,8 @@ public interface ProcessDao {
 
     Process read(int id);
 
+    int readByNameAndStandard(String name, int idStandard);
+
     void update(Process process);
 
     void delete(int id);

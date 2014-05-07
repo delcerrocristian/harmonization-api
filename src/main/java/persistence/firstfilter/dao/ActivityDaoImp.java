@@ -72,6 +72,32 @@ public class ActivityDaoImp implements ActivityDao{
     }
 
     @Override
+    public int readByName(String name) {
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        PreparedStatement preparedStatement;
+        int idActivity = -1;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("select * from activity where name=?");
+            preparedStatement.setString(1,name);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null){
+                resultSet.next();
+                idActivity = resultSet.getInt("id");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select to activity");
+
+        }finally{
+            dataBaseConnection.close();
+        }
+        return idActivity;
+    }
+
+    @Override
     public void update(Activity activity) {
 
     }

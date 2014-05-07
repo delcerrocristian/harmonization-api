@@ -5,8 +5,7 @@ import api.filter.CorsHeadersFilter;
 import com.yammer.dropwizard.Service;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
-import org.springframework.context.ApplicationContext;
-import persistence.firstfilter.dao.StandardDaoImp;
+import config.ArmonizeConfiguration;
 
 public class ArmonizeService extends Service<ArmonizeConfiguration> {
 

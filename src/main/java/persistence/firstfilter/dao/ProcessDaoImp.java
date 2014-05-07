@@ -73,6 +73,32 @@ public class ProcessDaoImp implements ProcessDao {
     }
 
     @Override
+    public int readByNameAndStandard(String name, int idStandard) {
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        PreparedStatement preparedStatement;
+        int idProcess = -1;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("select * from process where name=? and standard=?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, idStandard);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet != null){
+                resultSet.next();
+                idProcess = resultSet.getInt("id");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select all process");
+        }finally{
+            dataBaseConnection.close();
+        }
+        return idProcess;
+    }
+
+    @Override
     public void update(Process process) {
 
     }
@@ -122,4 +148,6 @@ public class ProcessDaoImp implements ProcessDao {
         }
         return allProcess;
     }
+
+
 }

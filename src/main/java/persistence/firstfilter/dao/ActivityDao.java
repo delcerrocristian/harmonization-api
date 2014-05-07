@@ -14,6 +14,8 @@ public interface ActivityDao {
 
     Activity read(int id);
 
+    int readByName(String name);
+
     void update(Activity activity);
 
     void delete(int id);

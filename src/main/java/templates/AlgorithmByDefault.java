@@ -1,11 +1,12 @@
 package templates;
 
+import persistence.firstfilter.model.*;
+import persistence.firstfilter.model.Process;
 import services.FirstFilterService;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static templates.Algorithm.estimateReliability;
 import static templates.FindMethod.*;
 import static templates.FindMethod.patternTwoFinalDot;
 
@@ -26,13 +27,13 @@ public class AlgorithmByDefault {
         this.list = list;
         this.idStandard = idStandard;
         this.firstFilterService = firstFilterService;
-        this.pattern = pattern;
+        this.pattern = buildPattern(pattern);
     }
 
-    void find()throws Exception{
+    void find(){
 
         int countFullSentence;
-        String contentCurrentMain;
+        String currentContentTask;
 
         for(int i=0; i<list.size(); i++){
 
@@ -44,7 +45,7 @@ public class AlgorithmByDefault {
                                  * para coger la frase entera.
                                  */
                 countFullSentence = 0;
-                contentCurrentMain = "";
+                currentContentTask = "";
                 while(!patternMayusIni().matcher(list.get(i-countFullSentence)).matches()
                         && !patternNumericIni().matcher(list.get(i-countFullSentence)).matches() ){
                     countFullSentence++;
@@ -52,7 +53,7 @@ public class AlgorithmByDefault {
                 }
                 for(int j=countFullSentence; j>0; j--){
                     try{
-                        contentCurrentMain = contentCurrentMain + list.get(i - j) + " ";
+                        currentContentTask = currentContentTask + list.get(i - j) + " ";
                     }
                     catch(Exception e){
                         e.printStackTrace();
@@ -69,7 +70,7 @@ public class AlgorithmByDefault {
                         && !patternTwoFinalDot().matcher(list.get(i)).matches()
                         && !isoSupportFindMethods.existEnumeration(list.get(i + 1))){
                     try{
-                        contentCurrentMain = contentCurrentMain + list.get(i) + " ";
+                        currentContentTask = currentContentTask + list.get(i) + " ";
                         i++;
                     }
                     catch(Exception e){
@@ -77,60 +78,43 @@ public class AlgorithmByDefault {
                     }
 
                 }
-                contentCurrentMain = contentCurrentMain + list.get(i);
-                int idProcess;
-                if(!findProcess(list, i-1).equals("Not Found")){
+                currentContentTask = currentContentTask + list.get(i);
 
+                //TASK
+                Task currentTask = new Task();
+
+                //PROCESS
+                persistence.firstfilter.model.Process currentProcess = new Process();
+                currentProcess.setStandard(idStandard);
+                currentProcess.setName(findProcess(list, i-1));
+                int idProcess = firstFilterService.readIdProcessByName(currentProcess.getName());
+                if(idProcess == -1){
+                    idProcess = firstFilterService.addProcess(currentProcess); /*Save process*/
                 }
-                findActivity(list, i-1);
-                MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "A", idStandard);
-                currentMainSentence = estimateReliability(currentMainSentence);
-                int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
+
+                //ACTIVITY
+                Activity currentActivity = new Activity();
+                currentActivity.setProcess(idProcess);
+
+                if(!currentProcess.getName().equals("Not Found")) {
+                    currentActivity.setName(findActivity(list, i-1));
+                }
+                else {
+                    currentActivity.setName("Not Found");
+                }
+
+                int idActivity = firstFilterService.addActivity(currentActivity); /*Save Activity*/
+
                 if(isoSupportFindMethods.existEnumeration(list.get(i + 1))){
-                    i= isoSupportFindMethods.enumerationABC(list, i + 1, firstFilterService, idCurrentMainSentence);
+                    currentContentTask = isoSupportFindMethods.catEnumerationABC(list, i+1, currentContentTask);
+                    i= isoSupportFindMethods.indexEnumerationABC(list, i+1);
                 }
-            }
+                //Complete task object with idProcess and idActivity
+                currentTask.setProcess(idProcess);
+                currentTask.setProcess(idActivity);
+                currentTask.setContent(currentContentTask);
+                firstFilterService.addTask(currentTask);  /*Save task*/
 
-                        /*
-                         * Lo mismo que lo anterior pero con should en vez de shall
-                         */
-
-            else if(existShould(currentSentence)
-                    && !existShouldBe(currentSentence)
-                    && !existShouldInclude(currentSentence)){
-                countFullSentence = 0;
-                contentCurrentMain = "";
-                while(!patternMayusIni().matcher(list.get(i-countFullSentence)).matches()
-                        && !patternNumericIni().matcher(list.get(i-countFullSentence)).matches() ){
-                    countFullSentence++;
-                }
-                for(int j=countFullSentence; j>0; j--){
-                    try{
-                        contentCurrentMain = contentCurrentMain + list.get(i - j) + " ";
-                    }
-                    catch(Exception e){
-                        e.printStackTrace();
-                    }
-                }
-                while(!patternFinalDot().matcher(list.get(i)).matches()
-                        && !patternTwoFinalDot().matcher(list.get(i)).matches()
-                        && !isoSupportFindMethods.existEnumeration(list.get(i + 1))){
-                    try{
-                        contentCurrentMain = contentCurrentMain + list.get(i) + " ";
-                        i++;
-                    }
-                    catch(Exception e){
-                        e.printStackTrace();
-                    }
-
-                }
-                contentCurrentMain = contentCurrentMain + list.get(i);
-                MainSentence currentMainSentence = new MainSentence(contentCurrentMain, "A", idStandard);
-                currentMainSentence = estimateReliability(currentMainSentence);
-                int idCurrentMainSentence = firstFilterService.addMainSentence(currentMainSentence);
-                if(isoSupportFindMethods.existEnumeration(list.get(i + 1))){
-                    i= isoSupportFindMethods.enumerationABC(list, i + 1, firstFilterService, idCurrentMainSentence);
-                }
             }
         }
     }
