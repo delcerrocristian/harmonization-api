@@ -1,7 +1,7 @@
 .idea
 /bin
 temp
-target
+target/
 .settings
 .project
 *.iml
