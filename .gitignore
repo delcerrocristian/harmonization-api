@@ -1,0 +1,7 @@
+.idea
+/bin
+temp
+target
+.settings
+.project
+*.iml
