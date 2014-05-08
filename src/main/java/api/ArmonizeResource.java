@@ -31,7 +31,7 @@ public class ArmonizeResource implements PathFiles {
     }
 
     @Produces(MediaType.APPLICATION_JSON)
-    @POST
+   /* @POST
     public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("process") String typeProcess) throws Exception {
         if (stream == null || name == null || !correctTypeProcess(typeProcess)) {
             return Response.status(400).build();
@@ -42,14 +42,30 @@ public class ArmonizeResource implements PathFiles {
 
         FullProcessDocumentImp fullProcessDocumentImp = new FullProcessDocumentImp();
         fullProcessDocumentImp.start(inputFile, idStandard);
-        if(typeProcess.equals("unassisted")){
+        if (typeProcess.equals("unassisted")) {
             firstFilterService.allMainSentenceAsProcessed(idStandard);
         }
 
         return Response.ok(idStandard).build(); //200
+    } */
+
+    @POST
+    public Response uploadFile(InputStream stream, @QueryParam("name") String name) throws Exception {
+        if (stream == null || name == null) {
+            return Response.status(400).build();
+        }
+
+        File inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
+        int idStandard = firstFilterService.createStandard(name);
+
+        FullProcessDocumentImp fullProcessDocumentImp = new FullProcessDocumentImp();
+        fullProcessDocumentImp.start(inputFile, idStandard);
+
+        return Response.ok(idStandard).build(); //200
     }
 
-    @Path("/standard")
+
+  /*  @Path("/standard")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response setStandard(Standard standard) throws SQLException {
@@ -58,9 +74,9 @@ public class ArmonizeResource implements PathFiles {
 
 
         return Response.status(Response.Status.CREATED).build();
-    }
+    } */
 
-    @Path("/standard")
+   /* @Path("/standard")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStandard(@QueryParam("id") int id) throws SQLException {
@@ -68,18 +84,18 @@ public class ArmonizeResource implements PathFiles {
         Standard standard = standardDao.read(id);
 
         return Response.ok(standard).build();
-    }
+    } */
 
-    @Path("/standard/all")
+ /*   @Path("/standard/all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllStandards() throws SQLException {
         ArrayList<Standard> allStandards = firstFilterService.readAllStandards();
 
         return Response.ok(allStandards).build();
-    }
+    }  */
 
-    @Path("/standard")
+  /*  @Path("/standard")
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteStandard(@QueryParam("id") int id) throws SQLException {
@@ -87,27 +103,27 @@ public class ArmonizeResource implements PathFiles {
         standardDao.delete(id);
 
         return Response.noContent().build();
-    }
+    }  */
 
-    @Path("/standard/main/all")
+    /*@Path("/standard/main/all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllMainSentenceByStandard(@QueryParam("id") int id) throws SQLException {
         ArrayList<MainSentence> allMainSentencesByStandard = firstFilterService.readAllMainSentencesByStandard(id);
 
         return Response.ok(allMainSentencesByStandard).build();
-    }
+    } */
 
-    @Path("/standard/main/enum/all")
+    /*@Path("/standard/main/enum/all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllEnumSentenceByMainSentence(@QueryParam("id") int id) throws SQLException {
         ArrayList<EnumSentence> allEnumSentenceByMainSentence = firstFilterService.readAllEnumSentencesByMainSentence(id);
 
         return Response.ok(allEnumSentenceByMainSentence).build();
-    }
+    }  */
 
-    @Path("/standard/response")
+    /*@Path("/standard/response")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResponse(@QueryParam("id") int id) throws SQLException {
@@ -124,15 +140,15 @@ public class ArmonizeResource implements PathFiles {
         }
 
         return Response.ok(responseMainSentenceArrayList).build();
-    }
+    }  */
 
-    private boolean correctTypeProcess(String typeProcess) {
+    /*private boolean correctTypeProcess(String typeProcess) {
         if(typeProcess != null) {
             if (typeProcess.equals("assisted") || typeProcess.equals("mixed") || typeProcess.equals("unassisted")) {
                 return true;
             }
         }
         return false;
-    }
+    }*/
 
 }

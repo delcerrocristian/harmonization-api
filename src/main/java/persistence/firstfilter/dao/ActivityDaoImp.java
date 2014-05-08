@@ -72,19 +72,19 @@ public class ActivityDaoImp implements ActivityDao{
     }
 
     @Override
-    public int readByName(String name) {
+    public int readIdByNameAndProcess(String name, int process) {
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         PreparedStatement preparedStatement;
         int idActivity = -1;
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("select * from activity where name=?");
-            preparedStatement.setString(1,name);
+                    ("select * from activity where name=? and process=?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, process);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null){
-                resultSet.next();
+            if(resultSet.next()){
                 idActivity = resultSet.getInt("id");
             }
 

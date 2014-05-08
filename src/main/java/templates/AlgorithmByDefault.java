@@ -19,11 +19,10 @@ public class AlgorithmByDefault {
     private int idStandard;
     private FirstFilterService firstFilterService;
     private String pattern;
-
-
-    IsoSupportFindMethods isoSupportFindMethods;
+    private IsoSupportFindMethods isoSupportFindMethods;
 
     AlgorithmByDefault(ArrayList<String> list, int idStandard, FirstFilterService firstFilterService, String pattern) {
+        isoSupportFindMethods = new IsoSupportFindMethods();
         this.list = list;
         this.idStandard = idStandard;
         this.firstFilterService = firstFilterService;
@@ -87,7 +86,8 @@ public class AlgorithmByDefault {
                 persistence.firstfilter.model.Process currentProcess = new Process();
                 currentProcess.setStandard(idStandard);
                 currentProcess.setName(findProcess(list, i-1));
-                int idProcess = firstFilterService.readIdProcessByName(currentProcess.getName());
+                int idProcess = firstFilterService.readIdProcessByNameAndStandard(currentProcess.getName()
+                        , idStandard);
                 if(idProcess == -1){
                     idProcess = firstFilterService.addProcess(currentProcess); /*Save process*/
                 }
@@ -96,14 +96,18 @@ public class AlgorithmByDefault {
                 Activity currentActivity = new Activity();
                 currentActivity.setProcess(idProcess);
 
+                int idActivity = -1;
                 if(!currentProcess.getName().equals("Not Found")) {
                     currentActivity.setName(findActivity(list, i-1));
+                    idActivity = firstFilterService.readIdActivityByNameAndProcess(currentActivity.getName()
+                            , idProcess);
+                    if(idActivity == -1) {
+                        idActivity = firstFilterService.addActivity(currentActivity); /*Save Activity*/
+                    }
                 }
                 else {
                     currentActivity.setName("Not Found");
                 }
-
-                int idActivity = firstFilterService.addActivity(currentActivity); /*Save Activity*/
 
                 if(isoSupportFindMethods.existEnumeration(list.get(i + 1))){
                     currentContentTask = isoSupportFindMethods.catEnumerationABC(list, i+1, currentContentTask);
@@ -111,7 +115,7 @@ public class AlgorithmByDefault {
                 }
                 //Complete task object with idProcess and idActivity
                 currentTask.setProcess(idProcess);
-                currentTask.setProcess(idActivity);
+                currentTask.setActivity(idActivity);
                 currentTask.setContent(currentContentTask);
                 firstFilterService.addTask(currentTask);  /*Save task*/
 

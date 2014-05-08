@@ -96,8 +96,8 @@ public class FirstFilterServiceImp implements FirstFilterService{
     }
 
     @Override
-    public int readIdActivityByName(String name) {
-        return activityDao.readByName(name);
+    public int readIdActivityByNameAndProcess(String name, int process) {
+        return activityDao.readIdByNameAndProcess(name, process);
     }
 
     @Override

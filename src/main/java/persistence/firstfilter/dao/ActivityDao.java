@@ -14,7 +14,7 @@ public interface ActivityDao {
 
     Activity read(int id);
 
-    int readByName(String name);
+    int readIdByNameAndProcess(String name, int process);
 
     void update(Activity activity);
 

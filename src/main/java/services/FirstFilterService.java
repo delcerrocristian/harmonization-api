@@ -39,7 +39,7 @@ public interface FirstFilterService {
 
     ArrayList<Activity> readAllActivityByProcess(int id);
 
-    int readIdActivityByName(String name);
+    int readIdActivityByNameAndProcess(String name, int process);
 
     int addTask(Task task);
 

@@ -15,7 +15,7 @@ public class DataBaseConnection {
 
         try {
             String url = "jdbc:mysql://localhost/";
-            String dataBaseName = "FirstFilter3.0";
+            String dataBaseName = "FirstFilter4.0";
             String userName = "root";
             String password = "root";
 

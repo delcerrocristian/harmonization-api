@@ -85,13 +85,12 @@ public class ProcessDaoImp implements ProcessDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet != null){
-                resultSet.next();
+            if(resultSet.next()) {
                 idProcess = resultSet.getInt("id");
             }
 
         } catch (SQLException e) {
-            System.out.println("SQLException happened executing select all process");
+            System.out.println("SQLException happened executing select process by Name and Standard");
         }finally{
             dataBaseConnection.close();
         }
