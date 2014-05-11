@@ -98,9 +98,9 @@ public class AlgorithmByDefault {
 
                 int idActivity = -1;
                 if(!currentProcess.getName().equals("Not Found")) {
-                    currentActivity.setName(findActivity(list, i-1));
+                    currentActivity.setName(findActivity(list, i-1, currentProcess.getName()));
                     idActivity = firstFilterService.readIdActivityByNameAndProcess(currentActivity.getName()
-                            , idProcess);
+                            , currentActivity.getProcess());
                     if(idActivity == -1) {
                         idActivity = firstFilterService.addActivity(currentActivity); /*Save Activity*/
                     }

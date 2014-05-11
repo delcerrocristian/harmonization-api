@@ -1,6 +1,6 @@
 .idea
 /bin
-temp
+temp/
 target/
 .settings
 .project

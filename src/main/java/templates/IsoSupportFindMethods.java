@@ -62,7 +62,7 @@ public class IsoSupportFindMethods{
                     i++;
                 }
                 currentSentence = currentSentence + list.get(i);
-                sentence = "\n"+currentSentence;
+                sentence += "\n"+currentSentence;
                 count++;
                 i=existAnotherEnumeration(list, i+1, count) -1;
             }
@@ -72,20 +72,21 @@ public class IsoSupportFindMethods{
     }
 
     public int indexEnumerationABC(ArrayList<String> list, int index){
-        int count = 0;
+        int countAlphabet = 0;
+        int line = index;
 
         String stringFinalPattern = ".*(and|[;]|[.]|[:])$";
         Pattern finalPattern = Pattern.compile(stringFinalPattern);
         for(int i=index; (i<list.size() && i!=-1); i++){
-            if(list.get(i).charAt(0)== UtilsTemplates.alphabet[count]){
+            if(list.get(i).charAt(0)== UtilsTemplates.alphabet[countAlphabet]){
                 while(!(finalPattern.matcher(list.get(i))).matches()){
                     i++;
                 }
-                count++;
-                i=existAnotherEnumeration(list, i+1, count) -1;
+                line = i;
+                countAlphabet++;
+                i=existAnotherEnumeration(list, i+1, countAlphabet) -1;
             }
         }
-        return (index + count);
-
+        return line;
     }
 }

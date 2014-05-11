@@ -61,11 +61,12 @@ public class FindMethod {
         return process;
     }
 
-    public static String findActivity(ArrayList<String> list, int index) {
+    public static String findActivity(ArrayList<String> list, int index, String processName) {
         String activity = "Not Found";
         String patternActivity = "^[0-9].[0-9].[0-9].*";
 
         for(int i = index; i>0 && activity.equals("Not Found"); i --) {
+            if(list.get(i).equals(processName)) break;
             if(Pattern.compile(patternActivity).matcher(list.get(i)).matches()){
                 activity = list.get(i);
             }
