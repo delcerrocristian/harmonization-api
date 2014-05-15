@@ -1,6 +1,8 @@
 package api;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import pdfTrat.FullProcessDocument;
 import pdfTrat.FullProcessDocumentImp;
 import persistence.firstfilter.dao.StandardDao;
 import persistence.firstfilter.dao.StandardDaoImp;
@@ -16,6 +18,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static utils.UtilsFile.saveFileOnDirectory;
 
@@ -25,9 +28,11 @@ import static utils.UtilsFile.saveFileOnDirectory;
 public class ArmonizeResource implements PathFiles {
 
     private FirstFilterService firstFilterService;
+    private FullProcessDocument fullProcessDocument;
 
-    public ArmonizeResource(FirstFilterService firstFilterService) {
+    public ArmonizeResource(FirstFilterService firstFilterService, FullProcessDocument fullProcessDocument) {
         this.firstFilterService = firstFilterService;
+        this.fullProcessDocument = fullProcessDocument;
     }
 
     @Produces(MediaType.APPLICATION_JSON)
@@ -50,16 +55,15 @@ public class ArmonizeResource implements PathFiles {
     } */
 
     @POST
-    public Response uploadFile(InputStream stream, @QueryParam("name") String name) throws Exception {
-        if (stream == null || name == null) {
+    public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("patterns") List<String> patterns) throws Exception {
+        if (stream == null || name == null || patterns.isEmpty()) {
             return Response.status(400).build();
         }
 
         File inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
         int idStandard = firstFilterService.createStandard(name);
 
-        FullProcessDocumentImp fullProcessDocumentImp = new FullProcessDocumentImp();
-        fullProcessDocumentImp.start(inputFile, idStandard);
+        fullProcessDocument.start(inputFile, idStandard);
 
         return Response.ok(idStandard).build(); //200
     }

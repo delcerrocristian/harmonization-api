@@ -1,6 +1,7 @@
 package pdfTrat;
 
 import templates.IsoTemplate;
+import templates.IsoTemplateImp;
 import utils.PathFiles;
 
 import java.io.File;
@@ -10,22 +11,21 @@ import java.util.ArrayList;
  * Created by Cristian del Cerro.
  */
 
-public class FullProcessDocumentImp implements PathFiles {
+public class FullProcessDocumentImp implements PathFiles, FullProcessDocument {
 
     ArrayList<String> textList;
+    IsoTemplate isoTemplate;
 
-    public FullProcessDocumentImp(){
-
+    public FullProcessDocumentImp(IsoTemplate isoTemplate){
+        this.isoTemplate = isoTemplate;
     }
 
-    public void start(File inputFile, int idStandard)throws Exception{
+    public void start(File inputFile, int idStandard){
         ParsePDF parsePDF = new ParsePDF();
         parsePDF.pdfToText(inputFile, NAME_TXT_OUTPUT, TEMPORAL_DIRECTORY);
 
         textList = treatmentText();
-
-        IsoTemplate isoTemplate = new IsoTemplate();
-        isoTemplate.runTemplate(treatmentText(), idStandard);
+        isoTemplate .runTemplate(treatmentText(), idStandard);
     }
 
     private ArrayList<String> treatmentText(){
