@@ -7,6 +7,7 @@ import pdfTrat.FullProcessDocumentImp;
 import persistence.firstfilter.dao.StandardDao;
 import persistence.firstfilter.dao.StandardDaoImp;
 import persistence.firstfilter.model.Standard;
+import persistence.firstfilter.model.Task;
 import services.FirstFilterService;
 import utils.PathFiles;
 
@@ -15,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,39 +37,33 @@ public class ArmonizeResource implements PathFiles {
         this.fullProcessDocument = fullProcessDocument;
     }
 
-    @Produces(MediaType.APPLICATION_JSON)
-   /* @POST
-    public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("process") String typeProcess) throws Exception {
-        if (stream == null || name == null || !correctTypeProcess(typeProcess)) {
-            return Response.status(400).build();
-        }
-
-        File inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
-        int idStandard = firstFilterService.createStandard(name);
-
-        FullProcessDocumentImp fullProcessDocumentImp = new FullProcessDocumentImp();
-        fullProcessDocumentImp.start(inputFile, idStandard);
-        if (typeProcess.equals("unassisted")) {
-            firstFilterService.allMainSentenceAsProcessed(idStandard);
-        }
-
-        return Response.ok(idStandard).build(); //200
-    } */
-
     @POST
-    public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("patterns") List<String> patterns) throws Exception {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("patterns") List<String> patterns) {
         if (stream == null || name == null || patterns.isEmpty()) {
             return Response.status(400).build();
         }
 
-        File inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
+        File inputFile;
+        try {
+            inputFile = saveFileOnDirectory(stream, TEMPORAL_DIRECTORY);
+        } catch (IOException e) {
+            return Response.status(422).build();
+        }
         int idStandard = firstFilterService.createStandard(name);
 
-        fullProcessDocument.start(inputFile, idStandard);
+        fullProcessDocument.start(inputFile, idStandard, patterns);
 
         return Response.ok(idStandard).build(); //200
     }
 
+    @Path("/standard/response")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getResponse(@QueryParam("id") int id){
+        ArrayList<Task> allTasks = firstFilterService.readAllTaskByStandard(id);
+        return Response.ok(allTasks).build();
+    }
 
   /*  @Path("/standard")
     @POST

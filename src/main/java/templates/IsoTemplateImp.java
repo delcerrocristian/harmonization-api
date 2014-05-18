@@ -9,6 +9,7 @@ import services.FirstFilterService;
 import utils.PathFiles;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class IsoTemplateImp implements PathFiles, IsoTemplate {
 
@@ -19,10 +20,13 @@ public class IsoTemplateImp implements PathFiles, IsoTemplate {
     }
 
     @Override
-    public void runTemplate(ArrayList<String> listOfText, int idStandard) {
+    public void runTemplate(ArrayList<String> listOfText, int idStandard, List<String> patterns) {
         AlgorithmByDefault algorithmByDefault = new AlgorithmByDefault(listOfText, idStandard,
-                firstFilterService, "shall");
-        algorithmByDefault.find();
+                firstFilterService);
+        for(String pattern : patterns){
+            algorithmByDefault.find(pattern);
+        }
+
 
 
 

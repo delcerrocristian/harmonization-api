@@ -18,18 +18,17 @@ public class AlgorithmByDefault {
     private ArrayList<String> list;
     private int idStandard;
     private FirstFilterService firstFilterService;
-    private String pattern;
     private IsoSupportFindMethods isoSupportFindMethods;
 
-    AlgorithmByDefault(ArrayList<String> list, int idStandard, FirstFilterService firstFilterService, String pattern) {
+    AlgorithmByDefault(ArrayList<String> list, int idStandard, FirstFilterService firstFilterService) {
         isoSupportFindMethods = new IsoSupportFindMethods();
         this.list = list;
         this.idStandard = idStandard;
         this.firstFilterService = firstFilterService;
-        this.pattern = buildPattern(pattern);
     }
 
-    void find(){
+    void find(String currentPattern){
+        String pattern = buildPattern(currentPattern);
 
         int countFullSentence;
         String currentContentTask;

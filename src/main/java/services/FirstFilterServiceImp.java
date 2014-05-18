@@ -130,4 +130,9 @@ public class FirstFilterServiceImp implements FirstFilterService{
         return taskDao.readAllByActivity(id);
     }
 
+    @Override
+    public ArrayList<Task> readAllTaskByStandard(int id) {
+        return taskDao.readAllByStandard(id);
+    }
+
 }

@@ -21,4 +21,6 @@ public interface TaskDao {
 
     ArrayList<Task> readAllByActivity(int id);
 
+    ArrayList<Task> readAllByStandard(int id);
+
 }

@@ -121,9 +121,7 @@ public class TaskDaoImp implements TaskDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet != null){
-                resultSet.next();
-
+            while(resultSet.next()){
                 taskFromDB = new Task(resultSet.getInt("id"), resultSet.getString("content"),
                         resultSet.getInt("process"), resultSet.getInt("activity"),
                         resultSet.getInt("is_processed"));
@@ -150,9 +148,34 @@ public class TaskDaoImp implements TaskDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet != null){
-                resultSet.next();
+            while(resultSet.next()){
+                taskFromDB = new Task(resultSet.getInt("id"), resultSet.getString("content"),
+                        resultSet.getInt("process"), resultSet.getInt("activity"),
+                        resultSet.getInt("is_processed"));
+                allTasks.add(taskFromDB);
+            }
 
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select all tasks");
+        }finally{
+            dataBaseConnection.close();
+        }
+        return allTasks;
+    }
+
+    @Override
+    public ArrayList<Task> readAllByStandard(int id) {
+        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        PreparedStatement preparedStatement;
+        Task taskFromDB;
+        ArrayList<Task> allTasks = new ArrayList<>();
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("select * from task where process in (select id from process where standard="+id+")");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
                 taskFromDB = new Task(resultSet.getInt("id"), resultSet.getString("content"),
                         resultSet.getInt("process"), resultSet.getInt("activity"),
                         resultSet.getInt("is_processed"));

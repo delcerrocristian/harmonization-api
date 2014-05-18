@@ -52,4 +52,6 @@ public interface FirstFilterService {
     ArrayList<Task> readAllTaskByProcess(int id);
 
     ArrayList<Task> readAllTaskByActivity(int id);
+
+    ArrayList<Task> readAllTaskByStandard(int id);
 }
