@@ -1,14 +1,14 @@
-package templates;
+package templates.iso;
 
-import persistence.firstfilter.model.*;
-import persistence.firstfilter.model.Process;
-import services.FirstFilterService;
+import persistence.firstfilter.iso.model.Activity;
+import persistence.firstfilter.iso.model.Process;
+import persistence.firstfilter.iso.model.Task;
+import services.iso.IsoService;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-import static templates.FindMethod.*;
-import static templates.FindMethod.patternTwoFinalDot;
+import static templates.iso.FindMethod.*;
+import static templates.iso.FindMethod.patternTwoFinalDot;
 
 /**
  * Created by spukyn on 4/05/14.
@@ -17,14 +17,14 @@ public class AlgorithmByDefault {
 
     private ArrayList<String> list;
     private int idStandard;
-    private FirstFilterService firstFilterService;
+    private IsoService isoService;
     private IsoSupportFindMethods isoSupportFindMethods;
 
-    AlgorithmByDefault(ArrayList<String> list, int idStandard, FirstFilterService firstFilterService) {
+    AlgorithmByDefault(ArrayList<String> list, int idStandard, IsoService isoService) {
         isoSupportFindMethods = new IsoSupportFindMethods();
         this.list = list;
         this.idStandard = idStandard;
-        this.firstFilterService = firstFilterService;
+        this.isoService = isoService;
     }
 
     void find(String currentPattern){
@@ -82,13 +82,13 @@ public class AlgorithmByDefault {
                 Task currentTask = new Task();
 
                 //PROCESS
-                persistence.firstfilter.model.Process currentProcess = new Process();
+                Process currentProcess = new Process();
                 currentProcess.setStandard(idStandard);
                 currentProcess.setName(findProcess(list, i-1));
-                int idProcess = firstFilterService.readIdProcessByNameAndStandard(currentProcess.getName()
+                int idProcess = isoService.readIdProcessByNameAndStandard(currentProcess.getName()
                         , idStandard);
                 if(idProcess == -1){
-                    idProcess = firstFilterService.addProcess(currentProcess); /*Save process*/
+                    idProcess = isoService.addProcess(currentProcess); /*Save process*/
                 }
 
                 //ACTIVITY
@@ -98,10 +98,10 @@ public class AlgorithmByDefault {
                 int idActivity = -1;
                 if(!currentProcess.getName().equals("Not Found")) {
                     currentActivity.setName(findActivity(list, i-1, currentProcess.getName()));
-                    idActivity = firstFilterService.readIdActivityByNameAndProcess(currentActivity.getName()
+                    idActivity = isoService.readIdActivityByNameAndProcess(currentActivity.getName()
                             , currentActivity.getProcess());
                     if(idActivity == -1) {
-                        idActivity = firstFilterService.addActivity(currentActivity); /*Save Activity*/
+                        idActivity = isoService.addActivity(currentActivity); /*Save Activity*/
                     }
                 }
                 else {
@@ -116,7 +116,7 @@ public class AlgorithmByDefault {
                 currentTask.setProcess(idProcess);
                 currentTask.setActivity(idActivity);
                 currentTask.setContent(currentContentTask);
-                firstFilterService.addTask(currentTask);  /*Save task*/
+                isoService.addTask(currentTask);  /*Save task*/
 
             }
         }

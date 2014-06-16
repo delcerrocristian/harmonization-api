@@ -1,7 +1,6 @@
 package pdfTrat;
 
-import templates.IsoTemplate;
-import templates.IsoTemplateImp;
+import templates.iso.IsoTemplate;
 import utils.PathFiles;
 
 import java.io.File;

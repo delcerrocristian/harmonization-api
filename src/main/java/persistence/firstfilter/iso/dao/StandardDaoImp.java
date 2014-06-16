@@ -1,7 +1,7 @@
-package persistence.firstfilter.dao;
+package persistence.firstfilter.iso.dao;
 
-import persistence.firstfilter.DataBaseConnection;
-import persistence.firstfilter.model.Standard;
+import persistence.firstfilter.dataBaseConnection.IsoDataBaseConnection;
+import persistence.firstfilter.iso.model.Standard;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,11 +15,11 @@ public class StandardDaoImp implements StandardDao {
 
     @Override
     public int create(Standard standard) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         int id= -1; //If finally return -1 means something bad happened
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("insert into standard (name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, standard.getName());
 
@@ -34,19 +34,19 @@ public class StandardDaoImp implements StandardDao {
             System.out.println("SQLException happened creating standard");
         }
         finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return id;
     }
 
     @Override
     public int create(String name) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         int id= -1; //If finally return -1 means something bad happened
 
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("insert into standard (name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, name);
 
@@ -60,18 +60,18 @@ public class StandardDaoImp implements StandardDao {
             System.out.println("SQLException happened creating standard");
         }
         finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return id;
     }
 
     @Override
     public Standard read(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Standard standardFromDB = null;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from standard where id=?");
             preparedStatement.setInt(1,id);
 
@@ -87,7 +87,7 @@ public class StandardDaoImp implements StandardDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened reading standard");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return standardFromDB;
     }
@@ -98,10 +98,10 @@ public class StandardDaoImp implements StandardDao {
 
     @Override
     public void delete(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("delete from standard where id=?");
             preparedStatement.setInt(1,id);
 
@@ -110,18 +110,18 @@ public class StandardDaoImp implements StandardDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened deleting standard");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
     }
 
     @Override
     public ArrayList<Standard> readAll() {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Standard standardFromDB;
         ArrayList<Standard> allStandards = new ArrayList<>();
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from standard");
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -136,7 +136,7 @@ public class StandardDaoImp implements StandardDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened reading all standard");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return allStandards;
     }

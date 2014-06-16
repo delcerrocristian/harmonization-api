@@ -1,4 +1,4 @@
-package persistence.firstfilter.model;
+package persistence.firstfilter.iso.model;
 
 /**
  * Created by Cristian del Cerro.

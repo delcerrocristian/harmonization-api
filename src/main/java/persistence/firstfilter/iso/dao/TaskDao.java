@@ -1,6 +1,6 @@
-package persistence.firstfilter.dao;
+package persistence.firstfilter.iso.dao;
 
-import persistence.firstfilter.model.Task;
+import persistence.firstfilter.iso.model.Task;
 
 import java.util.ArrayList;
 

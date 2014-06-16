@@ -1,14 +1,9 @@
 package api;
 
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import pdfTrat.FullProcessDocument;
-import pdfTrat.FullProcessDocumentImp;
-import persistence.firstfilter.dao.StandardDao;
-import persistence.firstfilter.dao.StandardDaoImp;
-import persistence.firstfilter.model.Standard;
-import persistence.firstfilter.model.Task;
-import services.FirstFilterService;
+import persistence.firstfilter.iso.model.Task;
+import services.iso.IsoService;
 import utils.PathFiles;
 
 import javax.ws.rs.*;
@@ -18,7 +13,6 @@ import javax.ws.rs.core.Response;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,11 +23,11 @@ import static utils.UtilsFile.saveFileOnDirectory;
 
 public class ArmonizeResource implements PathFiles {
 
-    private FirstFilterService firstFilterService;
+    private IsoService isoService;
     private FullProcessDocument fullProcessDocument;
 
-    public ArmonizeResource(FirstFilterService firstFilterService, FullProcessDocument fullProcessDocument) {
-        this.firstFilterService = firstFilterService;
+    public ArmonizeResource(IsoService isoService, FullProcessDocument fullProcessDocument) {
+        this.isoService = isoService;
         this.fullProcessDocument = fullProcessDocument;
     }
 
@@ -50,7 +44,7 @@ public class ArmonizeResource implements PathFiles {
         } catch (IOException e) {
             return Response.status(422).build();
         }
-        int idStandard = firstFilterService.createStandard(name);
+        int idStandard = isoService.createStandard(name);
 
         fullProcessDocument.start(inputFile, idStandard, patterns);
 
@@ -61,7 +55,7 @@ public class ArmonizeResource implements PathFiles {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResponse(@QueryParam("id") int id){
-        ArrayList<Task> allTasks = firstFilterService.readAllTaskByStandard(id);
+        ArrayList<Task> allTasks = isoService.readAllTaskByStandard(id);
         return Response.ok(allTasks).build();
     }
 

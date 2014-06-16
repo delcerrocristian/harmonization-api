@@ -1,8 +1,7 @@
-package persistence.firstfilter.dao;
+package persistence.firstfilter.iso.dao;
 
-import persistence.firstfilter.DataBaseConnection;
-import persistence.firstfilter.model.*;
-import persistence.firstfilter.model.Process;
+import persistence.firstfilter.dataBaseConnection.IsoDataBaseConnection;
+import persistence.firstfilter.iso.model.Process;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,12 +16,12 @@ public class ProcessDaoImp implements ProcessDao {
 
     @Override
     public int create(Process process) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         int id = -1;
 
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("insert into process (name, standard) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, process.getName());
             preparedStatement.setInt(2, process.getStandard());
@@ -38,18 +37,18 @@ public class ProcessDaoImp implements ProcessDao {
             System.out.println("SQLException happened executing create to process");
         }
         finally {
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return id;
     }
 
     @Override
     public Process read(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Process processFromDB = null;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from process where id=?");
             preparedStatement.setInt(1,id);
 
@@ -67,18 +66,18 @@ public class ProcessDaoImp implements ProcessDao {
             System.out.println("SQLException happened executing select to process");
 
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return processFromDB;
     }
 
     @Override
     public int readByNameAndStandard(String name, int idStandard) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         int idProcess = -1;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from process where name=? and standard=?");
             preparedStatement.setString(1, name);
             preparedStatement.setInt(2, idStandard);
@@ -92,7 +91,7 @@ public class ProcessDaoImp implements ProcessDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened executing select process by Name and Standard");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return idProcess;
     }
@@ -104,10 +103,10 @@ public class ProcessDaoImp implements ProcessDao {
 
     @Override
     public void delete(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("delete from process where id=?");
             preparedStatement.setInt(1,id);
 
@@ -116,18 +115,18 @@ public class ProcessDaoImp implements ProcessDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened executing delete to process");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
     }
 
     @Override
     public ArrayList<Process> readAllByStandard(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Process processFromDB;
         ArrayList<Process> allProcess = new ArrayList<>();
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from process where standard="+id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -143,7 +142,7 @@ public class ProcessDaoImp implements ProcessDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened executing select all process");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return allProcess;
     }

@@ -1,8 +1,7 @@
-package persistence.firstfilter.dao;
+package persistence.firstfilter.iso.dao;
 
-import persistence.firstfilter.model.Process;
+import persistence.firstfilter.iso.model.Process;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**

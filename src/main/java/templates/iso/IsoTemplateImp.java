@@ -1,11 +1,10 @@
-package templates;
+package templates.iso;
 
 /**
  * Created by Cristian del Cerro.
  */
 
-import config.FirstFilterConfiguration;
-import services.FirstFilterService;
+import services.iso.IsoService;
 import utils.PathFiles;
 
 import java.util.ArrayList;
@@ -13,16 +12,16 @@ import java.util.List;
 
 public class IsoTemplateImp implements PathFiles, IsoTemplate {
 
-    FirstFilterService firstFilterService;
+    IsoService isoService;
 
-    public IsoTemplateImp(FirstFilterService firstFilterService) {
-        this.firstFilterService = firstFilterService;
+    public IsoTemplateImp(IsoService isoService) {
+        this.isoService = isoService;
     }
 
     @Override
     public void runTemplate(ArrayList<String> listOfText, int idStandard, List<String> patterns) {
         AlgorithmByDefault algorithmByDefault = new AlgorithmByDefault(listOfText, idStandard,
-                firstFilterService);
+                isoService);
         for(String pattern : patterns){
             algorithmByDefault.find(pattern);
         }

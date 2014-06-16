@@ -1,15 +1,16 @@
-package services;
+package services.iso;
 
-import persistence.firstfilter.model.*;
-import persistence.firstfilter.model.Process;
+import persistence.firstfilter.iso.model.Activity;
+import persistence.firstfilter.iso.model.Process;
+import persistence.firstfilter.iso.model.Standard;
+import persistence.firstfilter.iso.model.Task;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
  * Created by Cristian del Cerro.
  */
-public interface FirstFilterService {
+public interface IsoService {
 
     int createStandard (Standard standard);
 

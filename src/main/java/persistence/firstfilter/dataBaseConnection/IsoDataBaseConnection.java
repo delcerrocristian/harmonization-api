@@ -1,4 +1,4 @@
-package persistence.firstfilter;
+package persistence.firstfilter.dataBaseConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,10 +8,10 @@ import java.sql.SQLException;
 /**
  * Created by Cristian del Cerro.
  */
-public class DataBaseConnection {
+public class IsoDataBaseConnection implements DataBaseConnection{
     private Connection dataBase;
 
-    public DataBaseConnection() {
+    public IsoDataBaseConnection() {
 
         try {
             String url = "jdbc:mysql://localhost/";
@@ -26,6 +26,7 @@ public class DataBaseConnection {
         }
     }
 
+    @Override
     public void close(){
         try {
             synchronized (this) {
@@ -37,6 +38,7 @@ public class DataBaseConnection {
         }
     }
 
+    @Override
     public PreparedStatement preparedStatement(String sql){
         try {
             return this.dataBase.prepareStatement(sql);
@@ -47,6 +49,7 @@ public class DataBaseConnection {
         return null;
     }
 
+    @Override
     public PreparedStatement preparedStatement(String sql, int option){
         try {
             return this.dataBase.prepareStatement(sql, option);

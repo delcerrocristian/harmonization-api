@@ -1,7 +1,7 @@
-package persistence.firstfilter.dao;
+package persistence.firstfilter.iso.dao;
 
-import persistence.firstfilter.DataBaseConnection;
-import persistence.firstfilter.model.*;
+import persistence.firstfilter.dataBaseConnection.IsoDataBaseConnection;
+import persistence.firstfilter.iso.model.Activity;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,12 +16,12 @@ public class ActivityDaoImp implements ActivityDao{
 
     @Override
     public int create(Activity activity) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         int id = -1;
 
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("insert into activity (name, process) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, activity.getName());
             preparedStatement.setInt(2, activity.getProcess());
@@ -37,18 +37,18 @@ public class ActivityDaoImp implements ActivityDao{
             System.out.println("SQLException happened executing create to activity");
         }
         finally {
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return id;
     }
 
     @Override
     public Activity read(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Activity activityFromDB = null;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from activity where id=?");
             preparedStatement.setInt(1,id);
 
@@ -66,18 +66,18 @@ public class ActivityDaoImp implements ActivityDao{
             System.out.println("SQLException happened executing select to activity");
 
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return activityFromDB;
     }
 
     @Override
     public int readIdByNameAndProcess(String name, int process) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         int idActivity = -1;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from activity where name=? and process=?");
             preparedStatement.setString(1, name);
             preparedStatement.setInt(2, process);
@@ -92,7 +92,7 @@ public class ActivityDaoImp implements ActivityDao{
             System.out.println("SQLException happened executing select to activity");
 
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return idActivity;
     }
@@ -104,10 +104,10 @@ public class ActivityDaoImp implements ActivityDao{
 
     @Override
     public void delete(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("delete from activity where id=?");
             preparedStatement.setInt(1,id);
 
@@ -116,18 +116,18 @@ public class ActivityDaoImp implements ActivityDao{
         } catch (SQLException e) {
             System.out.println("SQLException happened executing delete to activity");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
     }
 
     @Override
     public ArrayList<Activity> readAllByProcess(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Activity activityFromDB;
         ArrayList<Activity> allActivities = new ArrayList<>();
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from activity where process="+id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -143,7 +143,7 @@ public class ActivityDaoImp implements ActivityDao{
         } catch (SQLException e) {
             System.out.println("SQLException happened executing select all activities");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return allActivities;
     }

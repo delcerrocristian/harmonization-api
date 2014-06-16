@@ -1,24 +1,25 @@
-package services;
+package services.iso;
 
-import persistence.firstfilter.dao.*;
-import persistence.firstfilter.model.*;
-import persistence.firstfilter.model.Process;
+import persistence.firstfilter.iso.dao.*;
+import persistence.firstfilter.iso.model.Activity;
+import persistence.firstfilter.iso.model.Process;
+import persistence.firstfilter.iso.model.Standard;
+import persistence.firstfilter.iso.model.Task;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
  * Created by Cristian del Cerro.
  */
-public class FirstFilterServiceImp implements FirstFilterService{
+public class IsoServiceImp implements IsoService {
 
     StandardDao standardDao;
     ProcessDao processDao;
     ActivityDao activityDao;
     TaskDao taskDao;
 
-    public FirstFilterServiceImp(StandardDao standardDao, ProcessDao processDao, ActivityDao activityDao,
-                                 TaskDao taskDao) {
+    public IsoServiceImp(StandardDao standardDao, ProcessDao processDao, ActivityDao activityDao,
+                         TaskDao taskDao) {
         this.standardDao = standardDao;
         this.processDao = processDao;
         this.activityDao = activityDao;

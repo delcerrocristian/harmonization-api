@@ -4,8 +4,8 @@ import api.ArmonizeResource;
 import com.yammer.dropwizard.config.Configuration;
 import pdfTrat.FullProcessDocument;
 import pdfTrat.FullProcessDocumentImp;
-import services.FirstFilterService;
-import templates.IsoTemplateImp;
+import services.iso.IsoService;
+import templates.iso.IsoTemplateImp;
 
 
 public class ArmonizeConfiguration extends Configuration{
@@ -22,7 +22,7 @@ public class ArmonizeConfiguration extends Configuration{
         return new IsoTemplateImp(getFirstFilterService());
     }
 
-    private FirstFilterService getFirstFilterService(){
+    private IsoService getFirstFilterService(){
         FirstFilterConfiguration firstFilterConfiguration = new FirstFilterConfiguration();
         return firstFilterConfiguration.getFirstFilterService();
     }

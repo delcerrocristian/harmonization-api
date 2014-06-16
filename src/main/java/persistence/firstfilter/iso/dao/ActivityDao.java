@@ -1,7 +1,7 @@
-package persistence.firstfilter.dao;
+package persistence.firstfilter.iso.dao;
 
 
-import persistence.firstfilter.model.Activity;
+import persistence.firstfilter.iso.model.Activity;
 
 import java.util.ArrayList;
 

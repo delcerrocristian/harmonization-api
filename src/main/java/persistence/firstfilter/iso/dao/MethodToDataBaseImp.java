@@ -1,9 +1,8 @@
-package persistence.firstfilter.dao;
+package persistence.firstfilter.iso.dao;
 
-import persistence.firstfilter.DataBaseConnection;
+import persistence.firstfilter.dataBaseConnection.IsoDataBaseConnection;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -13,10 +12,10 @@ public class MethodToDataBaseImp implements MethodToDataBase {
 
     @Override
     public void allMainSentenceAsProcessed(int standard) throws SQLException{
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("update main_sentence set is_processed=1 where standard="+standard);
 
 
@@ -26,7 +25,7 @@ public class MethodToDataBaseImp implements MethodToDataBase {
 
         }
         finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
     }
 

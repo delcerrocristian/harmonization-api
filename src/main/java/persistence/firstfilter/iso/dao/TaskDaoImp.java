@@ -1,7 +1,7 @@
-package persistence.firstfilter.dao;
+package persistence.firstfilter.iso.dao;
 
-import persistence.firstfilter.DataBaseConnection;
-import persistence.firstfilter.model.*;
+import persistence.firstfilter.dataBaseConnection.IsoDataBaseConnection;
+import persistence.firstfilter.iso.model.Task;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,12 +14,12 @@ import java.util.ArrayList;
 public class TaskDaoImp implements TaskDao {
     @Override
     public int create(Task task) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         int id = -1;
 
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("insert into task (content, process, activity) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, task.getContent());
             preparedStatement.setInt(2, task.getProcess());
@@ -36,18 +36,18 @@ public class TaskDaoImp implements TaskDao {
             System.out.println("SQLException happened executing create to task");
         }
         finally {
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return id;
     }
 
     @Override
     public Task read(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Task taskFromDB = null;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from task where id=?");
             preparedStatement.setInt(1,id);
 
@@ -67,17 +67,17 @@ public class TaskDaoImp implements TaskDao {
             System.out.println("SQLException happened executing select to task");
 
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return taskFromDB;
     }
 
     @Override
     public void update(Task task) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     (buildSqlUpdateStatement(task));
 
 
@@ -87,16 +87,16 @@ public class TaskDaoImp implements TaskDao {
             System.out.println("SQLException happened executing updating task");
         }
         finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
     }
 
     @Override
     public void delete(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("delete from task where id=?");
             preparedStatement.setInt(1,id);
 
@@ -105,18 +105,18 @@ public class TaskDaoImp implements TaskDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened executing delete to task");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
     }
 
     @Override
     public ArrayList<Task> readAllByProcess(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Task taskFromDB;
         ArrayList<Task> allTasks = new ArrayList<>();
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from task where process="+id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -131,19 +131,19 @@ public class TaskDaoImp implements TaskDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened executing select all tasks");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return allTasks;
     }
 
     @Override
     public ArrayList<Task> readAllByActivity(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Task taskFromDB;
         ArrayList<Task> allTasks = new ArrayList<>();
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from task where activity="+id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -158,19 +158,19 @@ public class TaskDaoImp implements TaskDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened executing select all tasks");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return allTasks;
     }
 
     @Override
     public ArrayList<Task> readAllByStandard(int id) {
-        DataBaseConnection dataBaseConnection = new DataBaseConnection();
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         Task taskFromDB;
         ArrayList<Task> allTasks = new ArrayList<>();
         try {
-            preparedStatement = dataBaseConnection.preparedStatement
+            preparedStatement = isoDataBaseConnection.preparedStatement
                     ("select * from task where process in (select id from process where standard="+id+")");
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -185,7 +185,7 @@ public class TaskDaoImp implements TaskDao {
         } catch (SQLException e) {
             System.out.println("SQLException happened executing select all tasks");
         }finally{
-            dataBaseConnection.close();
+            isoDataBaseConnection.close();
         }
         return allTasks;
     }

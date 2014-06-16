@@ -1,16 +1,16 @@
 package config;
 
-import persistence.firstfilter.dao.*;
-import services.FirstFilterService;
-import services.FirstFilterServiceImp;
+import persistence.firstfilter.iso.dao.*;
+import services.iso.IsoService;
+import services.iso.IsoServiceImp;
 
 /**
  * Created by spukyn on 6/05/14.
  */
 public class FirstFilterConfiguration {
 
-    public FirstFilterService getFirstFilterService() {
-        return new FirstFilterServiceImp(getStandardDao(), getProcessDao(), getActivityDao(), getTaskDao());
+    public IsoService getFirstFilterService() {
+        return new IsoServiceImp(getStandardDao(), getProcessDao(), getActivityDao(), getTaskDao());
     }
 
     private StandardDao getStandardDao() {
