@@ -1,6 +1,7 @@
 package api;
 
 
+import pdfTrat.CmmiFullProcessDocument;
 import pdfTrat.FullProcessDocument;
 import persistence.firstfilter.iso.model.Task;
 import services.iso.IsoService;
@@ -35,9 +36,9 @@ public class ArmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("type") String type,
                                @QueryParam("patterns") List<String> patterns) {
-        if (!checkParamsUploadFile(stream, type, name, patterns)) {
+        /*if (!checkParamsUploadFile(stream, type, name, patterns)) {
             return Response.status(400).build();
-        }
+        }*/
 
         File inputFile;
         try {
@@ -46,11 +47,15 @@ public class ArmonizeResource implements PathFiles {
             return Response.status(422).build();
         }
 
-        int idStandard; idStandard = type.equals("iso") ? isoService.createStandard(name) : null;
+        //int idStandard; idStandard = type.equals("iso") ? isoService.createStandard(name) : null;
 
-        fullProcessDocument.start(inputFile, idStandard, patterns);
+        //fullProcessDocument.start(inputFile, idStandard, patterns);
+        //fullProcessDocument.start(inputFile,3,patterns);
 
-        return Response.ok(idStandard).build(); //200
+        CmmiFullProcessDocument cmmiFullProcessDocument = new CmmiFullProcessDocument();
+        cmmiFullProcessDocument.start(inputFile, 3, patterns);
+        //return Response.ok(idStandard).build(); //200
+        return Response.ok(3).build();
     }
 
     private boolean checkParamsUploadFile(InputStream stream, String type, String name, List<String> patterns){
