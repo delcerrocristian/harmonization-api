@@ -33,8 +33,9 @@ public class ArmonizeResource implements PathFiles {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("patterns") List<String> patterns) {
-        if (stream == null || name == null || patterns.isEmpty()) {
+    public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("type") String type,
+                               @QueryParam("patterns") List<String> patterns) {
+        if (!checkParamsUploadFile(stream, type, name, patterns)) {
             return Response.status(400).build();
         }
 
@@ -44,11 +45,19 @@ public class ArmonizeResource implements PathFiles {
         } catch (IOException e) {
             return Response.status(422).build();
         }
-        int idStandard = isoService.createStandard(name);
+
+        int idStandard; idStandard = type.equals("iso") ? isoService.createStandard(name) : null;
 
         fullProcessDocument.start(inputFile, idStandard, patterns);
 
         return Response.ok(idStandard).build(); //200
+    }
+
+    private boolean checkParamsUploadFile(InputStream stream, String type, String name, List<String> patterns){
+        return stream != null &&
+                name != null  &&
+                !patterns.isEmpty() &&
+                type.equals("iso") && type.equals("cmmi");
     }
 
     @Path("/standard/response")
