@@ -1,5 +1,7 @@
 package persistence.firstfilter.cmmi.dao;
 
+import persistence.firstfilter.cmmi.model.SpecificPractice;
+
 import java.util.ArrayList;
 
 /**
@@ -7,13 +9,13 @@ import java.util.ArrayList;
  */
 public interface SpecificPracticeDao {
 
-    void create(SpecificPracticeDao specificPracticeDao);
+    int create(SpecificPractice specificPractice);
 
-    SpecificPracticeDao read(int id);
+    SpecificPractice read(int id);
 
-    void update(SpecificPracticeDao specificPracticeDao);
+    void update(SpecificPractice specificPractice);
 
     void delete(int id);
 
-    ArrayList<SpecificPracticeDao> readAllBySpecificGoal(int specificGoal);
+    ArrayList<SpecificPractice> readAllBySpecificGoal(int specificGoal);
 }

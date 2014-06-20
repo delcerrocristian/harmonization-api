@@ -5,10 +5,21 @@ package persistence.firstfilter.cmmi.model;
  */
 public class SpecificGoal {
 
-    int id;
-    String title;
-    String description;
-    int process;
+    private int id;
+    private String title;
+    private String description;
+    private int process;
+
+    public SpecificGoal(){
+
+    }
+
+    public SpecificGoal(int id, String title, String description, int process) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.process = process;
+    }
 
     public int getId() {
         return id;

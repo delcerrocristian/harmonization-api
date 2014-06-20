@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public interface WorkProductDao {
 
-    void create(WorkProduct workProduct);
+    int create(WorkProduct workProduct);
 
     WorkProduct read(int id);
 

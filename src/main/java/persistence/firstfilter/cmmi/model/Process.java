@@ -5,12 +5,26 @@ package persistence.firstfilter.cmmi.model;
  */
 public class Process {
 
-    int id;
-    String name;
-    String maturityLevel;
-    String areaCategory;
-    String purposeStatement;
-    int standard;
+    private int id;
+    private String name;
+    private String areaCategory;
+    private String maturityLevel;
+    private String purposeStatement;
+    private int standard;
+
+    public Process() {
+
+    }
+
+    public Process(int id, String name, String areaCategory, String maturityLevel,
+                   String purposeStatement, int standard) {
+        this.id = id;
+        this.name = name;
+        this.areaCategory = areaCategory;
+        this.maturityLevel = maturityLevel;
+        this.purposeStatement = purposeStatement;
+        this.standard = standard;
+    }
 
     public int getId() {
         return id;

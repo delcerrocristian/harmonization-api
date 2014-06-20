@@ -1,5 +1,7 @@
 package pdfTrat;
 
+import templates.cmmi.CmmiTemplate;
+import templates.cmmi.CmmiTemplateImp;
 import utils.PathFiles;
 
 import java.io.File;
@@ -16,7 +18,8 @@ public class CmmiFullProcessDocument implements FullProcessDocument, PathFiles {
         parsePDF.pdfToText(inputFile, NAME_TXT_OUTPUT, TEMPORAL_DIRECTORY);
 
         ArrayList<String> textList = treatmentText();
-
+        CmmiTemplate cmmiTemplate = new CmmiTemplateImp();
+        cmmiTemplate.runTemplate(textList,2);
     }
 
     private ArrayList<String> treatmentText(){

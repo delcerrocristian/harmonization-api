@@ -5,8 +5,17 @@ package persistence.firstfilter.cmmi.model;
  */
 public class Standard {
 
-    int id;
-    String name;
+    private int id;
+    private String name;
+
+    public Standard() {
+
+    }
+
+    public Standard(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public int getId() {
         return id;

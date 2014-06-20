@@ -5,9 +5,19 @@ package persistence.firstfilter.cmmi.model;
  */
 public class WorkProduct {
 
-    int id;
-    String description;
-    int specificPractice;
+    private int id;
+    private String description;
+    private int specificPractice;
+
+    public WorkProduct() {
+
+    }
+
+    public WorkProduct(int id, String description, int specificPractice) {
+        this.id = id;
+        this.description = description;
+        this.specificPractice = specificPractice;
+    }
 
     public String getDescription() {
         return description;

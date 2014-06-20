@@ -5,10 +5,21 @@ package persistence.firstfilter.cmmi.model;
  */
 public class SpecificPractice {
 
-    int id;
-    String title;
-    String description;
-    int specificGoal;
+    private int id;
+    private String title;
+    private String description;
+    private int specificGoal;
+
+    public SpecificPractice() {
+
+    }
+
+    public SpecificPractice(int id, String title, String description, int specificGoal) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.specificGoal = specificGoal;
+    }
 
     public int getId() {
         return id;

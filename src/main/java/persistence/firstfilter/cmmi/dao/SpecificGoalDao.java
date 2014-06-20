@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public interface SpecificGoalDao {
 
-    void create(SpecificGoal specificGoal);
+    int create(SpecificGoal specificGoal);
 
     SpecificGoal read(int id);
 
