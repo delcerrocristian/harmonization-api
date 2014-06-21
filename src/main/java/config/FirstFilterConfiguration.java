@@ -5,7 +5,7 @@ import services.iso.IsoService;
 import services.iso.IsoServiceImp;
 
 /**
- * Created by spukyn on 6/05/14.
+ * Created by Cristian del Cerro
  */
 public class FirstFilterConfiguration {
 

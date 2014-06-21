@@ -7,11 +7,15 @@ import java.util.regex.Pattern;
  */
 public class SearchPatterns {
 
-    public static boolean findStartProcessAreas(String sentence){
+    public static boolean searchStartProcessAreas(String sentence){
         return Pattern.compile(".*by acronym: $").matcher(sentence).matches();
     }
 
-    public static boolean findEndProcessAreas(String sentence){
+    public static boolean searchEndProcessAreas(String sentence){
+        return Pattern.compile(".*Purpose Statements.*").matcher(sentence).matches();
+    }
+
+    public static boolean searchProcessArea(String sentence){
         return Pattern.compile(".*Purpose Statements.*").matcher(sentence).matches();
     }
 }

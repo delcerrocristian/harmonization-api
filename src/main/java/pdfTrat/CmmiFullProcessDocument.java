@@ -12,14 +12,20 @@ import java.util.List;
  * Created by Cristian del Cerro
  */
 public class CmmiFullProcessDocument implements FullProcessDocument, PathFiles {
+
+    CmmiTemplate cmmiTemplate;
+
+    public CmmiFullProcessDocument(CmmiTemplate cmmiTemplate) {
+        this.cmmiTemplate = cmmiTemplate;
+    }
+
     @Override
     public void start(File inputFile, int idStandard, List<String> patterns){
         ParsePDF parsePDF = new ParsePDF();
         parsePDF.pdfToText(inputFile, NAME_TXT_OUTPUT, TEMPORAL_DIRECTORY);
 
         ArrayList<String> textList = treatmentText();
-        CmmiTemplate cmmiTemplate = new CmmiTemplateImp();
-        cmmiTemplate.runTemplate(textList,2);
+        cmmiTemplate.runTemplate(textList,idStandard);
     }
 
     private ArrayList<String> treatmentText(){
