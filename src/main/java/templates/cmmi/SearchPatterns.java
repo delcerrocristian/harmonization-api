@@ -25,7 +25,7 @@ public class SearchPatterns {
     }
 
     public static boolean searchStartListGoals(String sentence) {
-        return Pattern.compile(".*Specific Goal and Practice Summary .*").matcher(sentence).matches();
+        return Pattern.compile(".*Specific Goal and Practice Summary.*").matcher(sentence).matches();
     }
 
     public static boolean searchStartSpecificsGoal(String sentence) {
@@ -52,5 +52,11 @@ public class SearchPatterns {
         return Pattern.compile(".*Example Work Products.*").matcher(sentence).matches();
     }
 
+    public static boolean numberStartSentence(String sentence) {
+        return Pattern.compile("^[0-9].*").matcher(sentence).matches();
+    }
 
+    public static boolean blankCharacterStartSentence(String sentence) {
+        return Pattern.compile("^ .*").matcher(sentence).matches();
+    }
 }

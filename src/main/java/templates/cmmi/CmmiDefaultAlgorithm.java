@@ -55,7 +55,7 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
         String[] sentencesToCleanSplit;
         for(int i=0; i<processArea.size(); i++){
             sentencesToCleanSplit = processArea.get(i).split("\\(");
-            processArea.set(i, sentencesToCleanSplit[0].substring(0, sentencesToCleanSplit[0].length()-1).toUpperCase());
+            processArea.set(i, sentencesToCleanSplit[0].substring(0, sentencesToCleanSplit[0].length()).toUpperCase());
         }
     }
 
@@ -90,7 +90,7 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
                 }
                 currentProcess.setPurposeStatement(purposeStatement);
                 int idProcess = cmmiService.createProcess(currentProcess);
-                currentIndex = findSpecificGoals(process, listOfText, i, idProcess);
+                currentIndex = findSpecificGoals(process, listOfText, index, idProcess);
                 break;
             }
 
@@ -104,9 +104,9 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
         boolean open = false;
         int currentIndex = index;
 
-        /*while(!searchThisPattern(process, listOfText.get(currentIndex))) {
+        while(!searchThisPattern(process, listOfText.get(currentIndex))) {
             currentIndex++;
-        }*/
+        }
 
         for(int i = currentIndex; i<listOfText.size(); i++) {
             if(!open && searchStartListGoals(listOfText.get(i))) {
@@ -123,19 +123,21 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
 
         int idSpecificGoal=-1;
 
+        int indexElementGoal = 0;
         for(String elementGoal : listGoals){
+            indexElementGoal=currentIndex;
             if(isGoal(elementGoal)){
                 SpecificGoal specificGoal = new SpecificGoal();
                 specificGoal.setProcess(idProcess);
                 specificGoal.setTitle(elementGoal.substring(5));
                 String description= "";
-                for (int i = currentIndex; i < listOfText.size(); i++) {
-                    if(searchThisPattern(elementGoal, listOfText.get(i))){
+                for (int i = indexElementGoal; i < listOfText.size(); i++) {
+                    if(searchThisPattern(elementGoal.substring(0,elementGoal.length()-1), listOfText.get(i))){
                         i++;
                         for(int j=i ;j<listOfText.size();j++) {
                             description = description + listOfText.get(j) + " ";
                             if (searchFinalDot(listOfText.get(j))) {
-                                currentIndex = j;
+                                indexElementGoal = j;
                                 break;
                             }
                         }
@@ -151,16 +153,13 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
                 specificPractice.setSpecificGoal(idSpecificGoal);
                 specificPractice.setTitle(elementGoal.substring(7));
                 String description = "";
-                for(int i = currentIndex; i<listOfText.size(); i++) {
-                    if(searchThisPattern(elementGoal, listOfText.get(i))) {
-                        while (!searchFinalDot(listOfText.get(i))){
-                            i++;
-                        }
+                for(int i = indexElementGoal; i<listOfText.size(); i++) {
+                    if(searchThisPattern(elementGoal.substring(0,elementGoal.length()-1), listOfText.get(i))) {
                         i++;
                         for(int j=i;j<listOfText.size();j++) {
                             description = description + listOfText.get(j) + " ";
                             if (searchFinalDot(listOfText.get(j))) {
-                                currentIndex = j;
+                                indexElementGoal = j;
                                 break;
                             }
                         }
@@ -170,21 +169,38 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
                 specificPractice.setDescription(description);
                 idSpecificPractice = cmmiService.createSpecificPractice(specificPractice);
 
-                while(!searchStartWorkProduct(listOfText.get((currentIndex)))){
-                    currentIndex++;
+                while(!searchStartWorkProduct(listOfText.get((indexElementGoal)))){
+                    indexElementGoal++;
                 }
-                currentIndex++;
-                while(!searchEndWorkProduct(listOfText.get(currentIndex))) {
+                indexElementGoal++;
+                while(!searchEndWorkProduct(listOfText.get(indexElementGoal)) &&
+                        !isPractice(listOfText.get(indexElementGoal))) {
                     WorkProduct workProduct = new WorkProduct();
                     workProduct.setSpecificPractice(idSpecificPractice);
-                    workProduct.setDescription(listOfText.get(currentIndex).substring(3));
+                    String descriptionWorkProduct = listOfText.get(indexElementGoal).substring(3);
+                    indexElementGoal++;
+                    while(!searchEndWorkProduct(listOfText.get(indexElementGoal)) &&
+                            !numberStartSentence(listOfText.get(indexElementGoal)) &&
+                            !isPractice(listOfText.get(indexElementGoal))){
+                        descriptionWorkProduct = " "+descriptionWorkProduct;
+                        indexElementGoal++;
+                    }
+                    workProduct.setDescription(cleanStrings(descriptionWorkProduct));
                     cmmiService.createWorkProduct(workProduct);
-                    currentIndex++;
                 }
 
             }
 
         }
         return currentIndex;
+    }
+
+    private String cleanStrings(String string) {
+        String cleanedString = string;
+        while (blankCharacterStartSentence(cleanedString)){
+            cleanedString = cleanedString.substring(1);
+        }
+
+        return cleanedString;
     }
 }
