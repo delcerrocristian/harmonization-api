@@ -1,7 +1,7 @@
 package persistence.firstfilter.iso.model;
 
 /**
- * Created by spukyn on 3/05/14.
+ * Created by Cristian del Cerro on 3/05/14.
  */
 public class Task {
 
