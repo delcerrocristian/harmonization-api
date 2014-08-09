@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
  */
 public class SearchPatterns {
 
+
     public static boolean searchStartProcessAreas(String sentence){
         return Pattern.compile(".*by acronym: $").matcher(sentence).matches();
     }

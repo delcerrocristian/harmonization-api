@@ -1,8 +1,8 @@
 package config;
 
-import api.ArmonizeResource;
+import api.HarmonizeResource;
 import com.yammer.dropwizard.config.Configuration;
-import pdfTrat.CmmiFullProcessDocument;
+import pdfTrat.CmmiFullProcessDocumentImp;
 import pdfTrat.FullProcessDocument;
 import pdfTrat.FullProcessDocumentImp;
 import services.cmmi.CmmiService;
@@ -14,10 +14,10 @@ import templates.cmmi.CmmiTemplateImp;
 import templates.iso.IsoTemplateImp;
 
 
-public class ArmonizeConfiguration extends Configuration{
+public class HarmonizeConfiguration extends Configuration{
 
-    public ArmonizeResource getArmonizeResource(){
-        return new ArmonizeResource(getIsoService(), getFullProcessDocument(), getCmmiService(),
+    public HarmonizeResource getArmonizeResource(){
+        return new HarmonizeResource(getIsoService(), getFullProcessDocument(), getCmmiService(),
                 getCmmiFullProcessDocument());
     }
 
@@ -35,8 +35,8 @@ public class ArmonizeConfiguration extends Configuration{
         return firstFilterConfiguration.getFirstFilterService();
     }
 
-    private CmmiFullProcessDocument getCmmiFullProcessDocument() {
-        return new CmmiFullProcessDocument(getCmmiTemplate());
+    private CmmiFullProcessDocumentImp getCmmiFullProcessDocument() {
+        return new CmmiFullProcessDocumentImp(getCmmiTemplate());
     }
 
     private CmmiTemplate getCmmiTemplate(){

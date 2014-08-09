@@ -30,7 +30,7 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
 
     }
 
-    private int findProcessArea(ArrayList<String> listOfText) {
+    public int findProcessArea(ArrayList<String> listOfText) {
         boolean open = false;
         boolean close = false;
 
@@ -74,7 +74,7 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
         for(int i = index; i< listOfText.size(); i++) {
             if(searchThisPattern(process, listOfText.get(i))){
                 currentProcess.setName(process);
-                i++;
+                i++; //One line to can get Area of process
                 String[] sentenceWithAreaAndMaturityLevel = listOfText.get(i).split("Area");
                 currentProcess.setAreaCategory(sentenceWithAreaAndMaturityLevel[0].substring(2,
                         sentenceWithAreaAndMaturityLevel[0].length()-1));
@@ -82,7 +82,7 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
                         sentenceWithAreaAndMaturityLevel[1].length()-2,
                         sentenceWithAreaAndMaturityLevel[1].length()-1));
 
-                i = i + 2;
+                i = i + 2; //Two lines to can get purpose statement
                 String purposeStatement = "";
                 while(!searchEndPurposeStatement(listOfText.get(i))){
                     purposeStatement = purposeStatement + listOfText.get(i).toString() +" ";
@@ -202,5 +202,10 @@ public class CmmiDefaultAlgorithm implements CmmiAlgorithm{
         }
 
         return cleanedString;
+    }
+
+    //Methdos to can make test
+    public void initProcessAreaList(ArrayList<String> processAreaList) {
+        processArea = processAreaList;
     }
 }

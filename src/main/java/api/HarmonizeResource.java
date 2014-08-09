@@ -3,6 +3,8 @@ package api;
 
 import pdfTrat.CmmiFullProcessDocument;
 import pdfTrat.FullProcessDocument;
+import persistence.firstfilter.cmmi.model.*;
+import persistence.firstfilter.cmmi.model.Process;
 import persistence.firstfilter.iso.model.Task;
 import services.cmmi.CmmiService;
 import services.iso.IsoService;
@@ -23,15 +25,15 @@ import static utils.UtilsFile.saveFileOnDirectory;
 
 @Path("/armonize/api")
 
-public class ArmonizeResource implements PathFiles {
+public class HarmonizeResource implements PathFiles {
 
     private IsoService isoService;
     private FullProcessDocument isoFullProcessDocument;
     private CmmiService cmmiService;
     private CmmiFullProcessDocument cmmiFullProcessDocument;
 
-    public ArmonizeResource(IsoService isoService, FullProcessDocument isoFullProcessDocument,
-                            CmmiService cmmiService, CmmiFullProcessDocument cmmiFullProcessDocument) {
+    public HarmonizeResource(IsoService isoService, FullProcessDocument isoFullProcessDocument,
+                             CmmiService cmmiService, CmmiFullProcessDocument cmmiFullProcessDocument) {
         this.isoService = isoService;
         this.isoFullProcessDocument = isoFullProcessDocument;
         this.cmmiService = cmmiService;
@@ -42,7 +44,7 @@ public class ArmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("type") String type,
                                @QueryParam("patterns") List<String> patterns) {
-        /*if (!checkParamsUploadFile(stream, type, name, patterns)) {
+      /*  if (!checkParamsUploadFile(stream, type, name)) {
             return Response.status(400).build();
         }*/
 
@@ -53,22 +55,27 @@ public class ArmonizeResource implements PathFiles {
             return Response.status(422).build();
         }
 
-        //int idStandard; idStandard = type.equals("iso") ? isoService.createStandard(name) : null;
+        type="cmmi";
+        patterns.add("shall");
 
-        //fullProcessDocument.start(inputFile, idStandard, patterns);
-        //fullProcessDocument.start(inputFile,3,patterns);
+        int idStandard;
+        if(type.equals("iso")) {
+            idStandard = isoService.createStandard(name);
+            isoFullProcessDocument.start(inputFile,idStandard, patterns);
+        }
+        else {
+            idStandard = cmmiService.createStandard(name);
+            cmmiFullProcessDocument.start(inputFile,idStandard);
+        }
 
-        int idStandardCmmi = cmmiService.createStandardWithName(name);
-        cmmiFullProcessDocument.start(inputFile, idStandardCmmi, patterns);
-        //return Response.ok(idStandard).build(); //200
-        return Response.ok(idStandardCmmi).build();
+        return Response.ok(idStandard).build();
     }
 
-    private boolean checkParamsUploadFile(InputStream stream, String type, String name, List<String> patterns){
+    private boolean checkParamsUploadFile(InputStream stream, String type, String name){
         return stream != null &&
                 name != null  &&
-                !patterns.isEmpty() &&
-                type.equals("iso") && type.equals("cmmi");
+                type != null &&
+                (type.equals("iso") || type.equals("cmmi"));
     }
 
     @Path("/standard/response")
@@ -77,6 +84,49 @@ public class ArmonizeResource implements PathFiles {
     public Response getResponse(@QueryParam("id") int id){
         ArrayList<Task> allTasks = isoService.readAllTaskByStandard(id);
         return Response.ok(allTasks).build();
+    }
+
+    @Path("/cmmi/process")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addCmmiProcess(persistence.firstfilter.cmmi.model.Process process) {
+        if(cmmiService.readStandard(process.getStandard()) != null) {
+            cmmiService.createProcess(process);
+            return Response.ok().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/process")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiProcess(@QueryParam("id") int id) {
+        Process process = cmmiService.readProcess(id);
+        if(process != null) {
+            return Response.ok(process).build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/process")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateCmmiProcess(Process process) {
+        if(cmmiService.readStandard(process.getStandard()) != null) {
+            cmmiService.updateProcess(process);
+            return Response.noContent().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/process")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteCmmiProcess(@QueryParam("id") int id) {
+        cmmiService.deleteProcess(id);
+        return Response.noContent().build();
     }
 
   /*  @Path("/standard")

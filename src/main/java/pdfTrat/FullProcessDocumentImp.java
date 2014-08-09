@@ -24,8 +24,8 @@ public class FullProcessDocumentImp implements PathFiles, FullProcessDocument {
         ParsePDF parsePDF = new ParsePDF();
         parsePDF.pdfToText(inputFile, NAME_TXT_OUTPUT, TEMPORAL_DIRECTORY);
 
-        //textList = treatmentText();
-        //isoTemplate .runTemplate(textList, idStandard, patterns);
+        textList = treatmentText();
+        isoTemplate .runTemplate(textList, idStandard, patterns);
     }
 
     private ArrayList<String> treatmentText(){

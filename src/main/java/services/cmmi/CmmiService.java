@@ -12,7 +12,7 @@ public interface CmmiService {
 
     int createStandard(Standard standard);
 
-    int createStandardWithName(String name);
+    int createStandard(String name);
 
     Standard readStandard(int id);
 
@@ -23,6 +23,10 @@ public interface CmmiService {
     int createProcess(persistence.firstfilter.cmmi.model.Process process);
 
     Process readProcess(int id);
+
+    void updateProcess(Process process);
+
+    void deleteProcess(int id);
 
     ArrayList<persistence.firstfilter.cmmi.model.Process> readAllProcessByStandard(int idStandard);
 

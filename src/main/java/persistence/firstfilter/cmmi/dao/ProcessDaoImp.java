@@ -105,7 +105,29 @@ public class ProcessDaoImp implements ProcessDao{
 
     @Override
     public void update(Process process) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("update process set " +
+                            "name=?, area_category=?, maturity_level=?, purpose_statement=?, standard=? " +
+                            "where id=?");
 
+            preparedStatement.setString(1, process.getName());
+            preparedStatement.setString(2, process.getAreaCategory());
+            preparedStatement.setString(3, process.getMaturityLevel());
+            preparedStatement.setString(4, process.getPurposeStatement());
+            preparedStatement.setInt(5, process.getStandard());
+            preparedStatement.setInt(6, process.getId());
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select process by Name and Standard");
+        }finally{
+            dataBaseConnection.close();
+        }
     }
 
     @Override

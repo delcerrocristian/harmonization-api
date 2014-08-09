@@ -5,9 +5,6 @@ import services.cmmi.CmmiService;
 import java.util.ArrayList;
 import java.util.List;
 
-import static templates.cmmi.SearchPatterns.findEndProcessAreas;
-import static templates.cmmi.SearchPatterns.findStartProcessAreas;
-
 /**
  * Created by Cristian del Cerro.
  */

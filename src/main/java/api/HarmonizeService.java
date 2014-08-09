@@ -5,13 +5,13 @@ import api.filter.CorsHeadersFilter;
 import com.yammer.dropwizard.Service;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
-import config.ArmonizeConfiguration;
+import config.HarmonizeConfiguration;
 
-public class ArmonizeService extends Service<ArmonizeConfiguration> {
+public class HarmonizeService extends Service<HarmonizeConfiguration> {
 
 
 	public static void main(String[] args) throws Exception {
-        new ArmonizeService().run(args);
+        new HarmonizeService().run(args);
     }
 	@Override
     public void initialize(Bootstrap bootstrap) {
@@ -19,7 +19,7 @@ public class ArmonizeService extends Service<ArmonizeConfiguration> {
     }
 
     @Override
-    public void run(ArmonizeConfiguration configuration ,Environment environment) {
+    public void run(HarmonizeConfiguration configuration ,Environment environment) {
         environment.addResource(configuration.getArmonizeResource());
         environment.addFilter(new CorsHeadersFilter(), "/*");
     }

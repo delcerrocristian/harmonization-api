@@ -32,7 +32,7 @@ public class CmmiServiceImp implements CmmiService {
     }
 
     @Override
-    public int createStandardWithName(String name) {
+    public int createStandard(String name) {
         return standardDao.create(name);
     }
 
@@ -59,6 +59,16 @@ public class CmmiServiceImp implements CmmiService {
     @Override
     public Process readProcess(int id) {
         return processDao.read(id);
+    }
+
+    @Override
+    public void updateProcess(Process process) {
+        processDao.update(process);
+    }
+
+    @Override
+    public void deleteProcess(int id) {
+        processDao.delete(id);
     }
 
     @Override
