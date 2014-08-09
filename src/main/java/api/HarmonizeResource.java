@@ -129,6 +129,49 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
+    @Path("/cmmi/specificgoal")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addCmmiSpecificGoal(SpecificGoal specificGoal) {
+        if(cmmiService.readProcess(specificGoal.getProcess()) != null) {
+            cmmiService.createSpecificGoal(specificGoal);
+            return Response.ok().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/specificgoal")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiSpecificGoal(@QueryParam("id") int id) {
+        SpecificGoal specificGoal = cmmiService.readSpecificGoal(id);
+        if(specificGoal != null) {
+            return Response.ok(specificGoal).build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/specificgoal")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateCmmiSpecificGoal(SpecificGoal specificGoal) {
+        if(cmmiService.readProcess(specificGoal.getId()) != null) {
+            cmmiService.updateSpecificGoal(specificGoal);
+            return Response.noContent().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/specificgoal")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteCmmiSpecificGoal(@QueryParam("id") int id) {
+        cmmiService.deleteProcess(id);
+        return Response.noContent().build();
+    }
+
   /*  @Path("/standard")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

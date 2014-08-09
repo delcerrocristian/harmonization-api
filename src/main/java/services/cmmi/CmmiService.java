@@ -34,6 +34,10 @@ public interface CmmiService {
 
     SpecificGoal readSpecificGoal(int id);
 
+    void updateSpecificGoal(SpecificGoal specificGoal);
+
+    void deleteSpecificGoal(int id);
+
     ArrayList<SpecificGoal> readAllSpecificGoalByProcess(int idProcess);
 
     int createSpecificPractice(SpecificPractice specificPractice);

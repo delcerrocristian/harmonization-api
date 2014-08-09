@@ -87,6 +87,16 @@ public class CmmiServiceImp implements CmmiService {
     }
 
     @Override
+    public void updateSpecificGoal(SpecificGoal specificGoal) {
+        specificGoalDao.update(specificGoal);
+    }
+
+    @Override
+    public void deleteSpecificGoal(int id) {
+        specificGoalDao.delete(id);
+    }
+
+    @Override
     public ArrayList<SpecificGoal> readAllSpecificGoalByProcess(int idProcess) {
         return specificGoalDao.readAllByProcess(idProcess);
     }

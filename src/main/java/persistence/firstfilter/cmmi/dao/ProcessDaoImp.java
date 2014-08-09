@@ -124,7 +124,7 @@ public class ProcessDaoImp implements ProcessDao{
 
 
         } catch (SQLException e) {
-            System.out.println("SQLException happened executing select process by Name and Standard");
+            System.out.println("SQLException happened executing updating process cmmi");
         }finally{
             dataBaseConnection.close();
         }

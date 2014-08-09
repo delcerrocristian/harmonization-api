@@ -75,12 +75,46 @@ public class SpecificGoalDaoImp implements SpecificGoalDao {
 
     @Override
     public void update(SpecificGoal specificGoal) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("update specific_goal set " +
+                            "title=?, description=?, process=? " +
+                            "where id=?");
 
+
+            preparedStatement.setString(1, specificGoal.getTitle());
+            preparedStatement.setString(2, specificGoal.getDescription());
+            preparedStatement.setInt(3, specificGoal.getProcess());
+            preparedStatement.setInt(4, specificGoal.getId());
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing update of specific goal");
+        }finally{
+            dataBaseConnection.close();
+        }
     }
 
     @Override
     public void delete(int id) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("delete from specific_goal where id=?");
+            preparedStatement.setInt(1,id);
 
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing delete to specific goal");
+        }finally{
+            dataBaseConnection.close();
+        }
     }
 
     @Override
