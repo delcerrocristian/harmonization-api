@@ -168,9 +168,53 @@ public class HarmonizeResource implements PathFiles {
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteCmmiSpecificGoal(@QueryParam("id") int id) {
-        cmmiService.deleteProcess(id);
+        cmmiService.deleteSpecificGoal(id);
         return Response.noContent().build();
     }
+
+    @Path("/cmmi/specificpractice")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addCmmiSpecificPractice(SpecificPractice specificPractice) {
+        if(cmmiService.readSpecificGoal(specificPractice.getId()) != null) {
+            cmmiService.createSpecificPractice(specificPractice);
+            return Response.ok().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/specificpractice")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiSpecificPractice(@QueryParam("id") int id) {
+        SpecificPractice specificPractice = cmmiService.readSpecificPractice(id);
+        if(specificPractice != null) {
+            return Response.ok(specificPractice).build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/specificpractice")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateCmmiSpecificPractice(SpecificPractice specificPractice) {
+        if(cmmiService.readProcess(specificPractice.getId()) != null) {
+            cmmiService.updateSpecificPractice(specificPractice);
+            return Response.noContent().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/specificpractice")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteCmmiSpecificPractice(@QueryParam("id") int id) {
+        cmmiService.deleteSpecificPractice(id);
+        return Response.noContent().build();
+    }
+
 
   /*  @Path("/standard")
     @POST

@@ -112,6 +112,16 @@ public class CmmiServiceImp implements CmmiService {
     }
 
     @Override
+    public void updateSpecificPractice(SpecificPractice specificPractice) {
+        specificPracticeDao.update(specificPractice);
+    }
+
+    @Override
+    public void deleteSpecificPractice(int id) {
+        specificPracticeDao.delete(id);
+    }
+
+    @Override
     public ArrayList<SpecificPractice> readAllSpecificPracticeBySpecificGoal(int idSpecificGoal) {
         return specificPracticeDao.readAllBySpecificGoal(idSpecificGoal);
     }

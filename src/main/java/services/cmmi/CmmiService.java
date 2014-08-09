@@ -44,6 +44,10 @@ public interface CmmiService {
 
     SpecificPractice readSpecificPractice(int id);
 
+    void updateSpecificPractice(SpecificPractice specificPractice);
+
+    void deleteSpecificPractice(int id);
+
     ArrayList<SpecificPractice> readAllSpecificPracticeBySpecificGoal(int idSpecificGoal);
 
     int createWorkProduct(WorkProduct workProduct);

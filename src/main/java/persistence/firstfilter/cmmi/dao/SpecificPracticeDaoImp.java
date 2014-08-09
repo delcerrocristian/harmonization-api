@@ -76,12 +76,45 @@ public class SpecificPracticeDaoImp implements SpecificPracticeDao {
 
     @Override
     public void update(SpecificPractice specificPractice) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("update specific_practice set " +
+                            "title=?, description=?, specific_goal=? " +
+                            "where id=?");
 
+            preparedStatement.setString(1, specificPractice.getTitle());
+            preparedStatement.setString(2, specificPractice.getDescription());
+            preparedStatement.setInt(3, specificPractice.getSpecificGoal());
+            preparedStatement.setInt(4, specificPractice.getId());
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing update of specific practice");
+        }finally{
+            dataBaseConnection.close();
+        }
     }
 
     @Override
     public void delete(int id) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("delete from specific_practice where id=?");
+            preparedStatement.setInt(1,id);
 
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing delete to specific practice");
+        }finally{
+            dataBaseConnection.close();
+        }
     }
 
     @Override
