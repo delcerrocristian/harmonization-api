@@ -18,4 +18,6 @@ public interface SpecificGoalDao {
     void delete(int id);
 
     ArrayList<SpecificGoal> readAllByProcess(int process);
+
+    ArrayList<SpecificGoal> readAllByStandard(int standard);
 }

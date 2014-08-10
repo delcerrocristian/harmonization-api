@@ -129,6 +129,17 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
+    @Path("/cmmi/process")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiProcessByStandard(@QueryParam("standard") int standard) {
+        ArrayList<Process> listOfProcess = cmmiService.readAllProcessByStandard(standard);
+        if(!listOfProcess.isEmpty()) {
+            return Response.ok(listOfProcess).build();
+        }
+        return Response.status(404).build();
+    }
+
     @Path("/cmmi/specificgoal")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -144,10 +155,10 @@ public class HarmonizeResource implements PathFiles {
     @Path("/cmmi/specificgoal")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCmmiSpecificGoal(@QueryParam("id") int id) {
-        SpecificGoal specificGoal = cmmiService.readSpecificGoal(id);
-        if(specificGoal != null) {
-            return Response.ok(specificGoal).build();
+    public Response getCmmiSpecificGoalByStandard(@QueryParam("standard") int standard) {
+        ArrayList<SpecificGoal> listOfSpecificGoal = cmmiService.readAllSpecificGoalByStandard(standard);
+        if(!listOfSpecificGoal.isEmpty()) {
+            return Response.ok(listOfSpecificGoal).build();
         }
         return Response.status(404).build();
     }
@@ -157,7 +168,7 @@ public class HarmonizeResource implements PathFiles {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateCmmiSpecificGoal(SpecificGoal specificGoal) {
-        if(cmmiService.readProcess(specificGoal.getId()) != null) {
+        if(cmmiService.readProcess(specificGoal.getProcess()) != null) {
             cmmiService.updateSpecificGoal(specificGoal);
             return Response.noContent().build();
         }
@@ -172,12 +183,24 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
+    @Path("/cmmi/specificgoal")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiSpecificGoal(@QueryParam("id") int id) {
+        SpecificGoal specificGoal = cmmiService.readSpecificGoal(id);
+        if(specificGoal != null) {
+            return Response.ok(specificGoal).build();
+        }
+        return Response.status(404).build();
+    }
+
+
     @Path("/cmmi/specificpractice")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addCmmiSpecificPractice(SpecificPractice specificPractice) {
-        if(cmmiService.readSpecificGoal(specificPractice.getId()) != null) {
+        if(cmmiService.readSpecificGoal(specificPractice.getSpecificGoal()) != null) {
             cmmiService.createSpecificPractice(specificPractice);
             return Response.ok().build();
         }
@@ -200,7 +223,7 @@ public class HarmonizeResource implements PathFiles {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateCmmiSpecificPractice(SpecificPractice specificPractice) {
-        if(cmmiService.readProcess(specificPractice.getId()) != null) {
+        if(cmmiService.readSpecificGoal(specificPractice.getSpecificGoal()) != null) {
             cmmiService.updateSpecificPractice(specificPractice);
             return Response.noContent().build();
         }
@@ -215,6 +238,48 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
+    @Path("/cmmi/workproduct")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addCmmiWorkProduct(WorkProduct workProduct) {
+        if(cmmiService.readSpecificPractice(workProduct.getSpecificPractice()) != null) {
+            cmmiService.createWorkProduct(workProduct);
+            return Response.ok().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/workproduct")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiWorkProduct(@QueryParam("id") int id) {
+        WorkProduct workProduct = cmmiService.readWorkProduct(id);
+        if(workProduct != null) {
+            return Response.ok(workProduct).build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/workproduct")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateCmmiWorkProduct(WorkProduct workProduct) {
+        if(cmmiService.readSpecificPractice(workProduct.getSpecificPractice()) != null) {
+            cmmiService.updateWorkProduct(workProduct);
+            return Response.noContent().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/cmmi/workproduct")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteCmmiWorkProduct(@QueryParam("id") int id) {
+        cmmiService.deleteWorkProduct(id);
+        return Response.noContent().build();
+    }
 
   /*  @Path("/standard")
     @POST

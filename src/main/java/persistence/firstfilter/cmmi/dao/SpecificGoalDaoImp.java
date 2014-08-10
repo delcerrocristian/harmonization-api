@@ -144,4 +144,34 @@ public class SpecificGoalDaoImp implements SpecificGoalDao {
         }
         return allSpecificGoal;
     }
+
+    @Override
+    public ArrayList<SpecificGoal> readAllByStandard(int standard) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        SpecificGoal specificGoal;
+        ArrayList<SpecificGoal> allSpecificGoal = new ArrayList<>();
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("select * from specific_goal where process in (select id from process where standard=?)");
+
+            preparedStatement.setInt(1,standard);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet != null){
+                resultSet.next();
+
+                specificGoal = new SpecificGoal(resultSet.getInt("id"), resultSet.getString("title"),
+                        resultSet.getString("description"), resultSet.getInt("process"));
+                allSpecificGoal.add(specificGoal);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select all specific_goal by standard");
+        }finally{
+            dataBaseConnection.close();
+        }
+        return allSpecificGoal;
+    }
 }

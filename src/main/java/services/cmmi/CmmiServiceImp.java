@@ -102,6 +102,11 @@ public class CmmiServiceImp implements CmmiService {
     }
 
     @Override
+    public ArrayList<SpecificGoal> readAllSpecificGoalByStandard(int standard) {
+        return specificGoalDao.readAllByStandard(standard);
+    }
+
+    @Override
     public int createSpecificPractice(SpecificPractice specificPractice) {
         return specificPracticeDao.create(specificPractice);
     }
@@ -134,6 +139,16 @@ public class CmmiServiceImp implements CmmiService {
     @Override
     public WorkProduct readWorkProduct(int id) {
         return workProductDao.read(id);
+    }
+
+    @Override
+    public void updateWorkProduct(WorkProduct workProduct) {
+        workProductDao.update(workProduct);
+    }
+
+    @Override
+    public void deleteWorkProduct(int id) {
+        workProductDao.delete(id);
     }
 
     @Override

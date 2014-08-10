@@ -74,7 +74,26 @@ public class WorkProductDaoImp implements WorkProductDao {
 
     @Override
     public void update(WorkProduct workProduct) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("update work_product set " +
+                            "description=?, specific_practice=? " +
+                            "where id=?");
 
+            preparedStatement.setString(1, workProduct.getDescription());
+            preparedStatement.setInt(2, workProduct.getSpecificPractice());
+            preparedStatement.setInt(3, workProduct.getId());
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing update of work product");
+        }finally{
+            dataBaseConnection.close();
+        }
     }
 
     @Override
