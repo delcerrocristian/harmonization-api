@@ -137,15 +137,16 @@ public class WorkProductDaoImp implements WorkProductDao {
         ArrayList<WorkProduct> allWorkProduct= new ArrayList<>();
         try {
             preparedStatement = dataBaseConnection.preparedStatement
-                    ("select * from work_product where specific_practice in(select id from specific_practice where specific_goal in " +
-                                    "(select id from specific_goal where process in (select id from process where standard=?)))");
+                    ("select work_product.id, work_product.description, work_product.specific_practice from work_product," +
+                            "specific_practice, specific_goal, process where work_product.specific_practice=specific_practice.id " +
+                            "and specific_practice.specific_goal= specific_goal.id and specific_goal.process=process.id and " +
+                            "process.standard=?");
 
             preparedStatement.setInt(1, standard);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet != null){
-                resultSet.next();
+            while(resultSet.next()){
 
                 workProduct = new WorkProduct(resultSet.getInt("id"),resultSet.getString("description"),
                         resultSet.getInt("specific_practice"));

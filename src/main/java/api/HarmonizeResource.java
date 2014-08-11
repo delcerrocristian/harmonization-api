@@ -316,7 +316,7 @@ public class HarmonizeResource implements PathFiles {
     @Path("/cmmi/allworkproduct")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCmmiAllWorkProduct(@QueryParam("id") int id) {
+    public Response getCmmiAllWorkProduct(@QueryParam("standard") int id) {
         ArrayList<WorkProduct> listOfWorkProduct = cmmiService.readAllWorkProductByStandard(id);
         if(!listOfWorkProduct.isEmpty()) {
             return Response.ok(listOfWorkProduct).build();
