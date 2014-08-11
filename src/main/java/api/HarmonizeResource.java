@@ -5,7 +5,9 @@ import pdfTrat.CmmiFullProcessDocument;
 import pdfTrat.FullProcessDocument;
 import persistence.firstfilter.cmmi.model.*;
 import persistence.firstfilter.cmmi.model.Process;
-import persistence.firstfilter.iso.model.Task;
+import persistence.firstfilter.cmmi.model.Standard;
+import persistence.firstfilter.iso.model.*;
+import persistence.firstfilter.model.ResponseStandards;
 import services.cmmi.CmmiService;
 import services.iso.IsoService;
 import utils.PathFiles;
@@ -44,9 +46,9 @@ public class HarmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response uploadFile(InputStream stream, @QueryParam("name") String name, @QueryParam("type") String type,
                                @QueryParam("patterns") List<String> patterns) {
-      /*  if (!checkParamsUploadFile(stream, type, name)) {
+        if (!checkParamsUploadFile(stream, type, name)) {
             return Response.status(400).build();
-        }*/
+        }
 
         File inputFile;
         try {
@@ -55,7 +57,6 @@ public class HarmonizeResource implements PathFiles {
             return Response.status(422).build();
         }
 
-        type="cmmi";
         patterns.add("shall");
 
         int idStandard;
@@ -73,8 +74,8 @@ public class HarmonizeResource implements PathFiles {
 
     private boolean checkParamsUploadFile(InputStream stream, String type, String name){
         return stream != null &&
-                name != null  &&
-                type != null &&
+                !name.isEmpty()  &&
+                !type.isEmpty() &&
                 (type.equals("iso") || type.equals("cmmi"));
     }
 
@@ -85,6 +86,26 @@ public class HarmonizeResource implements PathFiles {
         ArrayList<Task> allTasks = isoService.readAllTaskByStandard(id);
         return Response.ok(allTasks).build();
     }
+
+    @Path("standard/all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllStandards() {
+        ArrayList<Standard> standardsCmmi = cmmiService.readAllStandards();
+        ArrayList<persistence.firstfilter.iso.model.Standard> standardsIso = isoService.readAllStandards();
+
+        ArrayList<ResponseStandards> responseStandards = new ArrayList<>();
+
+        for(Standard cmmiStandard : standardsCmmi) {
+            responseStandards.add(new ResponseStandards(cmmiStandard.getId(), cmmiStandard.getName(), "cmmi"));
+        }
+        for(persistence.firstfilter.iso.model.Standard isoStandard : standardsIso) {
+            responseStandards.add(new ResponseStandards(isoStandard.getId(), isoStandard.getName(), "iso"));
+        }
+
+        return Response.ok(responseStandards).build();
+    }
+
 
     @Path("/cmmi/process")
     @POST
@@ -129,7 +150,7 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
-    @Path("/cmmi/process")
+/*    @Path("/cmmi/process")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCmmiProcessByStandard(@QueryParam("standard") int standard) {
@@ -138,7 +159,7 @@ public class HarmonizeResource implements PathFiles {
             return Response.ok(listOfProcess).build();
         }
         return Response.status(404).build();
-    }
+    }*/
 
     @Path("/cmmi/specificgoal")
     @POST
@@ -183,7 +204,7 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
-    @Path("/cmmi/specificgoal")
+/*    @Path("/cmmi/specificgoal")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCmmiSpecificGoal(@QueryParam("id") int id) {
@@ -192,7 +213,7 @@ public class HarmonizeResource implements PathFiles {
             return Response.ok(specificGoal).build();
         }
         return Response.status(404).build();
-    }
+    }*/
 
 
     @Path("/cmmi/specificpractice")
