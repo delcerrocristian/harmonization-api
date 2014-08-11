@@ -262,7 +262,7 @@ public class HarmonizeResource implements PathFiles {
     @Path("/cmmi/allspecificpractice")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCmmiAllSpecificPractice(@QueryParam("id") int id) {
+    public Response getCmmiAllSpecificPractice(@QueryParam("standard") int id) {
         ArrayList<SpecificPractice> listOfSpecificPractice = cmmiService.readAllSpecificPracticeByStandard(id);
         if(!listOfSpecificPractice.isEmpty()) {
             return Response.ok(listOfSpecificPractice).build();
