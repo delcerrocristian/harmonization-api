@@ -150,7 +150,7 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
-/*    @Path("/cmmi/process")
+    @Path("/cmmi/allprocess")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCmmiProcessByStandard(@QueryParam("standard") int standard) {
@@ -159,7 +159,7 @@ public class HarmonizeResource implements PathFiles {
             return Response.ok(listOfProcess).build();
         }
         return Response.status(404).build();
-    }*/
+    }
 
     @Path("/cmmi/specificgoal")
     @POST
@@ -173,7 +173,7 @@ public class HarmonizeResource implements PathFiles {
         return Response.status(404).build();
     }
 
-    @Path("/cmmi/specificgoal")
+    @Path("/cmmi/allspecificgoal")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCmmiSpecificGoalByStandard(@QueryParam("standard") int standard) {
@@ -204,7 +204,7 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
-/*    @Path("/cmmi/specificgoal")
+    @Path("/cmmi/specificgoal")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCmmiSpecificGoal(@QueryParam("id") int id) {
@@ -213,7 +213,7 @@ public class HarmonizeResource implements PathFiles {
             return Response.ok(specificGoal).build();
         }
         return Response.status(404).build();
-    }*/
+    }
 
 
     @Path("/cmmi/specificpractice")
@@ -259,6 +259,17 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
+    @Path("/cmmi/allspecificpractice")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiAllSpecificPractice(@QueryParam("id") int id) {
+        ArrayList<SpecificPractice> listOfSpecificPractice = cmmiService.readAllSpecificPracticeByStandard(id);
+        if(!listOfSpecificPractice.isEmpty()) {
+            return Response.ok(listOfSpecificPractice).build();
+        }
+        return Response.status(404).build();
+    }
+
     @Path("/cmmi/workproduct")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -301,6 +312,18 @@ public class HarmonizeResource implements PathFiles {
         cmmiService.deleteWorkProduct(id);
         return Response.noContent().build();
     }
+
+    @Path("/cmmi/allworkproduct")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiAllWorkProduct(@QueryParam("id") int id) {
+        ArrayList<WorkProduct> listOfWorkProduct = cmmiService.readAllWorkProductByStandard(id);
+        if(!listOfWorkProduct.isEmpty()) {
+            return Response.ok(listOfWorkProduct).build();
+        }
+        return Response.status(404).build();
+    }
+
 
   /*  @Path("/standard")
     @POST

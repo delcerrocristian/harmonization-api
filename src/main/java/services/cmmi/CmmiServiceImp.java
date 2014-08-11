@@ -132,6 +132,11 @@ public class CmmiServiceImp implements CmmiService {
     }
 
     @Override
+    public ArrayList<SpecificPractice> readAllSpecificPracticeByStandard(int standard) {
+        return specificPracticeDao.readAllByStandard(standard);
+    }
+
+    @Override
     public int createWorkProduct(WorkProduct workProduct) {
         return workProductDao.create(workProduct);
     }
@@ -154,5 +159,10 @@ public class CmmiServiceImp implements CmmiService {
     @Override
     public ArrayList<WorkProduct> readAllWorkProductBySpecificPractice(int idSpecificPractice) {
         return workProductDao.readAllBySpecificPractice(idSpecificPractice);
+    }
+
+    @Override
+    public ArrayList<WorkProduct> readAllWorkProductByStandard(int standard) {
+        return workProductDao.readAllByStandard(standard);
     }
 }

@@ -18,4 +18,6 @@ public interface WorkProductDao {
     void delete(int id);
 
     ArrayList<WorkProduct> readAllBySpecificPractice(int specificPractice);
+
+    ArrayList<WorkProduct> readAllByStandard(int standard);
 }

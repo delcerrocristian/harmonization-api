@@ -144,4 +144,35 @@ public class SpecificPracticeDaoImp implements SpecificPracticeDao {
         }
         return allSpecificPractice;
     }
+
+    @Override
+    public ArrayList<SpecificPractice> readAllByStandard(int standard) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        SpecificPractice specificPractice;
+        ArrayList<SpecificPractice> allSpecificPractice = new ArrayList<>();
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("select * from specific_practice where specific_goal in (select id from specific_goal where process in " +
+                            "(select id from process where standard=?))");
+
+            preparedStatement.setInt(1, standard);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet != null){
+                resultSet.next();
+
+                specificPractice = new SpecificPractice(resultSet.getInt("id"), resultSet.getString("title"),
+                        resultSet.getString("description"), resultSet.getInt("specific_goal"));
+                allSpecificPractice.add(specificPractice);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select all specific practice");
+        }finally{
+            dataBaseConnection.close();
+        }
+        return allSpecificPractice;
+    }
 }

@@ -18,4 +18,6 @@ public interface SpecificPracticeDao {
     void delete(int id);
 
     ArrayList<SpecificPractice> readAllBySpecificGoal(int specificGoal);
+
+    ArrayList<SpecificPractice> readAllByStandard(int standard);
 }

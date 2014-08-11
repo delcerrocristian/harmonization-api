@@ -128,4 +128,35 @@ public class WorkProductDaoImp implements WorkProductDao {
         }
         return allWorkProduct;
     }
+
+    @Override
+    public ArrayList<WorkProduct> readAllByStandard(int standard) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        WorkProduct workProduct;
+        ArrayList<WorkProduct> allWorkProduct= new ArrayList<>();
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("select * from work_product where specific_practice in(select id from specific_practice where specific_goal in " +
+                                    "(select id from specific_goal where process in (select id from process where standard=?)))");
+
+            preparedStatement.setInt(1, standard);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet != null){
+                resultSet.next();
+
+                workProduct = new WorkProduct(resultSet.getInt("id"),resultSet.getString("description"),
+                        resultSet.getInt("specific_practice"));
+                allWorkProduct.add(workProduct);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select all specific practice");
+        }finally{
+            dataBaseConnection.close();
+        }
+        return allWorkProduct;
+    }
 }

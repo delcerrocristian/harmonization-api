@@ -52,6 +52,8 @@ public interface CmmiService {
 
     ArrayList<SpecificPractice> readAllSpecificPracticeBySpecificGoal(int idSpecificGoal);
 
+    ArrayList<SpecificPractice> readAllSpecificPracticeByStandard(int standard);
+
     int createWorkProduct(WorkProduct workProduct);
 
     WorkProduct readWorkProduct(int id);
@@ -62,5 +64,6 @@ public interface CmmiService {
 
     ArrayList<WorkProduct> readAllWorkProductBySpecificPractice(int idSpecificPractice);
 
+    ArrayList<WorkProduct> readAllWorkProductByStandard(int standard);
 }
 
