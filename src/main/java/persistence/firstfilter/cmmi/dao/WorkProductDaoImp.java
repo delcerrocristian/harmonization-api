@@ -98,6 +98,20 @@ public class WorkProductDaoImp implements WorkProductDao {
 
     @Override
     public void delete(int id) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("delete from work_product where id=?");
+            preparedStatement.setInt(1,id);
+
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing delete to work product");
+        }finally{
+            dataBaseConnection.close();
+        }
 
     }
 
