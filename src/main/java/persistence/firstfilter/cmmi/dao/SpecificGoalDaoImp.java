@@ -159,8 +159,7 @@ public class SpecificGoalDaoImp implements SpecificGoalDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet != null){
-                resultSet.next();
+            while(resultSet.next()){
 
                 specificGoal = new SpecificGoal(resultSet.getInt("id"), resultSet.getString("title"),
                         resultSet.getString("description"), resultSet.getInt("process"));

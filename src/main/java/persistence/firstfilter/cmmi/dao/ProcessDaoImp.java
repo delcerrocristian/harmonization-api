@@ -161,8 +161,7 @@ public class ProcessDaoImp implements ProcessDao{
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet != null){
-                resultSet.next();
+            while(resultSet.next()){
 
                 processFromDB = new Process(resultSet.getInt("id"), resultSet.getString("name"),
                         resultSet.getString("area_category"), resultSet.getString("maturity_level"),

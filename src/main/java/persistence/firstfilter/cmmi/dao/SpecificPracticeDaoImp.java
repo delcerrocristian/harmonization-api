@@ -160,8 +160,7 @@ public class SpecificPracticeDaoImp implements SpecificPracticeDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet != null){
-                resultSet.next();
+            while(resultSet.next()){
 
                 specificPractice = new SpecificPractice(resultSet.getInt("id"), resultSet.getString("title"),
                         resultSet.getString("description"), resultSet.getInt("specific_goal"));
