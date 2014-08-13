@@ -1,5 +1,7 @@
 package persistence.firstfilter.iso.dao;
 
+import persistence.firstfilter.dataBaseConnection.CmmiDataBaseConnection;
+import persistence.firstfilter.dataBaseConnection.DataBaseConnection;
 import persistence.firstfilter.dataBaseConnection.IsoDataBaseConnection;
 import persistence.firstfilter.iso.model.Activity;
 
@@ -99,7 +101,26 @@ public class ActivityDaoImp implements ActivityDao{
 
     @Override
     public void update(Activity activity) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("update activity set " +
+                            "name=?, process=? " +
+                            "where id=?");
 
+            preparedStatement.setString(1, activity.getName());
+            preparedStatement.setInt(2, activity.getProcess());
+            preparedStatement.setInt(3, activity.getId());
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing updating process iso");
+        }finally{
+            dataBaseConnection.close();
+        }
     }
 
     @Override

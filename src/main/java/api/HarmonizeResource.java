@@ -369,4 +369,47 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
+    @Path("/iso/activity")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addIsoActivity(Activity activity) {
+        if(isoService.readProcess(activity.getProcess()) != null) {
+            isoService.addActivity(activity);
+            return Response.ok().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/iso/activity")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getIsoActivity(@QueryParam("id") int id) {
+        Activity activity = isoService.readActivity(id);
+        if(activity != null) {
+            return Response.ok(activity).build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/iso/activity")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateIsoActivity(Activity activity) {
+        if(isoService.readProcess(activity.getProcess()) != null) {
+            isoService.updateActivity(activity);
+            return Response.noContent().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/iso/activity")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteIsoActivity(@QueryParam("id") int id) {
+        isoService.deleteActivity(id);
+        return Response.noContent().build();
+    }
+
 }

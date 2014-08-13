@@ -92,6 +92,11 @@ public class IsoServiceImp implements IsoService {
     }
 
     @Override
+    public void updateActivity (Activity activity) {
+        activityDao.update(activity);
+    }
+
+    @Override
     public void deleteActivity (int id) {
         activityDao.delete(id);
     }

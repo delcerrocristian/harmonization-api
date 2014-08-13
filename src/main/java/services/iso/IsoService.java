@@ -38,6 +38,8 @@ public interface IsoService {
 
     Activity readActivity (int id);
 
+    void updateActivity(Activity activity);
+
     void deleteActivity (int id);
 
     ArrayList<Activity> readAllActivityByProcess(int id);
