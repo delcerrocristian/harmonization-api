@@ -26,6 +26,8 @@ public interface IsoService {
 
     Process readProcess (int id);
 
+    void updateProcess(Process process);
+
     void deleteProcess (int id);
 
     ArrayList<Process> readAllProcessByStandard(int id);

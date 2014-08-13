@@ -1,5 +1,7 @@
 package persistence.firstfilter.iso.dao;
 
+import persistence.firstfilter.dataBaseConnection.CmmiDataBaseConnection;
+import persistence.firstfilter.dataBaseConnection.DataBaseConnection;
 import persistence.firstfilter.dataBaseConnection.IsoDataBaseConnection;
 import persistence.firstfilter.iso.model.Process;
 
@@ -98,7 +100,26 @@ public class ProcessDaoImp implements ProcessDao {
 
     @Override
     public void update(Process process) {
+        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = dataBaseConnection.preparedStatement
+                    ("update process set " +
+                            "name=?, standard=? " +
+                            "where id=?");
 
+            preparedStatement.setString(1, process.getName());
+            preparedStatement.setInt(2, process.getStandard());
+            preparedStatement.setInt(3, process.getId());
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing updating process iso");
+        }finally{
+            dataBaseConnection.close();
+        }
     }
 
     @Override

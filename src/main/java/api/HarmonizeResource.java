@@ -324,91 +324,49 @@ public class HarmonizeResource implements PathFiles {
         return Response.status(404).build();
     }
 
+    //----------------------------------------------ISO-------------------------------------------
 
-  /*  @Path("/standard")
+    @Path("/iso/process")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response setStandard(Standard standard) throws SQLException {
-        StandardDao standardDao = new StandardDaoImp();
-        standardDao.create(standard);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addIsoProcess(persistence.firstfilter.iso.model.Process process) {
+        if(isoService.readStandard(process.getStandard()) != null) {
+            isoService.addProcess(process);
+            return Response.ok().build();
+        }
+        return Response.status(404).build();
+    }
 
-
-        return Response.status(Response.Status.CREATED).build();
-    } */
-
-   /* @Path("/standard")
+    @Path("/iso/process")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getStandard(@QueryParam("id") int id) throws SQLException {
-        StandardDao standardDao = new StandardDaoImp();
-        Standard standard = standardDao.read(id);
+    public Response getIsoProcess(@QueryParam("id") int id) {
+        persistence.firstfilter.iso.model.Process process = isoService.readProcess(id);
+        if(process != null) {
+            return Response.ok(process).build();
+        }
+        return Response.status(404).build();
+    }
 
-        return Response.ok(standard).build();
-    } */
-
- /*   @Path("/standard/all")
-    @GET
+    @Path("/iso/process")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllStandards() throws SQLException {
-        ArrayList<Standard> allStandards = firstFilterService.readAllStandards();
+    public Response updateIsoProcess(persistence.firstfilter.iso.model.Process process) {
+        if(isoService.readStandard(process.getStandard()) != null) {
+            isoService.updateProcess(process);
+            return Response.noContent().build();
+        }
+        return Response.status(404).build();
+    }
 
-        return Response.ok(allStandards).build();
-    }  */
-
-  /*  @Path("/standard")
+    @Path("/iso/process")
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteStandard(@QueryParam("id") int id) throws SQLException {
-        StandardDao standardDao = new StandardDaoImp();
-        standardDao.delete(id);
-
+    public Response deleteIsoProcess(@QueryParam("id") int id) {
+        isoService.deleteProcess(id);
         return Response.noContent().build();
-    }  */
-
-    /*@Path("/standard/main/all")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllMainSentenceByStandard(@QueryParam("id") int id) throws SQLException {
-        ArrayList<MainSentence> allMainSentencesByStandard = firstFilterService.readAllMainSentencesByStandard(id);
-
-        return Response.ok(allMainSentencesByStandard).build();
-    } */
-
-    /*@Path("/standard/main/enum/all")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllEnumSentenceByMainSentence(@QueryParam("id") int id) throws SQLException {
-        ArrayList<EnumSentence> allEnumSentenceByMainSentence = firstFilterService.readAllEnumSentencesByMainSentence(id);
-
-        return Response.ok(allEnumSentenceByMainSentence).build();
-    }  */
-
-    /*@Path("/standard/response")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getResponse(@QueryParam("id") int id) throws SQLException {
-        ArrayList<ResponseMainSentence> responseMainSentenceArrayList = new ArrayList<ResponseMainSentence>();
-
-        ArrayList<MainSentence> allMainSentenceByMainSentence = firstFilterService.readAllMainSentencesByStandard(id);
-
-        for(MainSentence mainSentence: allMainSentenceByMainSentence){
-            ResponseMainSentence responseMainSentence = new ResponseMainSentence(mainSentence);
-            ArrayList<EnumSentence> allEnumSentenceByMainSentence = firstFilterService.readAllEnumSentencesByMainSentence(mainSentence.getId());
-
-            responseMainSentence.setEnumSentences(allEnumSentenceByMainSentence);
-            responseMainSentenceArrayList.add(responseMainSentence);
-        }
-
-        return Response.ok(responseMainSentenceArrayList).build();
-    }  */
-
-    /*private boolean correctTypeProcess(String typeProcess) {
-        if(typeProcess != null) {
-            if (typeProcess.equals("assisted") || typeProcess.equals("mixed") || typeProcess.equals("unassisted")) {
-                return true;
-            }
-        }
-        return false;
-    }*/
+    }
 
 }

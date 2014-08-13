@@ -62,6 +62,11 @@ public class IsoServiceImp implements IsoService {
     }
 
     @Override
+    public void updateProcess(Process process) {
+        processDao.update(process);
+    }
+
+    @Override
     public void deleteProcess (int id) {
         processDao.delete(id);
     }
