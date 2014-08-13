@@ -100,7 +100,7 @@ public class ProcessDaoImp implements ProcessDao {
 
     @Override
     public void update(Process process) {
-        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        DataBaseConnection dataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         try {
             preparedStatement = dataBaseConnection.preparedStatement

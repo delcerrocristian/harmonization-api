@@ -332,8 +332,8 @@ public class HarmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addIsoProcess(persistence.firstfilter.iso.model.Process process) {
         if(isoService.readStandard(process.getStandard()) != null) {
-            isoService.addProcess(process);
-            return Response.ok().build();
+            int id =isoService.addProcess(process);
+            return Response.ok(id).build();
         }
         return Response.status(404).build();
     }
@@ -386,8 +386,8 @@ public class HarmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addIsoActivity(Activity activity) {
         if(isoService.readProcess(activity.getProcess()) != null) {
-            isoService.addActivity(activity);
-            return Response.ok().build();
+            int id =isoService.addActivity(activity);
+            return Response.ok(id).build();
         }
         return Response.status(404).build();
     }
@@ -440,8 +440,8 @@ public class HarmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addIsoTask(Task task) {
         if(isoService.readProcess(task.getProcess()) != null) {
-            isoService.addTask(task);
-            return Response.ok().build();
+            int id = isoService.addTask(task);
+            return Response.ok(id).build();
         }
         return Response.status(404).build();
     }

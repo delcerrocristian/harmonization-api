@@ -23,7 +23,12 @@ public class TaskDaoImp implements TaskDao {
                     ("insert into task (content, process, activity) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, task.getContent());
             preparedStatement.setInt(2, task.getProcess());
-            preparedStatement.setInt(3, task.getActivity());
+            if(task.getActivity()!=null) {
+                preparedStatement.setInt(3, task.getActivity());
+            }
+            else {
+                preparedStatement.setString(3, null);
+            }
 
             preparedStatement.executeUpdate();
 

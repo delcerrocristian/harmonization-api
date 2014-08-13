@@ -28,6 +28,7 @@ public class ActivityDaoImp implements ActivityDao{
             preparedStatement.setString(1, activity.getName());
             preparedStatement.setInt(2, activity.getProcess());
 
+
             preparedStatement.executeUpdate();
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -101,7 +102,7 @@ public class ActivityDaoImp implements ActivityDao{
 
     @Override
     public void update(Activity activity) {
-        DataBaseConnection dataBaseConnection = new CmmiDataBaseConnection();
+        DataBaseConnection dataBaseConnection = new IsoDataBaseConnection();
         PreparedStatement preparedStatement;
         try {
             preparedStatement = dataBaseConnection.preparedStatement
