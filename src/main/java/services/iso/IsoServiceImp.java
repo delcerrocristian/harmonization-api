@@ -62,6 +62,11 @@ public class IsoServiceImp implements IsoService {
     }
 
     @Override
+    public ArrayList<Process> readAllProcess(int standard) {
+        return processDao.readAllByStandard(standard);
+    }
+
+    @Override
     public void updateProcess(Process process) {
         processDao.update(process);
     }
@@ -104,6 +109,11 @@ public class IsoServiceImp implements IsoService {
     @Override
     public ArrayList<Activity> readAllActivityByProcess(int id) {
         return activityDao.readAllByProcess(id);
+    }
+
+    @Override
+    public ArrayList<Activity> readAllActivityByStandard(int standard) {
+        return activityDao.readAllByStandard(standard);
     }
 
     @Override

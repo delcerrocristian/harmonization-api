@@ -369,6 +369,17 @@ public class HarmonizeResource implements PathFiles {
         return Response.noContent().build();
     }
 
+    @Path("/iso/allprocess")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllIsoProcess(@QueryParam("standard") int id) {
+        ArrayList<persistence.firstfilter.iso.model.Process> listOfProcess = isoService.readAllProcessByStandard(id);
+        if(listOfProcess != null) {
+            return Response.ok(listOfProcess).build();
+        }
+        return Response.status(404).build();
+    }
+
     @Path("/iso/activity")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -410,6 +421,71 @@ public class HarmonizeResource implements PathFiles {
     public Response deleteIsoActivity(@QueryParam("id") int id) {
         isoService.deleteActivity(id);
         return Response.noContent().build();
+    }
+
+    @Path("/iso/allactivity")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllIsoActivity(@QueryParam("standard") int id) {
+        ArrayList<Activity> listOfActivity = isoService.readAllActivityByStandard(id);
+        if(listOfActivity != null) {
+            return Response.ok(listOfActivity).build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/iso/task")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addIsoTask(Task task) {
+        if(isoService.readProcess(task.getProcess()) != null) {
+            isoService.addTask(task);
+            return Response.ok().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/iso/task")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getIsoTask(@QueryParam("id") int id) {
+        Task task = isoService.readTask(id);
+        if(task != null) {
+            return Response.ok(task).build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/iso/task")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateIsoTask(Task task) {
+        if(isoService.readProcess(task.getProcess()) != null) {
+            isoService.updateTask(task);
+            return Response.noContent().build();
+        }
+        return Response.status(404).build();
+    }
+
+    @Path("/iso/task")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteIsoTask(@QueryParam("id") int id) {
+        isoService.deleteTask(id);
+        return Response.noContent().build();
+    }
+
+    @Path("/iso/alltask")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllIsoTask(@QueryParam("standard") int id) {
+        ArrayList<Task> listOfTask = isoService.readAllTaskByStandard(id);
+        if(listOfTask != null) {
+            return Response.ok(listOfTask).build();
+        }
+        return Response.status(404).build();
     }
 
 }

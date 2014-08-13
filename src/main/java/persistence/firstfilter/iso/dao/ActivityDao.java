@@ -21,4 +21,6 @@ public interface ActivityDao {
     void delete(int id);
 
     ArrayList<Activity> readAllByProcess(int id);
+
+    ArrayList<Activity> readAllByStandard(int id);
 }

@@ -26,6 +26,8 @@ public interface IsoService {
 
     Process readProcess (int id);
 
+    ArrayList<Process> readAllProcess(int standard);
+
     void updateProcess(Process process);
 
     void deleteProcess (int id);
@@ -43,6 +45,8 @@ public interface IsoService {
     void deleteActivity (int id);
 
     ArrayList<Activity> readAllActivityByProcess(int id);
+
+    ArrayList<Activity> readAllActivityByStandard(int standard);
 
     int readIdActivityByNameAndProcess(String name, int process);
 

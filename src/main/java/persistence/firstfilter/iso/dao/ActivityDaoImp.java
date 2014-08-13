@@ -168,4 +168,33 @@ public class ActivityDaoImp implements ActivityDao{
         }
         return allActivities;
     }
+
+    @Override
+    public ArrayList<Activity> readAllByStandard(int id) {
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
+        PreparedStatement preparedStatement;
+        Activity activityFromDB;
+        ArrayList<Activity> allActivities = new ArrayList<>();
+        try {
+            preparedStatement = isoDataBaseConnection.preparedStatement
+                    ("select * from activity where process in (select id from process where standard=?)");
+
+            preparedStatement.setInt(1,id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                activityFromDB = new Activity(resultSet.getInt("id"), resultSet.getString("name"),
+                        resultSet.getInt("process"));
+                allActivities.add(activityFromDB);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select all activities");
+        }finally{
+            isoDataBaseConnection.close();
+        }
+        return allActivities;
+    }
 }

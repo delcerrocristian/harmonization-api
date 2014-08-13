@@ -78,8 +78,14 @@ public class TaskDaoImp implements TaskDao {
         PreparedStatement preparedStatement;
         try {
             preparedStatement = isoDataBaseConnection.preparedStatement
-                    (buildSqlUpdateStatement(task));
+                    ("update task set " +
+                            "content=?, process=?, activity=? " +
+                            "where id=?");
 
+            preparedStatement.setString(1,task.getContent());
+            preparedStatement.setInt(2,task.getProcess());
+            preparedStatement.setInt(3,task.getActivity());
+            preparedStatement.setInt(4,task.getId());
 
             preparedStatement.executeUpdate();
 
@@ -188,35 +194,5 @@ public class TaskDaoImp implements TaskDao {
             isoDataBaseConnection.close();
         }
         return allTasks;
-    }
-
-    private String buildSqlUpdateStatement(Task task) {
-        boolean anyFieldUpdate = false;
-        String statement = "update task set ";
-        if(task.getContent() != null){
-            statement += "content="+task.getContent();
-            anyFieldUpdate = true;
-        }
-        if (task.getActivity() != null) {
-            if(anyFieldUpdate){
-                statement += ",";
-            }
-            statement += "activity="+task.getActivity();
-            anyFieldUpdate = true;
-        }
-        if (task.getProcess() != null) {
-            if(anyFieldUpdate){
-                statement += ",";
-            }
-            statement += "process="+task.getProcess();
-            anyFieldUpdate = true;
-        }
-        if(anyFieldUpdate) {
-            statement += ",";
-        }
-        statement += "is_processed=1";
-        statement +=" where id="+task.getId();
-
-        return statement;
     }
 }
