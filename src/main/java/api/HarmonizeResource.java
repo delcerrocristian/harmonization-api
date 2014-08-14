@@ -113,8 +113,8 @@ public class HarmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addCmmiProcess(persistence.firstfilter.cmmi.model.Process process) {
         if(cmmiService.readStandard(process.getStandard()) != null) {
-            cmmiService.createProcess(process);
-            return Response.ok().build();
+            int id = cmmiService.createProcess(process);
+            return Response.ok(id).build();
         }
         return Response.status(404).build();
     }
@@ -167,8 +167,8 @@ public class HarmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addCmmiSpecificGoal(SpecificGoal specificGoal) {
         if(cmmiService.readProcess(specificGoal.getProcess()) != null) {
-            cmmiService.createSpecificGoal(specificGoal);
-            return Response.ok().build();
+            int id = cmmiService.createSpecificGoal(specificGoal);
+            return Response.ok(id).build();
         }
         return Response.status(404).build();
     }
@@ -222,8 +222,8 @@ public class HarmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addCmmiSpecificPractice(SpecificPractice specificPractice) {
         if(cmmiService.readSpecificGoal(specificPractice.getSpecificGoal()) != null) {
-            cmmiService.createSpecificPractice(specificPractice);
-            return Response.ok().build();
+            int id = cmmiService.createSpecificPractice(specificPractice);
+            return Response.ok(id).build();
         }
         return Response.status(404).build();
     }
@@ -276,8 +276,8 @@ public class HarmonizeResource implements PathFiles {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addCmmiWorkProduct(WorkProduct workProduct) {
         if(cmmiService.readSpecificPractice(workProduct.getSpecificPractice()) != null) {
-            cmmiService.createWorkProduct(workProduct);
-            return Response.ok().build();
+            int id = cmmiService.createWorkProduct(workProduct);
+            return Response.ok(id).build();
         }
         return Response.status(404).build();
     }
