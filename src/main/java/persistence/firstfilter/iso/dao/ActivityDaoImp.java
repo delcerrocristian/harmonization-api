@@ -198,4 +198,28 @@ public class ActivityDaoImp implements ActivityDao{
         }
         return allActivities;
     }
+
+    @Override
+    public int countByStandard(int id) {
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
+        PreparedStatement preparedStatement;
+        int numActivity = 0;
+        try {
+            preparedStatement = isoDataBaseConnection.preparedStatement
+                    ("select count(*) as num from activity where process in (select id from process where standard="+id+")");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                numActivity=  resultSet.getInt("num");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select count activity");
+        }finally{
+            isoDataBaseConnection.close();
+        }
+        return numActivity;
+    }
 }

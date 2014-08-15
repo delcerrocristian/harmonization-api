@@ -87,6 +87,11 @@ public class IsoServiceImp implements IsoService {
     }
 
     @Override
+    public int readCountProcessByStandard(int idStandard) {
+        return processDao.countByStandard(idStandard);
+    }
+
+    @Override
     public int addActivity(Activity activity) {
         return activityDao.create(activity);
     }
@@ -122,6 +127,11 @@ public class IsoServiceImp implements IsoService {
     }
 
     @Override
+    public int readCountActivityByStandard(int idStandard) {
+        return  activityDao.countByStandard(idStandard);
+    }
+
+    @Override
     public int addTask(Task task) {
         return taskDao.create(task);
     }
@@ -154,6 +164,11 @@ public class IsoServiceImp implements IsoService {
     @Override
     public ArrayList<Task> readAllTaskByStandard(int id) {
         return taskDao.readAllByStandard(id);
+    }
+
+    @Override
+    public int readCountTaskByStandard(int idStandard) {
+        return taskDao.countByStandard(idStandard);
     }
 
 }

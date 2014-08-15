@@ -30,6 +30,8 @@ public interface CmmiService {
 
     ArrayList<persistence.firstfilter.cmmi.model.Process> readAllProcessByStandard(int idStandard);
 
+    int readCountProcessByStandard(int idStandard);
+
     int createSpecificGoal(SpecificGoal specificGoal);
 
     SpecificGoal readSpecificGoal(int id);
@@ -41,6 +43,8 @@ public interface CmmiService {
     ArrayList<SpecificGoal> readAllSpecificGoalByProcess(int idProcess);
 
     ArrayList<SpecificGoal> readAllSpecificGoalByStandard(int standard);
+
+    int readCountSpecificGoalByStandard(int idStandard);
 
     int createSpecificPractice(SpecificPractice specificPractice);
 
@@ -54,6 +58,8 @@ public interface CmmiService {
 
     ArrayList<SpecificPractice> readAllSpecificPracticeByStandard(int standard);
 
+    int readCountSpecificPracticeByStandard(int idStandard);
+
     int createWorkProduct(WorkProduct workProduct);
 
     WorkProduct readWorkProduct(int id);
@@ -65,5 +71,7 @@ public interface CmmiService {
     ArrayList<WorkProduct> readAllWorkProductBySpecificPractice(int idSpecificPractice);
 
     ArrayList<WorkProduct> readAllWorkProductByStandard(int standard);
+
+    int readCountWorkProductByStandard(int idStandard);
 }
 

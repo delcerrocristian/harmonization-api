@@ -23,4 +23,6 @@ public interface ActivityDao {
     ArrayList<Activity> readAllByProcess(int id);
 
     ArrayList<Activity> readAllByStandard(int id);
+
+    int countByStandard(int id);
 }

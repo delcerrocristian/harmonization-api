@@ -168,5 +168,28 @@ public class ProcessDaoImp implements ProcessDao {
         return allProcess;
     }
 
+    @Override
+    public int countByStandard(int id) {
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
+        PreparedStatement preparedStatement;
+        int numProcess = 0;
+        try {
+            preparedStatement = isoDataBaseConnection.preparedStatement
+                    ("select count(*) as num from process where standard="+id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                numProcess=  resultSet.getInt("num");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select count process");
+        }finally{
+            isoDataBaseConnection.close();
+        }
+        return numProcess;
+    }
 
 }

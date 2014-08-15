@@ -36,6 +36,8 @@ public interface IsoService {
 
     int readIdProcessByNameAndStandard(String name, int idStandard);
 
+    int readCountProcessByStandard(int idStandard);
+
     int addActivity(Activity activity);
 
     Activity readActivity (int id);
@@ -50,6 +52,8 @@ public interface IsoService {
 
     int readIdActivityByNameAndProcess(String name, int process);
 
+    int readCountActivityByStandard(int idStandard);
+
     int addTask(Task task);
 
     void updateTask (Task task);
@@ -63,4 +67,6 @@ public interface IsoService {
     ArrayList<Task> readAllTaskByActivity(int id);
 
     ArrayList<Task> readAllTaskByStandard(int id);
+
+    int readCountTaskByStandard(int idStandard);
 }

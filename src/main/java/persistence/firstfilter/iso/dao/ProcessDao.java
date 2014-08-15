@@ -20,4 +20,6 @@ public interface ProcessDao {
     void delete(int id);
 
     ArrayList<Process> readAllByStandard(int id);
+
+    int countByStandard(int id);
 }

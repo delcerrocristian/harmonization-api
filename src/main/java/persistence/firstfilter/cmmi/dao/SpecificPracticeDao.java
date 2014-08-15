@@ -20,4 +20,6 @@ public interface SpecificPracticeDao {
     ArrayList<SpecificPractice> readAllBySpecificGoal(int specificGoal);
 
     ArrayList<SpecificPractice> readAllByStandard(int standard);
+
+    int countByStandard(int id);
 }

@@ -77,6 +77,11 @@ public class CmmiServiceImp implements CmmiService {
     }
 
     @Override
+    public int readCountProcessByStandard(int idStandard) {
+        return processDao.countByStandard(idStandard);
+    }
+
+    @Override
     public int createSpecificGoal(SpecificGoal specificGoal) {
         return specificGoalDao.create(specificGoal);
     }
@@ -104,6 +109,11 @@ public class CmmiServiceImp implements CmmiService {
     @Override
     public ArrayList<SpecificGoal> readAllSpecificGoalByStandard(int standard) {
         return specificGoalDao.readAllByStandard(standard);
+    }
+
+    @Override
+    public int readCountSpecificGoalByStandard(int idStandard) {
+        return specificGoalDao.countByStandard(idStandard);
     }
 
     @Override
@@ -137,6 +147,11 @@ public class CmmiServiceImp implements CmmiService {
     }
 
     @Override
+    public int readCountSpecificPracticeByStandard(int idStandard) {
+        return specificPracticeDao.countByStandard(idStandard);
+    }
+
+    @Override
     public int createWorkProduct(WorkProduct workProduct) {
         return workProductDao.create(workProduct);
     }
@@ -164,5 +179,10 @@ public class CmmiServiceImp implements CmmiService {
     @Override
     public ArrayList<WorkProduct> readAllWorkProductByStandard(int standard) {
         return workProductDao.readAllByStandard(standard);
+    }
+
+    @Override
+    public int readCountWorkProductByStandard(int idStandard) {
+        return workProductDao.countByStandard(idStandard);
     }
 }

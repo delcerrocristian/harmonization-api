@@ -20,4 +20,6 @@ public interface WorkProductDao {
     ArrayList<WorkProduct> readAllBySpecificPractice(int specificPractice);
 
     ArrayList<WorkProduct> readAllByStandard(int standard);
+
+    int countByStandard(int id);
 }

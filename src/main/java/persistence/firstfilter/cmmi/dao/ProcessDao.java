@@ -21,4 +21,6 @@ public interface ProcessDao {
     void delete(int id);
 
     ArrayList<persistence.firstfilter.cmmi.model.Process> readAllByStandard(int id);
+
+    int countByStandard(int id);
 }

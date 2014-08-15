@@ -173,4 +173,30 @@ public class SpecificGoalDaoImp implements SpecificGoalDao {
         }
         return allSpecificGoal;
     }
+
+    @Override
+    public int countByStandard(int id) {
+        CmmiDataBaseConnection cmmiDataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        int numSpecificGoal = 0;
+        try {
+            preparedStatement = cmmiDataBaseConnection.preparedStatement
+                    ("select count(*) as num from specific_goal where process in (select id from process where" +
+                            " standard="+id+")");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                numSpecificGoal=  resultSet.getInt("num");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select count specific goal");
+        }finally{
+            cmmiDataBaseConnection.close();
+        }
+        return numSpecificGoal;
+    }
+
 }

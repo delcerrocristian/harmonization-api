@@ -174,4 +174,31 @@ public class WorkProductDaoImp implements WorkProductDao {
         }
         return allWorkProduct;
     }
+
+    @Override
+    public int countByStandard(int id) {
+        CmmiDataBaseConnection cmmiDataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        int numWorkProduct = 0;
+        try {
+            preparedStatement = cmmiDataBaseConnection.preparedStatement
+                    ("select count(*) as num from work_product where specific_practice in (select id from specific_practice " +
+                            "where specific_goal in (select id from specific_goal where process in (select id from " +
+                            "process where standard="+id+")))");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                numWorkProduct=  resultSet.getInt("num");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select count process");
+        }finally{
+            cmmiDataBaseConnection.close();
+        }
+        return numWorkProduct;
+    }
+
 }

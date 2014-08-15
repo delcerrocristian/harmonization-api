@@ -174,4 +174,30 @@ public class SpecificPracticeDaoImp implements SpecificPracticeDao {
         }
         return allSpecificPractice;
     }
+
+    @Override
+    public int countByStandard(int id) {
+        CmmiDataBaseConnection cmmiDataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        int numSpecificPractice = 0;
+        try {
+            preparedStatement = cmmiDataBaseConnection.preparedStatement
+                    ("select count(*) as num from specific_practice where specific_goal in (select id from specific_goal" +
+                            " where process in (select id from process where standard="+id+"))");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                numSpecificPractice=  resultSet.getInt("num");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select count process");
+        }finally{
+            cmmiDataBaseConnection.close();
+        }
+        return numSpecificPractice;
+    }
+
 }

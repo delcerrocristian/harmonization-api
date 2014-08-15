@@ -23,4 +23,5 @@ public interface TaskDao {
 
     ArrayList<Task> readAllByStandard(int id);
 
+    int countByStandard(int id);
 }

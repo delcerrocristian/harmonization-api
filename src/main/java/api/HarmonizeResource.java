@@ -3,6 +3,8 @@ package api;
 
 import pdfTrat.CmmiFullProcessDocument;
 import pdfTrat.FullProcessDocument;
+import persistence.firstfilter.model.ResponseStatsCmmi;
+import persistence.firstfilter.model.ResponseStatsIso;
 import persistence.firstfilter.cmmi.model.*;
 import persistence.firstfilter.cmmi.model.Process;
 import persistence.firstfilter.cmmi.model.Standard;
@@ -324,6 +326,21 @@ public class HarmonizeResource implements PathFiles {
         return Response.status(404).build();
     }
 
+    @Path("cmmi/stats")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiStats(@QueryParam("id") int id) {
+        int countProcess = cmmiService.readCountProcessByStandard(id);
+        int countSpecificGoal = cmmiService.readCountSpecificGoalByStandard(id);
+        int countSpecificPractice = cmmiService.readCountSpecificPracticeByStandard(id);
+        int countWorkProduct = cmmiService.readCountWorkProductByStandard(id);
+
+        ResponseStatsCmmi responseStatsCmmi = new ResponseStatsCmmi(countProcess,countSpecificGoal,countSpecificPractice,
+                countWorkProduct);
+
+        return Response.ok(responseStatsCmmi).build();
+    }
+
     //----------------------------------------------ISO-------------------------------------------
 
     @Path("/iso/process")
@@ -486,6 +503,19 @@ public class HarmonizeResource implements PathFiles {
             return Response.ok(listOfTask).build();
         }
         return Response.status(404).build();
+    }
+
+    @Path("iso/stats")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getIsoStats(@QueryParam("id") int id) {
+        int countProcess = isoService.readCountProcessByStandard(id);
+        int countActivity = isoService.readCountActivityByStandard(id);
+        int countTask = isoService.readCountTaskByStandard(id);
+
+        ResponseStatsIso responseStatsIso = new ResponseStatsIso(countProcess,countActivity,countTask);
+
+        return Response.ok(responseStatsIso).build();
     }
 
 }

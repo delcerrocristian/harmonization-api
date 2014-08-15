@@ -89,7 +89,14 @@ public class TaskDaoImp implements TaskDao {
 
             preparedStatement.setString(1,task.getContent());
             preparedStatement.setInt(2,task.getProcess());
-            preparedStatement.setInt(3,task.getActivity());
+
+            if(task.getActivity()!=null && task.getActivity()!=0 ) {
+                preparedStatement.setInt(3, task.getActivity());
+            }
+            else {
+                preparedStatement.setString(3, null);
+            }
+
             preparedStatement.setInt(4,task.getId());
 
             preparedStatement.executeUpdate();
@@ -199,5 +206,30 @@ public class TaskDaoImp implements TaskDao {
             isoDataBaseConnection.close();
         }
         return allTasks;
+    }
+
+    @Override
+    public int countByStandard(int id) {
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
+        PreparedStatement preparedStatement;
+        int numTask = 0;
+        try {
+            preparedStatement = isoDataBaseConnection.preparedStatement
+                    ("select count(*) as num from task where activity in (select id from activity where process in " +
+                            "(select id from process where standard="+id+"))");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                numTask=  resultSet.getInt("num");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select count task");
+        }finally{
+            isoDataBaseConnection.close();
+        }
+        return numTask;
     }
 }

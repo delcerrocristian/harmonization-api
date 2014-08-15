@@ -20,4 +20,6 @@ public interface SpecificGoalDao {
     ArrayList<SpecificGoal> readAllByProcess(int process);
 
     ArrayList<SpecificGoal> readAllByStandard(int standard);
+
+    int countByStandard(int id);
 }

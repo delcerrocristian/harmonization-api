@@ -176,4 +176,29 @@ public class ProcessDaoImp implements ProcessDao{
         }
         return allProcess;
     }
+
+    @Override
+    public int countByStandard(int id) {
+        CmmiDataBaseConnection cmmiDataBaseConnection = new CmmiDataBaseConnection();
+        PreparedStatement preparedStatement;
+        int numProcess = 0;
+        try {
+            preparedStatement = cmmiDataBaseConnection.preparedStatement
+                    ("select count(*) as num from process where standard="+id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                numProcess=  resultSet.getInt("num");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing select count process");
+        }finally{
+            cmmiDataBaseConnection.close();
+        }
+        return numProcess;
+    }
+
 }
