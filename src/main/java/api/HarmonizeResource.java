@@ -59,7 +59,10 @@ public class HarmonizeResource implements PathFiles {
             return Response.status(422).build();
         }
 
-        patterns.add("shall");
+        if(patterns.isEmpty()) {
+            patterns.add("shall");
+            patterns.add("should");
+        }
 
         int idStandard;
         if(type.equals("iso")) {

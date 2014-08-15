@@ -56,14 +56,17 @@ public class IsoSupportFindMethods{
         for(int i=index; (i<list.size() && i!=-1); i++){
             currentSentence="";
             if(list.get(i).charAt(0)== UtilsTemplates.alphabet[count]){
-                while(!(finalPattern.matcher(list.get(i))).matches()){
+
+                while(i<list.size() && !(finalPattern.matcher(list.get(i))).matches()){
                     currentSentence = currentSentence + list.get(i) + " ";
                     i++;
                 }
-                currentSentence = currentSentence + list.get(i);
-                sentence += "\n"+currentSentence;
-                count++;
-                i=existAnotherEnumeration(list, i+1, count) -1;
+                if(i<list.size()) {
+                    currentSentence = currentSentence + list.get(i);
+                    sentence += "\n" + currentSentence;
+                    count++;
+                    i = existAnotherEnumeration(list, i + 1, count) - 1;
+                }
             }
         }
         return sentence;
@@ -78,12 +81,14 @@ public class IsoSupportFindMethods{
         Pattern finalPattern = Pattern.compile(stringFinalPattern);
         for(int i=index; (i<list.size() && i!=-1); i++){
             if(list.get(i).charAt(0)== UtilsTemplates.alphabet[countAlphabet]){
-                while(!(finalPattern.matcher(list.get(i))).matches()){
+                while(i<list.size() && !(finalPattern.matcher(list.get(i))).matches()){
                     i++;
                 }
-                line = i;
-                countAlphabet++;
-                i=existAnotherEnumeration(list, i+1, countAlphabet) -1;
+                if(i<list.size()) {
+                    line = i;
+                    countAlphabet++;
+                    i = existAnotherEnumeration(list, i + 1, countAlphabet) - 1;
+                }
             }
         }
         return line;
