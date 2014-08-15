@@ -222,4 +222,26 @@ public class ActivityDaoImp implements ActivityDao{
         }
         return numActivity;
     }
+
+    @Override
+    public void clean(int id) {
+        IsoDataBaseConnection isoDataBaseConnection = new IsoDataBaseConnection();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = isoDataBaseConnection.preparedStatement
+                    ("delete from activity where process in (select id from process where standard=?) " +
+                            "and name=\"Not Found\"");
+
+            preparedStatement.setInt(1,id);
+
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            System.out.println("SQLException happened executing clean to activity");
+
+        }finally{
+            isoDataBaseConnection.close();
+        }
+    }
+
 }

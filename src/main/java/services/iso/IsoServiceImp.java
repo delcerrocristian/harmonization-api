@@ -132,6 +132,11 @@ public class IsoServiceImp implements IsoService {
     }
 
     @Override
+    public void cleanActivity(int idStandard) {
+        activityDao.clean(idStandard);
+    }
+
+    @Override
     public int addTask(Task task) {
         return taskDao.create(task);
     }

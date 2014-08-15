@@ -54,6 +54,8 @@ public interface IsoService {
 
     int readCountActivityByStandard(int idStandard);
 
+    void cleanActivity(int idStandard);
+
     int addTask(Task task);
 
     void updateTask (Task task);

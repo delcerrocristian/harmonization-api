@@ -25,4 +25,6 @@ public interface ActivityDao {
     ArrayList<Activity> readAllByStandard(int id);
 
     int countByStandard(int id);
+
+    void clean(int id);
 }

@@ -5,6 +5,7 @@ package persistence.firstfilter.model;
  */
 public class ResponseStatsIso {
 
+    private String name;
     private int process;
     private int activity;
     private int task;
@@ -17,6 +18,14 @@ public class ResponseStatsIso {
         this.process = process;
         this.activity = activity;
         this.task = task;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getProcess() {
@@ -53,13 +62,15 @@ public class ResponseStatsIso {
         if (activity != that.activity) return false;
         if (process != that.process) return false;
         if (task != that.task) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = process;
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + process;
         result = 31 * result + activity;
         result = 31 * result + task;
         return result;

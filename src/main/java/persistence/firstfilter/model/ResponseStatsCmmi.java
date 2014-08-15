@@ -5,6 +5,7 @@ package persistence.firstfilter.model;
  */
 public class ResponseStatsCmmi {
 
+    private String name;
     private int process;
     private int specificGoal;
     private int specificPractice;
@@ -19,6 +20,14 @@ public class ResponseStatsCmmi {
         this.specificGoal = specificGoal;
         this.specificPractice = specificPractice;
         this.workProduct = workProduct;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getProcess() {
@@ -64,13 +73,15 @@ public class ResponseStatsCmmi {
         if (specificGoal != that.specificGoal) return false;
         if (specificPractice != that.specificPractice) return false;
         if (workProduct != that.workProduct) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = process;
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + process;
         result = 31 * result + specificGoal;
         result = 31 * result + specificPractice;
         result = 31 * result + workProduct;

@@ -65,6 +65,7 @@ public class HarmonizeResource implements PathFiles {
         if(type.equals("iso")) {
             idStandard = isoService.createStandard(name);
             isoFullProcessDocument.start(inputFile,idStandard, patterns);
+            isoService.cleanActivity(idStandard);
         }
         else {
             idStandard = cmmiService.createStandard(name);
@@ -341,6 +342,31 @@ public class HarmonizeResource implements PathFiles {
         return Response.ok(responseStatsCmmi).build();
     }
 
+    @Path("cmmi/allstats")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCmmiAllStats() {
+        ArrayList<Standard> listOfStandards = cmmiService.readAllStandards();
+        ArrayList<ResponseStatsCmmi> listOfResponseStatsCmmi = new ArrayList<>();
+
+        for(Standard standard : listOfStandards) {
+            int countProcess = cmmiService.readCountProcessByStandard(standard.getId());
+            int countSpecificGoal = cmmiService.readCountSpecificGoalByStandard(standard.getId());
+            int countSpecificPractice = cmmiService.readCountSpecificPracticeByStandard(standard.getId());
+            int countWorkProduct = cmmiService.readCountWorkProductByStandard(standard.getId());
+
+            ResponseStatsCmmi responseStatsCmmi = new ResponseStatsCmmi(countProcess, countSpecificGoal,
+                    countSpecificPractice, countWorkProduct);
+            responseStatsCmmi.setName(standard.getName());
+
+            listOfResponseStatsCmmi.add(responseStatsCmmi);
+
+        }
+
+        return Response.ok(listOfResponseStatsCmmi).build();
+    }
+
+
     //----------------------------------------------ISO-------------------------------------------
 
     @Path("/iso/process")
@@ -516,6 +542,28 @@ public class HarmonizeResource implements PathFiles {
         ResponseStatsIso responseStatsIso = new ResponseStatsIso(countProcess,countActivity,countTask);
 
         return Response.ok(responseStatsIso).build();
+    }
+
+    @Path("iso/allstats")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getIsoAllStats() {
+        ArrayList<persistence.firstfilter.iso.model.Standard> listOfStandards = isoService.readAllStandards();
+        ArrayList<ResponseStatsIso> listOfResponseStatsIso = new ArrayList<>();
+
+        for(persistence.firstfilter.iso.model.Standard standard : listOfStandards) {
+            int countProcess = isoService.readCountProcessByStandard(standard.getId());
+            int countActivity = isoService.readCountActivityByStandard(standard.getId());
+            int countTask = isoService.readCountTaskByStandard(standard.getId());
+
+            ResponseStatsIso responseStatsIso = new ResponseStatsIso(countProcess, countActivity, countTask);
+            responseStatsIso.setName(standard.getName());
+
+            listOfResponseStatsIso.add(responseStatsIso);
+
+        }
+
+        return Response.ok(listOfResponseStatsIso).build();
     }
 
 }
