@@ -3,7 +3,7 @@ package persistence.firstfilter.dataBaseConnection;
 import java.sql.PreparedStatement;
 
 /**
- * Created by evan on 16/06/14.
+ * Created by Cristian del Cerro.
  */
 public interface DataBaseConnection {
 

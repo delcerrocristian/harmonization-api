@@ -4,9 +4,8 @@ import persistence.firstfilter.dataBaseConnection.IsoDataBaseConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 /**
- * Created by spukyn on 22/04/14.
+ * Created by Cristian del Cerro.
  */
 public class MethodToDataBaseImp implements MethodToDataBase {
 

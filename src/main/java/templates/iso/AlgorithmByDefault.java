@@ -11,7 +11,7 @@ import static templates.iso.FindMethod.*;
 import static templates.iso.FindMethod.patternTwoFinalDot;
 
 /**
- * Created by spukyn on 4/05/14.
+ * Created by Cristian del Cerro.
  */
 public class AlgorithmByDefault {
 

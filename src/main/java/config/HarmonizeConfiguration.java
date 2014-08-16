@@ -13,6 +13,10 @@ import templates.cmmi.CmmiTemplate;
 import templates.cmmi.CmmiTemplateImp;
 import templates.iso.IsoTemplateImp;
 
+/**
+ * Created by Cristian del Cerro.
+ */
+
 
 public class HarmonizeConfiguration extends Configuration{
 

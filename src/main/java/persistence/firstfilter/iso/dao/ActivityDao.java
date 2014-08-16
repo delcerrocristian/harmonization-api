@@ -6,7 +6,7 @@ import persistence.firstfilter.iso.model.Activity;
 import java.util.ArrayList;
 
 /**
- * Created by spukyn on 3/05/14.
+ * Created by Cristian del Cerro.
  */
 public interface ActivityDao {
 

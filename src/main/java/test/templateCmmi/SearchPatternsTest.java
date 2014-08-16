@@ -7,6 +7,10 @@ import templates.cmmi.SearchPatterns;
 
 import static templates.cmmi.SearchPatterns.searchStartProcessAreas;
 
+/**
+ * Created by Cristian del Cerro.
+ */
+
 public class SearchPatternsTest{
 
     @Test

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Created by spukyn on 3/05/14.
+ * Created by Cristian del Cerro.
  */
 public class TaskDaoImp implements TaskDao {
     @Override

@@ -4,6 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+/**
+ * Created by Cristian del Cerro.
+ */
+
 public class ParseText {
 	
 	public ParseText(){

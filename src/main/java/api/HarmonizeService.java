@@ -7,6 +7,10 @@ import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 import config.HarmonizeConfiguration;
 
+/**
+ * Created by Cristian del Cerro.
+ */
+
 public class HarmonizeService extends Service<HarmonizeConfiguration> {
 
 

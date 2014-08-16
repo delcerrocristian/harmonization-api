@@ -5,8 +5,9 @@ import persistence.firstfilter.cmmi.model.Standard;
 import java.util.ArrayList;
 
 /**
- * Created by Cristian del Cerro on 19/06/14.
+ * Created by Cristian del Cerro.
  */
+
 public interface StandardDao{
 
     int create(Standard standard) ;

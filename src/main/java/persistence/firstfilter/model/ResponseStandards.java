@@ -1,7 +1,7 @@
 package persistence.firstfilter.model;
 
 /**
- * Created by evan on 11/08/14.
+ * Created by Cristian del Cerro.
  */
 public class ResponseStandards {
 

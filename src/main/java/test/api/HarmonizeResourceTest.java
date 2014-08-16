@@ -28,6 +28,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Created by Cristian del Cerro.
+ */
+
 public class HarmonizeResourceTest extends ResourceTest implements PathFiles {
 
 

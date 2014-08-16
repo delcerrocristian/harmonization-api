@@ -3,7 +3,7 @@ package persistence.firstfilter.iso.dao;
 import java.sql.SQLException;
 
 /**
- * Created by spukyn on 22/04/14.
+ * Created by Cristian del Cerro.
  */
 public interface MethodToDataBase {
 

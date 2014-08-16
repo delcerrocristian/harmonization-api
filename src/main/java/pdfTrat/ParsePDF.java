@@ -5,6 +5,10 @@ import java.io.*;
 import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.util.*;
 
+/**
+ * Created by Cristian del Cerro.
+ */
+
 public class ParsePDF {
 	public ParsePDF(){
 		

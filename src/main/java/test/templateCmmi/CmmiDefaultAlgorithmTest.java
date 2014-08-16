@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+/**
+ * Created by Cristian del Cerro.
+ */
+
 public class CmmiDefaultAlgorithmTest extends TestCase {
 
     private CmmiDefaultAlgorithm cmmiDefaultAlgorithm;
