@@ -115,6 +115,15 @@ public class HarmonizeResource implements PathFiles {
         return Response.ok(responseStandards).build();
     }
 
+    @Path("/cmmi/standard")
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteCmmi(@QueryParam("id") int id) {
+        cmmiService.deleteStandard(id);
+        return Response.status(204).build();
+    }
+
 
     @Path("/cmmi/process")
     @POST
@@ -374,6 +383,15 @@ public class HarmonizeResource implements PathFiles {
 
 
     //----------------------------------------------ISO-------------------------------------------
+
+    @Path("/iso/standard")
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteIso(@QueryParam("id") int id) {
+        isoService.deleteStandard(id);
+        return Response.status(204).build();
+    }
 
     @Path("/iso/process")
     @POST
